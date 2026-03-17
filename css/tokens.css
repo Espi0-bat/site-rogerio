@@ -1,0 +1,215 @@
+/* ================================================================
+   tokens.css
+   Design tokens, reset, base styles e utilitários globais
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+/* ── Design Tokens ─────────────────────────────────────────────── */
+:root {
+  /* Backgrounds */
+  --bg-deep:        #0f1419;
+  --bg-mid:         #151b22;
+  --bg-panel:       #0a2540;
+  --bg-card:        rgba(21, 27, 34, 0.6);
+  --bg-glass:       rgba(21, 27, 34, 0.55);
+  --bg-glass-light: rgba(0, 200, 150, 0.04);
+
+  /* Cyan accent system */
+  --cyan:           #00c896;
+  --cyan-dim:       rgba(0, 200, 150, 0.6);
+  --cyan-ghost:     rgba(0, 200, 150, 0.15);
+  --cyan-border:    rgba(0, 200, 150, 0.2);
+  --cyan-glow:      rgba(0, 200, 150, 0.08);
+  --cyan-deep:      #00a37a;
+
+  /* Text */
+  --silver:         #e6edf3;
+  --silver-dim:     #8b949e;
+  --silver-faint:   rgba(230, 237, 243, 0.4);
+
+  /* Gradients */
+  --grad-lens:  linear-gradient(135deg, rgba(0,200,150,0.1) 0%, rgba(0,163,122,0.04) 50%, transparent 100%);
+  --grad-laser: linear-gradient(180deg, rgba(0,200,150,0.06) 0%, transparent 60%);
+
+  /* Typography */
+  --ff-display: 'Outfit', system-ui, sans-serif;
+  --ff-body:    'Plus Jakarta Sans', system-ui, sans-serif;
+
+  /* Easing */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ── Reset ─────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ──────────────────────────────────────────────────────── */
+html {
+  font-size: clamp(14px, 1.05vw, 16px);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--bg-deep);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,200,150,0.05) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(10,37,64,0.5) 0%, transparent 60%);
+  color: var(--silver);
+  font-family: var(--ff-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--cyan);
+  color: var(--bg-deep);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* ── Scrollbar ─────────────────────────────────────────────────── */
+::-webkit-scrollbar        { width: 3px; }
+::-webkit-scrollbar-track  { background: var(--bg-deep); }
+::-webkit-scrollbar-thumb  { background: var(--cyan-deep); border-radius: 2px; }
+
+/* ── Grid overlay (tech feel) ──────────────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,209,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,209,255,0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 0%, transparent 75%);
+}
+
+/* ── Utilities ─────────────────────────────────────────────────── */
+.section-wrapper {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 5rem);
+}
+
+.label {
+  font-family: var(--ff-body);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--cyan);
+}
+
+.cyan-line {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+  vertical-align: middle;
+  margin-right: 0.75rem;
+}
+
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--silver);
+  margin-top: 0.75rem;
+}
+
+.section-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cyan) 0%, #7DD3F8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: clamp(3rem, 6vw, 5rem);
+  align-items: end;
+}
+
+.section-header__right {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--silver-dim);
+  line-height: 1.85;
+}
+
+@media (max-width: 768px) {
+  .section-header { grid-template-columns: 1fr; }
+}
+
+/* Glass card base */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid var(--cyan-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-lens);
+  pointer-events: none;
+}
+
+/* Scan divider */
+.scan-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-block: clamp(4rem, 8vw, 7rem);
+}
+
+.scan-divider::before,
+.scan-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,209,255,0.2));
+}
+
+.scan-divider::after {
+  background: linear-gradient(to left, transparent, rgba(0,209,255,0.2));
+}
+
+.scan-divider__dot {
+  width: 5px;
+  height: 5px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+/* Rating stars */
+.rating-stars       { display: flex; gap: 3px; margin-bottom: 0.5rem; }
+.rating-stars svg   { color: var(--cyan); }

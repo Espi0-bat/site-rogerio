@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Rogério Furtado — Seleção de Layout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0d1117;
+      --surface:  #161b22;
+      --border:   rgba(255,255,255,0.08);
+      --text:     #e6edf3;
+      --muted:    #8b949e;
+      --ff-d:     'Outfit', sans-serif;
+      --ff-b:     'Plus Jakarta Sans', sans-serif;
+      --ease:     cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-b);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(2rem, 6vw, 5rem) clamp(1.25rem, 4vw, 3rem);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient glow */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 20% 20%, rgba(0,200,150,0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(100,130,255,0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* Subtle grid */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 80%);
+    }
+
+    /* ── Header ── */
+    .hub-header {
+      text-align: center;
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+      position: relative; z-index: 1;
+    }
+
+    .hub-header__label {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      font-family: var(--ff-b); font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase; color: #00c896;
+      margin-bottom: 1.25rem;
+    }
+
+    .hub-header__label span {
+      display: block; width: 24px; height: 1px;
+      background: linear-gradient(90deg, #00c896, transparent);
+    }
+
+    .hub-header__title {
+      font-family: var(--ff-d);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hub-header__title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #00c896 0%, #00e8a8 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hub-header__sub {
+      font-size: 0.9rem; font-weight: 300;
+      color: var(--muted); max-width: 480px;
+      margin-inline: auto; line-height: 1.8;
+    }
+
+    /* ── Cards grid ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 1100px;
+      position: relative; z-index: 1;
+    }
+
+    @media (max-width: 900px)  { .cards { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 580px)  { .cards { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: flex; flex-direction: column;
+      transition: transform 0.4s var(--ease), border-color 0.35s, box-shadow 0.4s;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 100%; height: 2px;
+      transition: right 0.5s var(--ease), box-shadow 0.5s;
+    }
+
+    .card:hover { transform: translateY(-6px); }
+    .card:hover::after { right: 0; }
+
+    /* Per-card accent colors */
+    .card--escuro  { --accent: #00c896; --accent-glow: rgba(0,200,150,0.15); }
+    .card--verde   { --accent: #00c896; --accent-glow: rgba(0,200,150,0.15); }
+    .card--claro   { --accent: #0969da; --accent-glow: rgba(9,105,218,0.12); }
+
+    .card:hover { border-color: var(--accent); box-shadow: 0 16px 48px var(--accent-glow); }
+    .card::after { background: var(--accent); }
+    .card:hover::after { box-shadow: 0 0 10px var(--accent); }
+
+    /* ── Card palette preview ── */
+    .card__palette {
+      height: 140px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    /* Escuro original */
+    .card--escuro .card__palette {
+      background: linear-gradient(135deg, #0A0F1A 0%, #0D1421 60%, #0F1826 100%);
+    }
+
+    /* Escuro verde */
+    .card--verde .card__palette {
+      background: linear-gradient(135deg, #0f1419 0%, #151b22 60%, #0a2540 100%);
+    }
+
+    /* Claro */
+    .card--claro .card__palette {
+      background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 60%, #e8f0fe 100%);
+    }
+
+    /* Mini UI mockup inside palette */
+    .card__mockup {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+
+    .mock-bar {
+      height: 3px; border-radius: 2px; opacity: 0.9;
+    }
+    .mock-bar--accent { background: var(--accent); width: 40%; }
+    .mock-bar--text   { width: 70%; }
+    .mock-bar--sub    { width: 50%; }
+
+    .card--escuro .mock-bar--text { background: rgba(230,237,243,0.5); }
+    .card--escuro .mock-bar--sub  { background: rgba(139,148,158,0.4); }
+    .card--verde  .mock-bar--text { background: rgba(230,237,243,0.5); }
+    .card--verde  .mock-bar--sub  { background: rgba(139,148,158,0.4); }
+    .card--claro  .mock-bar--text { background: rgba(13,17,23,0.35); }
+    .card--claro  .mock-bar--sub  { background: rgba(87,96,106,0.35); }
+
+    .mock-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5px; margin-top: 4px; flex: 1;
+    }
+
+    .mock-card {
+      border-radius: 2px;
+    }
+    .card--escuro .mock-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(0,200,150,0.2); }
+    .card--verde  .mock-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(0,200,150,0.2); }
+    .card--claro  .mock-card { background: rgba(255,255,255,0.7);  border: 1px solid rgba(9,105,218,0.15); }
+
+    /* Colour swatches row */
+    .mock-swatches {
+      display: flex; gap: 4px; margin-top: auto;
+    }
+
+    .swatch {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* ── Card body ── */
+    .card__body {
+      padding: 1.5rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+      flex: 1;
+    }
+
+    .card__number {
+      font-family: var(--ff-d); font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .card__name {
+      font-family: var(--ff-d); font-size: 1.1rem; font-weight: 600;
+      color: var(--text); line-height: 1.25;
+    }
+
+    .card__desc {
+      font-size: 0.78rem; font-weight: 300; color: var(--muted);
+      line-height: 1.7; flex: 1;
+    }
+
+    .card__swatches {
+      display: flex; gap: 6px; align-items: center; margin-top: 0.5rem;
+    }
+
+    .card__swatch {
+      width: 12px; height: 12px; border-radius: 50%;
+    }
+
+    .card__swatch-label {
+      font-size: 0.6rem; color: var(--muted); margin-left: 2px;
+    }
+
+    .card__cta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1rem; padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .card__cta-text {
+      font-size: 0.65rem; font-weight: 600; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--accent);
+    }
+
+    .card__cta-arrow {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s var(--ease);
+    }
+
+    .card:hover .card__cta-arrow {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateX(3px);
+    }
+
+    .card:hover .card__cta-arrow svg { color: #0d1117; }
+
+    /* ── Footer ── */
+    .hub-footer {
+      margin-top: clamp(3rem, 5vw, 4rem);
+      font-size: 0.62rem; color: var(--muted);
+      letter-spacing: 0.08em; text-align: center;
+      position: relative; z-index: 1;
+    }
+
+    /* Entrance animation */
+    .hub-header, .cards, .hub-footer {
+      opacity: 0; transform: translateY(20px);
+      animation: fadeUp 0.8s cubic-bezier(0.16,1,0.3,1) forwards;
+    }
+    .cards       { animation-delay: 0.15s; }
+    .hub-footer  { animation-delay: 0.3s; }
+
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <header class="hub-header">
+    <p class="hub-header__label">
+      <span></span>
+      Apresentação de Layout
+      <span style="transform:scaleX(-1);"></span>
+    </p>
+    <h1 class="hub-header__title">
+      Dr. Rogério Furtado<br>
+      <em>Escolha a identidade visual</em>
+    </h1>
+    <p class="hub-header__sub">
+      Três propostas de paleta para a sua landing page.
+      Clique em cada versão para visualizar o site completo.
+    </p>
+  </header>
+
+  <div class="cards" role="list">
+
+    <!-- Versão 1 — Escuro original -->
+    <a href="preview_modo_escuro.html" class="card card--escuro" role="listitem" target="_blank" rel="noopener">
+      <div class="card__palette" aria-hidden="true">
+        <div class="card__mockup">
+          <div class="mock-bar mock-bar--text"></div>
+          <div class="mock-bar mock-bar--accent"></div>
+          <div class="mock-bar mock-bar--sub"></div>
+          <div class="mock-grid">
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+          </div>
+          <div class="mock-swatches">
+            <div class="swatch" style="background:#0D0D0D;"></div>
+            <div class="swatch" style="background:#BF9B30;"></div>
+            <div class="swatch" style="background:#E4E0D1;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card__body">
+        <span class="card__number">Versão 01</span>
+        <h2 class="card__name">Escuro Dourado</h2>
+        <p class="card__desc">
+          Fundo preto profundo com acento em dourado velho.
+          Estética editorial de luxo — Playfair Display + Cormorant.
+          A proposta original do projeto.
+        </p>
+        <div class="card__swatches">
+          <div class="card__swatch" style="background:#0D0D0D; border:1px solid rgba(255,255,255,0.2);"></div>
+          <div class="card__swatch" style="background:#BF9B30;"></div>
+          <div class="card__swatch" style="background:#E4E0D1;"></div>
+          <span class="card__swatch-label">Rich Black · Dourado · Marfim</span>
+        </div>
+        <div class="card__cta">
+          <span class="card__cta-text">Ver versão</span>
+          <div class="card__cta-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Versão 2 — Escuro tecnológico verde -->
+    <a href="preview_modo_escuro-verde.html" class="card card--verde" role="listitem" target="_blank" rel="noopener">
+      <div class="card__palette" aria-hidden="true">
+        <div class="card__mockup">
+          <div class="mock-bar mock-bar--text"></div>
+          <div class="mock-bar mock-bar--accent"></div>
+          <div class="mock-bar mock-bar--sub"></div>
+          <div class="mock-grid">
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+          </div>
+          <div class="mock-swatches">
+            <div class="swatch" style="background:#0f1419;"></div>
+            <div class="swatch" style="background:#00c896;"></div>
+            <div class="swatch" style="background:#e6edf3;"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card__body">
+        <span class="card__number">Versão 02</span>
+        <h2 class="card__name">Escuro Tecnológico</h2>
+        <p class="card__desc">
+          Fundo azul-marinho profundo com acento verde-esmeralda.
+          Glassmorphism nos cards, tipografia técnica.
+          Identidade de alta precisão cirúrgica.
+        </p>
+        <div class="card__swatches">
+          <div class="card__swatch" style="background:#0f1419; border:1px solid rgba(255,255,255,0.2);"></div>
+          <div class="card__swatch" style="background:#00c896;"></div>
+          <div class="card__swatch" style="background:#e6edf3;"></div>
+          <span class="card__swatch-label">Navy · Verde · Prata</span>
+        </div>
+        <div class="card__cta">
+          <span class="card__cta-text">Ver versão</span>
+          <div class="card__cta-arrow">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </a>
+
+    <!-- Versão 3 — Claro -->
+    <a href="preview_modo_claro.html" class="card card--claro" role="listitem" target="_blank" rel="noopener">
+      <div class="card__palette" aria-hidden="true">
+        <div class="card__mockup">
+          <div class="mock-bar mock-bar--text"></div>
+          <div class="mock-bar mock-bar--accent"></div>
+          <div class="mock-bar mock-bar--sub"></div>
+          <div class="mock-grid">
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+            <div class="mock-card"></div>
+          </div>
+          <div class="mock-swatches">
+            <div class="swatch" style="background:#f0f4f8; border:1px solid rgba(0,0,0,0.15);"></div>
+            <div class="swatch" style="background:#00a37a;"></div>
+            <div class="swatch" style="background:#0d1117; border:1px solid rgba(0,0,0,0.15);"></div>
+          </div>
+        </div>
+      </div>
+      <div class="card__body">
+        <span class="card__number" style="color:#0969da;">Versão 03</span>
+        <h2 class="card__name">Modo Claro</h2>
+        <p class="card__desc">
+          Fundo branco-gelo com acento verde-esmeralda escuro.
+          Glassmorphism em superfícies brancas translúcidas.
+          Visual limpo, moderno e acessível.
+        </p>
+        <div class="card__swatches">
+          <div class="card__swatch" style="background:#f0f4f8; border:1px solid rgba(0,0,0,0.15);"></div>
+          <div class="card__swatch" style="background:#00a37a;"></div>
+          <div class="card__swatch" style="background:#0d1117;"></div>
+          <span class="card__swatch-label">Gelo · Esmeralda · Grafite</span>
+        </div>
+        <div class="card__cta">
+          <span class="card__cta-text" style="color:#0969da;">Ver versão</span>
+          <div class="card__cta-arrow" style="border-color:rgba(9,105,218,0.2);">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M2 6h8M8 4l2 2-2 2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <footer class="hub-footer">
+    Dr. Rogério de Souza Furtado · CRM-DF 10851 · RQE 5861 &nbsp;|&nbsp; Hospital de Olhos Salute · Sobradinho-DF
+  </footer>
+
+</body>
+</html>
