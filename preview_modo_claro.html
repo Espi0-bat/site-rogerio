@@ -587,13 +587,10 @@ body::before {
 
 /* Floating stat pills */
 .hero-stats {
-  position: absolute;
-  bottom: clamp(2rem, 5vw, 4rem);
-  right: clamp(1.25rem, 5vw, 5rem);
-  z-index: 3;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 2.5rem;
   opacity: 0;
   transform: translateY(20px);
   animation: fadeUp 0.9s var(--ease-out-expo) 1.1s forwards;
@@ -660,7 +657,7 @@ body::before {
   #hero                 { grid-template-columns: 1fr; }
   .hero-right           { display: none; }
   .hero-left            { min-height: 100svh; justify-content: center; }
-  .hero-stats           { position: static; flex-direction: row; margin-top: 3rem; }
+  .hero-stats           { flex-direction: row; }
   .hero-scroll-indicator { display: none; }
 }
 
