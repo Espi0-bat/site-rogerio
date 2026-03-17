@@ -1020,7 +1020,74 @@
     /* Eye SVG rotation */
     .eye-ring-1 { animation: spinSlow 30s linear infinite; transform-origin: 200px 200px; }
     .eye-ring-2 { animation: spinReverse 20s linear infinite; transform-origin: 200px 200px; }
-  </style>
+
+  /* ================================================================
+     MOBILE RESPONSIVE — max-width: 480px e ajustes gerais
+  ================================================================ */
+  @media (max-width: 480px) {
+    #navbar { padding-inline: 1.1rem; padding-block: 1.1rem; }
+    .nav-logo__name { font-size: 0.82rem; }
+    .nav-logo__crm  { font-size: 0.52rem; }
+  }
+  @media (max-width: 640px) {
+    .hero-left { padding: 6rem 1.25rem 2.5rem; }
+    .hero-title { font-size: clamp(2.2rem, 10vw, 3rem); margin-bottom: 1rem; }
+    .hero-subtitle { font-size: 0.88rem; margin-bottom: 2rem; max-width: 100%; }
+    .hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+    .btn-primary, .btn-ghost { justify-content: center; width: 100%; padding: 0.9rem 1.5rem; }
+    .hero-stats { gap: 0.6rem; flex-wrap: wrap; }
+    .stat-pill { flex: 1 1 auto; min-width: 72px; padding: 0.7rem 0.9rem; }
+    .stat-pill__number { font-size: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .bento { grid-template-columns: 1fr; gap: 0.6rem; }
+    .bento-card--wide, .bento-card--medium, .bento-card--third,
+    .bento-card--half, .bento-card--quote, .bento-card--portrait { grid-column: span 1 !important; }
+    .bento-card--portrait { min-height: 260px; }
+    .quote-text { font-size: 0.98rem; }
+    .quote-mark { font-size: 3.5rem; }
+    .curadoria-grid { grid-template-columns: 1fr; gap: 0; }
+    .curadoria-card { margin: 0; }
+    .achievements { grid-template-columns: 1fr 1fr; }
+    .achievement-cell__number { font-size: 2rem; }
+    .timeline-content__title { font-size: 0.92rem; }
+    .convenios-strip { grid-template-columns: repeat(2, 1fr); }
+    .convenio-item { padding: 0.9rem 0.75rem; }
+    .convenio-item__name { font-size: 0.62rem; }
+    footer { gap: 1.25rem; }
+    .footer-links { flex-wrap: wrap; gap: 1rem; }
+  }
+  @media (max-width: 640px) {
+    .salute-visual__frame { aspect-ratio: 16 / 10; }
+    .salute-features { grid-template-columns: 1fr; gap: 0.85rem; }
+    .protocolo-title { font-size: clamp(2rem, 9vw, 3rem); }
+    .protocolo-cta { flex-direction: column; align-items: stretch; }
+    .btn-primary, .btn-whatsapp { justify-content: center; width: 100%; }
+    .section-title { font-size: clamp(1.7rem, 8vw, 2.4rem); }
+    .section-header { gap: 1.25rem; }
+  }
+  
+@media (max-width: 640px) {
+  /* Equipment banner — fix overflow and aspect ratio on mobile */
+  [style*="aspect-ratio:21/5"],
+  [style*="aspect-ratio: 21/5"] {
+    aspect-ratio: 16 / 7 !important;
+    min-height: 110px;
+    overflow: hidden !important;
+  }
+  [style*="aspect-ratio:21/5"] img,
+  [style*="aspect-ratio: 21/5"] img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+  @media (max-width: 900px) {
+    .hero-scroll-indicator { display: none; }
+  }
+</style>
 </head>
 <body>
 
@@ -1153,10 +1220,10 @@
     </div>
 
     <!-- Scroll indicator -->
-    <div class="hero-scroll-indicator" aria-hidden="true">
+    <!--<div class="hero-scroll-indicator" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
-    </div>
+    </div> -->
 
   </section>
 
@@ -1390,7 +1457,7 @@
       <!-- Equipment photo strip -->
       <div class="reveal" style="margin-top:1px;position:relative;overflow:hidden;
         border:1px solid rgba(0,209,255,0.15);aspect-ratio:21/5;min-height:120px;
-        background:var(--bg-glass);">
+        background:var(--bg-glass);overflow:hidden;">
         <img
           src="assets/foto_equipamento.jpeg"
           alt="Equipamentos oftalmológicos de última geração — Hospital de Olhos Salute"

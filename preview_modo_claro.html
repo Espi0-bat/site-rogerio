@@ -661,6 +661,7 @@ body::before {
   .hero-right           { display: none; }
   .hero-left            { min-height: 100svh; justify-content: center; }
   .hero-stats           { position: static; flex-direction: row; margin-top: 3rem; }
+  .hero-scroll-indicator { display: none; }
 }
 
 /* ── Filosofia — Bento Grid ─────────────────────────────────────── */
@@ -1457,6 +1458,112 @@ footer {
   .footer-legal  { text-align: left; }
 }
 
+
+
+/* ================================================================
+   MOBILE RESPONSIVE — max-width: 480px e ajustes gerais
+================================================================ */
+
+/* ── Navbar mobile ───────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  #navbar { padding-inline: 1.1rem; padding-block: 1.1rem; }
+  .nav-logo__name { font-size: 0.82rem; }
+  .nav-logo__crm  { font-size: 0.52rem; }
+}
+
+/* ── Hero ────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hero-left { padding: 6rem 1.25rem 2.5rem; gap: 0; }
+  .hero-eyebrow { margin-bottom: 1.25rem; }
+  .hero-title   { font-size: clamp(2.2rem, 10vw, 3rem); margin-bottom: 1rem; }
+  .hero-subtitle { font-size: 0.88rem; margin-bottom: 2rem; max-width: 100%; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+  .btn-primary, .btn-ghost { justify-content: center; width: 100%; padding: 0.9rem 1.5rem; }
+  .hero-stats { gap: 0.6rem; flex-wrap: wrap; }
+  .stat-pill { flex: 1 1 auto; min-width: 72px; padding: 0.7rem 0.9rem; }
+  .stat-pill__number { font-size: 1.5rem; }
+}
+
+/* ── Bento grid ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .bento { grid-template-columns: 1fr; gap: 0.6rem; }
+  .bento-card--wide, .bento-card--medium, .bento-card--third,
+  .bento-card--half, .bento-card--quote, .bento-card--portrait { grid-column: span 1 !important; }
+  .bento-card--portrait { min-height: 260px; }
+  .quote-text { font-size: 0.98rem; }
+  .quote-mark { font-size: 3.5rem; }
+}
+
+/* ── Curadoria ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .curadoria-grid { grid-template-columns: 1fr; gap: 0; }
+  .curadoria-card { margin: 0; }
+}
+
+/* ── Autoridade ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .achievements { grid-template-columns: 1fr 1fr; }
+  .achievement-cell__number { font-size: 2rem; }
+  .timeline-content__title  { font-size: 0.92rem; }
+  .timeline-content__place  { font-size: 0.72rem; }
+}
+
+/* ── Hospital Salute ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .salute-visual__frame { aspect-ratio: 16 / 10; }
+  .salute-features { grid-template-columns: 1fr; gap: 0.85rem; }
+}
+
+/* ── Convênios ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .convenios-strip { grid-template-columns: repeat(2, 1fr); }
+  .convenio-item { padding: 0.9rem 0.75rem; }
+  .convenio-item__name { font-size: 0.62rem; }
+}
+
+/* ── Protocolo ───────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .protocolo-title { font-size: clamp(2rem, 9vw, 3rem); }
+  .protocolo-cta { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-whatsapp { justify-content: center; width: 100%; }
+}
+
+/* ── Footer ──────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  footer { gap: 1.25rem; }
+  .footer-links { flex-wrap: wrap; gap: 1rem; }
+}
+
+/* ── Section headers ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Equipment banner — fix overflow and aspect ratio on mobile */
+  [style*="aspect-ratio:21/5"],
+  [style*="aspect-ratio: 21/5"] {
+    aspect-ratio: 16 / 7 !important;
+    min-height: 110px;
+    overflow: hidden !important;
+  }
+  [style*="aspect-ratio:21/5"] img,
+  [style*="aspect-ratio: 21/5"] img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section-title { font-size: clamp(1.7rem, 8vw, 2.4rem); }
+  .section-header { gap: 1.25rem; }
+}
+
+/* ── Index hub ───────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .hub-header__title { font-size: clamp(1.4rem, 7vw, 2rem); }
+  .hub-header__sub   { font-size: 0.82rem; }
+  .card__name        { font-size: 1rem; }
+  .card__desc        { font-size: 0.74rem; }
+}
+
 /* ================================================================
    animations.css
    Keyframes, scroll-reveal e classes de transição
@@ -1665,10 +1772,10 @@ footer {
     </div>
 
     <!-- Scroll indicator -->
-    <div class="hero-scroll-indicator" aria-hidden="true">
+    <!--<div class="hero-scroll-indicator" aria-hidden="true">
       <span>Scroll</span>
       <div class="scroll-line"></div>
-    </div>
+    </div> -->
 
   </section>
 
@@ -1902,7 +2009,7 @@ footer {
       <!-- Equipment photo strip -->
       <div class="reveal" style="margin-top:1px;position:relative;overflow:hidden;
         border:1px solid rgba(0,200,150,0.14);aspect-ratio:21/5;min-height:120px;
-        background:var(--bg-glass);">
+        background:var(--bg-glass);overflow:hidden;">
         <img
           src="assets/foto_equipamento.jpeg"
           alt="Equipamentos oftalmológicos de última geração — Hospital de Olhos Salute"

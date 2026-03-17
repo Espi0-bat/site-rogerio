@@ -291,6 +291,22 @@
     .hub-footer  { animation-delay: 0.3s; }
 
     @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Hub mobile ──────────────────────────────────────────────── */
+    @media (max-width: 480px) {
+      body { padding: 2rem 1.1rem; }
+
+      .hub-header { margin-bottom: 2rem; }
+      .hub-header__title { font-size: clamp(1.4rem, 8vw, 2rem); }
+      .hub-header__sub   { font-size: 0.8rem; }
+
+      .cards { gap: 0.85rem; }
+
+      .card__palette  { height: 110px; }
+      .card__body     { padding: 1.1rem; }
+      .card__name     { font-size: 0.95rem; }
+      .card__desc     { font-size: 0.73rem; }
+    }
   </style>
 </head>
 <body>
