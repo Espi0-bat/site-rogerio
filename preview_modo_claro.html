@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Rogério Furtado — Preview (Light)</title>
+  <meta name="description" content="Livre-se dos óculos com o Dr. Rogério Furtado. Especialista em Cirurgia Refrativa (LASIK, PRK, SMILE), Catarata e Implante de Lentes Multifocais em Sobradinho-DF. Agende sua avaliação." />
+  <title>Dr. Rogério Furtado — Cirurgia Refrativa, Catarata e Lentes Multifocais · Sobradinho-DF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -1637,6 +1638,147 @@ footer {
   transform-origin: 200px 200px;
 }
 
+/* ── Planos de Liberdade Visual ─────────────────────────────────── */
+#planos {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem);
+  background: var(--bg-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+#planos::before {
+  content: '';
+  position: absolute;
+  top: -200px; left: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,163,122,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.planos-inner { max-width: 1440px; margin-inline: auto; }
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(0,163,122,0.05);
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.plano-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border: 1px solid var(--cyan-border);
+  margin: -1px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.4s, background 0.4s, transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
+}
+
+.plano-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--grad-lens);
+  pointer-events: none;
+}
+
+.plano-card--destaque {
+  border-color: rgba(0,163,122,0.4);
+  background: rgba(0,163,122,0.04);
+}
+
+.plano-card--destaque::after {
+  content: 'Mais escolhido';
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--cyan);
+  padding: 0.3rem 0.75rem;
+  z-index: 1;
+}
+
+.plano-card:hover {
+  border-color: rgba(0,163,122,0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(0,163,122,0.07);
+}
+
+.plano-card__tag {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+}
+
+.plano-card__name {
+  font-family: var(--ff-display);
+  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-weight: 700;
+  color: var(--silver);
+  line-height: 1.15;
+  margin-bottom: 0.85rem;
+}
+
+.plano-card__liberdade {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--cyan);
+  margin-bottom: 1.25rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--cyan-border);
+  background: var(--cyan-ghost);
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+}
+
+.plano-card__desc {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--silver-dim);
+  font-weight: 300;
+  flex: 1;
+  margin-bottom: 1.75rem;
+  position: relative;
+  z-index: 1;
+}
+
+.plano-card__cta {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: auto;
+  position: relative;
+  z-index: 1;
+  transition: gap 0.3s var(--ease-out-expo);
+}
+
+.plano-card:hover .plano-card__cta { gap: 0.9rem; }
+
+@media (max-width: 1100px) {
+  .planos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .planos-grid { grid-template-columns: 1fr; }
+}
+
   </style>
 </head>
 <body>
@@ -1676,19 +1818,19 @@ footer {
       <div class="hero-eyebrow">
         <div class="hero-eyebrow__badge">
           <span class="hero-eyebrow__dot"></span>
-          <span class="hero-eyebrow__text">Oftalmologista · Sobradinho-DF</span>
+          <span class="hero-eyebrow__text">Cirurgia Refrativa · Catarata · Lentes Multifocais</span>
         </div>
       </div>
 
       <h1 class="hero-title">
-        O Artesão<br>
-        <span class="hero-title__accent">da Visão</span>
+        Acorde amanhã<br>
+        <span class="hero-title__accent">sem precisar dos óculos.</span>
       </h1>
 
       <p class="hero-subtitle">
-        Onde a precisão cirúrgica encontra o cuidado humano.
-        15 anos moldando o olhar de mais de 500 pacientes
-        com as tecnologias mais avançadas da oftalmologia moderna.
+        Dr. Rogério Furtado é especialista em Cirurgia Refrativa, Catarata e Implante
+        de Lentes Multifocais — devolvendo liberdade visual a centenas de pacientes
+        em Sobradinho-DF há mais de 15 anos.
       </p>
 
       <div class="hero-actions">
@@ -1699,7 +1841,7 @@ footer {
           </svg>
         </a>
         <a href="#curadoria" class="btn-ghost">
-          <span>Ver especialidades</span>
+          <span>Conheço os procedimentos</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
           </svg>
@@ -1803,9 +1945,9 @@ footer {
         <div class="bento-card bento-card--quote reveal" role="listitem">
           <span class="quote-mark">"</span>
           <p class="quote-text">
-            A cirurgia oftalmológica não é apenas técnica —
-            é a responsabilidade de devolver ao paciente a beleza
-            do mundo que o cerca.
+            Meu objetivo não é apenas operar —
+            é devolver ao paciente a liberdade de viver sem depender
+            de óculos para enxergar o próprio mundo.
           </p>
           <p class="quote-attr">— Dr. Rogério de Souza Furtado</p>
         </div>
@@ -1838,28 +1980,31 @@ footer {
         <!-- Pillar cards -->
         <div class="bento-card bento-card--third reveal reveal-delay-1" role="listitem">
           <span class="bento-card__number" aria-hidden="true">01</span>
-          <h3 class="bento-card__title">Atenção Total</h3>
+          <h3 class="bento-card__title">Avaliação Individual</h3>
           <p class="bento-card__body">
-            Cada consulta é conduzida sem a pressa do modelo massificado.
-            Tempo integral dedicado à escuta e ao diagnóstico preciso.
+            Cada olho é único. Antes de qualquer procedimento, o Dr. Rogério
+            mapeia seu perfil visual completo para encontrar o caminho certo
+            rumo à sua liberdade — sem atalhos.
           </p>
         </div>
 
         <div class="bento-card bento-card--third reveal reveal-delay-2" role="listitem">
           <span class="bento-card__number" aria-hidden="true">02</span>
-          <h3 class="bento-card__title">Carinho Genuíno</h3>
+          <h3 class="bento-card__title">Confiança no Processo</h3>
           <p class="bento-card__body">
-            A relação médico-paciente é construída sobre confiança mútua.
-            Aqui, o paciente nunca é um número — é uma pessoa com uma história.
+            Decidir se operar exige segurança. O Dr. Rogério constrói essa
+            confiança com transparência total — explicando cada etapa, cada
+            risco e cada benefício antes de qualquer decisão.
           </p>
         </div>
 
         <div class="bento-card bento-card--third reveal reveal-delay-3" role="listitem">
           <span class="bento-card__number" aria-hidden="true">03</span>
-          <h3 class="bento-card__title">Dedicação Integral</h3>
+          <h3 class="bento-card__title">Liberdade Duradoura</h3>
           <p class="bento-card__body">
-            Do pré-operatório ao pós-cirúrgico, o acompanhamento é contínuo.
-            A excelência não termina no centro cirúrgico.
+            A jornada não termina na sala cirúrgica. O acompanhamento contínuo
+            do pré ao pós-operatório garante que sua liberdade visual
+            seja conquistada — e mantida para sempre.
           </p>
         </div>
 
@@ -1913,12 +2058,13 @@ footer {
         <div>
           <span class="label"><span class="cyan-line"></span>02 — A Curadoria da Visão</span>
           <h2 class="section-title" id="curadoria-title">
-            Especialidades<br>de <em>Alta Precisão</em>
+            Cirurgia Refrativa.<br>Catarata.<br><em>Lentes Multifocais.</em>
           </h2>
         </div>
         <div class="section-header__right">
-          Uma seleção criteriosamente curada de procedimentos, executados
-          com as tecnologias mais avançadas disponíveis no Brasil.
+          Três caminhos comprovados para libertar você dos óculos — realizados
+          com tecnologia de ponta e o cuidado exclusivo do Dr. Rogério Furtado
+          em Sobradinho-DF.
         </div>
       </div>
 
@@ -1933,14 +2079,15 @@ footer {
             <circle cx="22" cy="22" r="3" fill="rgba(0,163,122,0.5)"/>
             <circle cx="25" cy="19" r="1.5" fill="rgba(230,237,243,0.6)"/>
           </svg>
-          <span class="curadoria-card__specialty">Procedimento cirúrgico</span>
+          <span class="curadoria-card__specialty">Recupere a nitidez perdida</span>
           <h3 class="curadoria-card__title">Cirurgia de<br>Catarata</h3>
           <p class="curadoria-card__desc">
-            Remoção da lente opacificada com implante de lentes intraoculares
-            de última geração — multifocais, tórico-multifocais e EDOF.
-            Recuperação rápida, resultado de precisão milimétrica.
+            A catarata rouba sua visão de forma silenciosa — e com ela, sua
+            liberdade. A cirurgia remove a lente opacificada e implanta lentes
+            intraoculares premium (multifocais ou EDOF), devolvendo uma clareza
+            que muitos pacientes não sentiam há décadas.
           </p>
-          <div class="curadoria-card__detail">Lentes premium de última geração</div>
+          <div class="curadoria-card__detail">Lentes multifocais · EDOF · Tórico-multifocal</div>
         </div>
 
         <!-- Refrativa -->
@@ -1954,12 +2101,13 @@ footer {
             <circle cx="22" cy="22" r="5" stroke="rgba(0,163,122,0.8)" stroke-width="0.7"/>
             <circle cx="22" cy="22" r="1.5" fill="rgba(0,163,122,0.9)"/>
           </svg>
-          <span class="curadoria-card__specialty">Correção refrativa</span>
+          <span class="curadoria-card__specialty">Liberdade definitiva dos óculos</span>
           <h3 class="curadoria-card__title">Cirurgia<br>Refrativa a Laser</h3>
           <p class="curadoria-card__desc">
-            Correção definitiva de miopia, hipermetropia e astigmatismo.
-            Técnicas LASIK, PRK e SMILE selecionadas individualmente
-            conforme o perfil anatômico e refrativo de cada paciente.
+            Acorde amanhã sem precisar procurar os óculos. A cirurgia refrativa
+            corrige miopia, hipermetropia e astigmatismo de forma permanente.
+            Técnica selecionada individualmente — LASIK, PRK ou SMILE —
+            para o perfil único de cada paciente.
           </p>
           <div class="curadoria-card__detail">LASIK · PRK · SMILE</div>
         </div>
@@ -1972,12 +2120,12 @@ footer {
             <circle cx="22" cy="22" r="4" stroke="rgba(0,163,122,0.4)" stroke-width="0.4" stroke-dasharray="2 4"/>
             <path d="M18 18 L26 26 M26 18 L18 26" stroke="rgba(0,163,122,0.4)" stroke-width="0.6"/>
           </svg>
-          <span class="curadoria-card__specialty">Doença crônica do nervo óptico</span>
+          <span class="curadoria-card__specialty">Proteja sua liberdade visual</span>
           <h3 class="curadoria-card__title">Glaucoma</h3>
           <p class="curadoria-card__desc">
-            Diagnóstico precoce e manejo personalizado — colírios, laser SLT
-            e cirurgia (trabeculectomia, implantes de drenagem).
-            O objetivo é preservar a visão para toda a vida.
+            O glaucoma compromete silenciosamente o nervo óptico — e a visão
+            perdida não volta. O diagnóstico precoce e o manejo preciso do
+            Dr. Rogério preservam sua liberdade de enxergar para toda a vida.
           </p>
           <div class="curadoria-card__detail">Diagnóstico e tratamento integral</div>
         </div>
@@ -1991,12 +2139,13 @@ footer {
             <circle cx="26" cy="18" r="2.5" fill="rgba(0,163,122,0.3)"/>
             <circle cx="22" cy="22" r="1.5" fill="rgba(0,163,122,0.8)"/>
           </svg>
-          <span class="curadoria-card__specialty">Segmento posterior</span>
+          <span class="curadoria-card__specialty">Preserve a janela para o mundo</span>
           <h3 class="curadoria-card__title">Retina e<br>Vítreo</h3>
           <p class="curadoria-card__desc">
-            Diagnóstico e tratamento de descolamento de retina, DMRI,
-            retinopatia diabética e outras patologias do segmento posterior.
-            Cirurgias vitreoretinianas com tecnologia de ponta.
+            A retina é o fundamento de toda liberdade visual. Descolamento,
+            DMRI e retinopatia diabética ameaçam exatamente isso. Com cirurgias
+            vitreoretinianas de alta precisão, o Dr. Rogério protege o que
+            torna a visão possível.
           </p>
           <div class="curadoria-card__detail">Cirurgia vitreoretiniana</div>
         </div>
@@ -2039,6 +2188,114 @@ footer {
       <span class="scan-divider__dot"></span>
     </div>
   </div>
+
+
+  <!-- ══════════════════════════════════════════════
+       PLANOS DE LIBERDADE VISUAL
+  ══════════════════════════════════════════════ -->
+  <section id="planos" aria-labelledby="planos-title">
+    <div class="planos-inner section-wrapper">
+
+      <div class="section-header reveal">
+        <div>
+          <span class="label"><span class="cyan-line"></span>03 — Planos de Liberdade Visual</span>
+          <h2 class="section-title" id="planos-title">
+            Escolha o seu<br>nível de <em>liberdade.</em>
+          </h2>
+        </div>
+        <div class="section-header__right">
+          Cada paciente tem um perfil visual único. Os planos do Dr. Rogério
+          são desenhados para entregar o nível exato de liberdade que você deseja —
+          da correção essencial à independência total dos óculos.
+        </div>
+      </div>
+
+      <div class="planos-grid" role="list">
+
+        <!-- Padrão -->
+        <div class="plano-card reveal" role="listitem">
+          <span class="plano-card__tag">Plano 01</span>
+          <h3 class="plano-card__name">Padrão</h3>
+          <div class="plano-card__liberdade">Correção Visual Essencial</div>
+          <p class="plano-card__desc">
+            A porta de entrada para a liberdade visual. Correção cirúrgica
+            da miopia, hipermetropia ou astigmatismo com técnica consagrada —
+            para quem quer se libertar dos óculos com segurança e
+            custo acessível.
+          </p>
+          <a href="#protocolo" class="plano-card__cta">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Personalizado -->
+        <div class="plano-card reveal reveal-delay-1" role="listitem">
+          <span class="plano-card__tag">Plano 02</span>
+          <h3 class="plano-card__name">Personalizado</h3>
+          <div class="plano-card__liberdade">Liberdade Longe</div>
+          <p class="plano-card__desc">
+            Ideal para quem depende dos óculos para enxergar de longe.
+            Com mapeamento corneal individual, o Dr. Rogério entrega uma
+            correção sob medida para sua anatomia — visão nítida a distância,
+            sem óculos, todos os dias.
+          </p>
+          <a href="#protocolo" class="plano-card__cta">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Plus -->
+        <div class="plano-card plano-card--destaque reveal reveal-delay-2" role="listitem">
+          <span class="plano-card__tag">Plano 03</span>
+          <h3 class="plano-card__name">Plus</h3>
+          <div class="plano-card__liberdade">Liberdade Longe + 50% Perto</div>
+          <p class="plano-card__desc">
+            O equilíbrio perfeito entre liberdade e custo-benefício.
+            Visão nítida a distância com redução significativa da dependência
+            dos óculos de leitura — dirigir, trabalhar e ler com muito
+            mais leveza no dia a dia.
+          </p>
+          <a href="#protocolo" class="plano-card__cta">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Premium -->
+        <div class="plano-card reveal reveal-delay-3" role="listitem">
+          <span class="plano-card__tag">Plano 04</span>
+          <h3 class="plano-card__name">Premium</h3>
+          <div class="plano-card__liberdade">80% Liberdade Perto</div>
+          <p class="plano-card__desc">
+            A experiência máxima de independência visual. Com Implante de
+            Lentes Multifocais de última geração, você conquista visão
+            funcional em todas as distâncias — longe, intermediária e perto.
+            Viver sem óculos em praticamente nenhum momento do dia.
+          </p>
+          <a href="#protocolo" class="plano-card__cta">
+            Saiba mais
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <p class="reveal" style="text-align:center;font-size:0.64rem;color:var(--silver-faint);margin-top:1.5rem;letter-spacing:0.08em;font-weight:500;">
+        O plano ideal é definido após avaliação oftalmológica completa com o Dr. Rogério. Consulte disponibilidade.
+      </p>
+
+    </div>
+  </section>
 
 
   <!-- ══════════════════════════════════════════════
