@@ -2613,12 +2613,7 @@ footer {
   overflow: hidden;
 }
 
-.video-modal__screen iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%; height: 100%;
-  border: none;
-}
+/* iframe removido — usando <video> nativo */
 
 /* Placeholder quando não há iframe (vídeo real não configurado) */
 .video-modal__placeholder {
@@ -3100,7 +3095,7 @@ body, main, section, div {
         <div class="hero-eyebrow">
           <div class="hero-eyebrow__badge">
             <span class="hero-eyebrow__dot"></span>
-            <span class="hero-eyebrow__text">Cirurgia Refrativa · Blefaroplastia · Sobradinho-DF</span>
+            <span class="hero-eyebrow__text">Cirurgia Refrativa · Blefaroplastia · Catarata</span>
           </div>
         </div>
 
@@ -3292,7 +3287,7 @@ body, main, section, div {
         <div>
           <span class="label"><span class="cyan-line"></span>02 — A Curadoria da Visão</span>
           <h2 class="section-title" id="curadoria-title">
-            Refrativa. Blefaroplastia.<br><em>Glaucoma.</em>
+            Refrativa. Blefaroplastia.<br><em>Catarata.</em>
           </h2>
         </div>
         <div class="section-header__right">
@@ -3323,7 +3318,7 @@ body, main, section, div {
           </p>
           <div class="curadoria-card__detail">Lentes multifocais · EDOF · Tórico-multifocal</div>
           <div class="curadoria-card__actions">
-            <button class="curadoria-card__play" data-video="" data-titulo="Cirurgia de Catarata" aria-label="Ver vídeo sobre Cirurgia de Catarata">
+            <button class="curadoria-card__play" data-video="assets/catarata.mp4" data-titulo="Cirurgia de Catarata" aria-label="Ver vídeo sobre Cirurgia de Catarata">
               <span class="curadoria-card__play-icon">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 2l7 4-7 4V2z"/></svg>
               </span>
@@ -3364,7 +3359,7 @@ body, main, section, div {
           </p>
           <div class="curadoria-card__detail">Pálpebras superiores · Inferiores · Funcional</div>
           <div class="curadoria-card__actions">
-          <button class="curadoria-card__play" data-video="" data-titulo="Blefaroplastia — Cirurgia das Pálpebras" aria-label="Ver vídeo sobre Blefaroplastia">
+          <button class="curadoria-card__play" data-video="assets/blefaroplastia.mp4" data-titulo="Blefaroplastia — Cirurgia das Pálpebras" aria-label="Ver vídeo sobre Blefaroplastia">
             <span class="curadoria-card__play-icon">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 2l7 4-7 4V2z"/></svg>
             </span>
@@ -3406,7 +3401,7 @@ body, main, section, div {
           </p>
           <div class="curadoria-card__detail">LASIK · PRK · Recuperação rápida</div>
           <div class="curadoria-card__actions">
-          <button class="curadoria-card__play" data-video="" data-titulo="Cirurgia Refrativa a Laser — PRK e LASIK" aria-label="Ver vídeo sobre Cirurgia Refrativa">
+          <button class="curadoria-card__play" data-video="assets/refrativa.mp4" data-titulo="Cirurgia Refrativa a Laser — PRK e LASIK" aria-label="Ver vídeo sobre Cirurgia Refrativa">
             <span class="curadoria-card__play-icon">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 2l7 4-7 4V2z"/></svg>
             </span>
@@ -3451,16 +3446,16 @@ body, main, section, div {
             Refrativa · PRK · LASIK · Blefaroplastia
           </div>
           <div class="curadoria-card__actions">
-            <a href="#protocolo"
-               class="curadoria-card__play"
+            <button class="curadoria-card__play"
+               data-video="assets/Liberdade.mp4"
+               data-titulo="Liberdade dos Óculos"
+               aria-label="Ver vídeo sobre Liberdade dos Óculos"
                style="color:#fff;">
               <span class="curadoria-card__play-icon" style="background:rgba(255,255,255,0.15);border-color:rgba(255,255,255,0.3);">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true"><path d="M3 2l7 4-7 4V2z" fill="rgba(255,255,255,0.9)"/></svg>
               </span>
-              Quero minha liberdade visual
-            </a>
+              Ver vídeo explicativo
+            </button>
             <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20quero%20avaliar%20minha%20liberdade%20dos%20óculos."
                class="curadoria-card__play"
                style="color:rgba(255,255,255,0.7);"
@@ -4070,8 +4065,8 @@ body, main, section, div {
           </div>
           <p>
             <strong id="videoPlaceholderTitle">—</strong>
-            Cole o link do YouTube no atributo <code>data-video</code>
-            do botão correspondente para ativar o vídeo.
+            Adicione o arquivo de vídeo em <code>assets/nome_do_card.mp4</code>
+            para ativar a reprodução.
           </p>
         </div>
         <div id="videoIframeWrapper" style="display:none;position:absolute;inset:0;"></div>
@@ -4537,11 +4532,20 @@ body, main, section, div {
           controls
           autoplay
           playsinline
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;">
-          Seu navegador não suporta reprodução de vídeo.
+          preload="metadata"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"
+          aria-label="${titulo}">
+          <p style="color:#fff;padding:1rem;">
+            Seu navegador não suporta reprodução de vídeo.
+            <a href="${videoUrl}" download style="color:var(--cyan)">Baixar vídeo</a>.
+          </p>
         </video>`;
       placeholder.style.display   = 'none';
       iframeWrapper.style.display = 'block';
+
+      // Garante foco no vídeo para controles de teclado
+      const vid = iframeWrapper.querySelector('video');
+      if (vid) vid.focus();
     } else {
       iframeWrapper.style.display = 'none';
       placeholder.style.display   = 'flex';
