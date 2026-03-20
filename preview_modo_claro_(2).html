@@ -49,6 +49,7 @@
   /* Easing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-premium:  cubic-bezier(0.4, 0, 0.2, 1); /* material/orgânico — novo */
 }
 
 /* ── Reset ─────────────────────────────────────────────────────── */
@@ -665,7 +666,8 @@ body::before {
 .hero-eyebrow {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
   margin-bottom: 1.5rem;
 }
 
@@ -749,6 +751,18 @@ body::before {
   align-items: center;
   gap: 0.15rem;
   min-width: 72px;
+  transition:
+    transform    0.4s var(--ease-premium),
+    box-shadow   0.4s var(--ease-premium),
+    border-color 0.4s var(--ease-premium);
+}
+
+@media (hover: hover) {
+  .stat-pill:hover {
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 24px rgba(0,163,122,0.15);
+    border-color: rgba(0,163,122,0.45);
+  }
 }
 
 .stat-pill__number {
@@ -824,7 +838,10 @@ body::before {
   padding: clamp(1.5rem, 3vw, 2.25rem);
   position: relative;
   overflow: hidden;
-  transition: border-color 0.4s, transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
+  transition:
+    border-color 0.45s var(--ease-premium),
+    transform    0.45s var(--ease-premium),
+    box-shadow   0.45s var(--ease-premium);
   will-change: transform;
 }
 
@@ -845,13 +862,14 @@ body::before {
   transition: right 0.5s var(--ease-out-expo), box-shadow 0.5s;
 }
 
-.bento-card:hover {
-  border-color: rgba(0,163,122,0.4);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,163,122,0.05), 0 0 0 1px rgba(0,163,122,0.08);
+@media (hover: hover) {
+  .bento-card:hover {
+    border-color: rgba(0,163,122,0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(0,163,122,0.07), 0 0 0 1px rgba(0,163,122,0.08);
+  }
+  .bento-card:hover::after { right: 0; box-shadow: 0 0 8px var(--cyan); }
 }
-
-.bento-card:hover::after { right: 0; box-shadow: 0 0 8px var(--cyan); }
 
 .bento-card--wide   { grid-column: span 7; }
 .bento-card--medium { grid-column: span 5; }
@@ -1010,7 +1028,11 @@ body::before {
   margin: -1px;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.4s, background 0.4s, transform 0.4s var(--ease-out-expo), box-shadow 0.4s;
+  transition:
+    border-color 0.45s var(--ease-premium),
+    background   0.45s var(--ease-premium),
+    transform    0.45s var(--ease-premium),
+    box-shadow   0.45s var(--ease-premium);
 }
 
 .curadoria-card::before {
@@ -1057,8 +1079,8 @@ body::before {
   .curadoria-card:hover {
     border-color: rgba(0,163,122,0.45);
     background: rgba(0,209,255,0.04);
-    transform: translateY(-4px);
-    box-shadow: 0 16px 48px rgba(0,163,122,0.07);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 56px rgba(0,163,122,0.09), 0 0 0 1px rgba(0,163,122,0.06);
   }
   /* Scan mais rápido no hover */
   .curadoria-card:hover::after {
@@ -1126,25 +1148,123 @@ body::before {
 }
 
 /* Card destaque — Liberdade dos Óculos */
+
+/* Keyframe: degradê "respira" — movimento lento e quase imperceptível */
+@keyframes fluidGreen {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 60% 30%;
+  }
+  50% {
+    background-position: 100% 60%;
+  }
+  75% {
+    background-position: 40% 80%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Partícula de luz flutuando — shimmer sutil */
+@keyframes shimmerFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.07;
+  }
+  33% {
+    transform: translateY(-18px) translateX(12px) rotate(8deg);
+    opacity: 0.13;
+  }
+  66% {
+    transform: translateY(10px) translateX(-8px) rotate(-5deg);
+    opacity: 0.08;
+  }
+}
+
 .curadoria-card--destaque {
-  background: linear-gradient(135deg, var(--cyan) 0%, #005c46 100%);
+  /* Gradiente multi-stop com variações sutis do verde da marca */
+  background:
+    linear-gradient(
+      135deg,
+      #007a5c  0%,    /* verde base */
+      #0d4a38 20%,    /* verde mais escuro/frio */
+      #005c46 40%,    /* verde profundo */
+      #0a6650 60%,    /* verde quente */
+      #083226 80%,    /* verde mais escuro */
+      #007a5c 100%    /* volta ao base */
+    );
+  background-size: 400% 400%; /* tamanho expandido para o position animar */
+  animation: fluidGreen 28s ease-in-out infinite;
+
   border-color: rgba(0,163,122,0.6);
   box-shadow:
     0 0 0 1px rgba(0,230,160,0.15) inset,
     0 20px 60px rgba(0,122,92,0.25);
+
+  /* GPU layer — performance no mobile */
+  will-change: background-position;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
 }
 
+/* Camada de luz interna flutuante — o "brilho que respira" */
 .curadoria-card--destaque::before {
-  background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 60%);
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%,
+      rgba(255,255,255,0.10) 0%,
+      transparent 60%
+    ),
+    radial-gradient(ellipse 60% 80% at 80% 80%,
+      rgba(0,230,160,0.08) 0%,
+      transparent 65%
+    );
+  animation: shimmerFloat 18s ease-in-out infinite;
+  will-change: transform, opacity;
 }
 
+/* Partícula decorativa adicional — segundo orb de luz */
+.curadoria-card--destaque::after {
+  /* Sobrescreve o scan animado padrão com algo mais suave */
+  background: radial-gradient(ellipse 70% 50% at 70% 30%,
+    rgba(0,255,180,0.06) 0%,
+    transparent 70%
+  );
+  animation: shimmerFloat 24s ease-in-out infinite reverse;
+  height: 100%;
+  top: 0; right: 0;
+  box-shadow: none;
+  opacity: 1;
+}
+
+/* Hover: gradiente desloca levemente para dar feedback */
 @media (hover: hover) {
   .curadoria-card--destaque:hover {
     border-color: rgba(0,200,150,0.7);
-    background: linear-gradient(135deg, #008a68 0%, #004d3a 100%);
+    background-size: 400% 400%;
+    animation: fluidGreen 14s ease-in-out infinite; /* acelera um pouco no hover */
     box-shadow:
       0 0 0 1px rgba(0,230,160,0.2) inset,
-      0 24px 70px rgba(0,122,92,0.35);
+      0 24px 70px rgba(0,122,92,0.35),
+      0 0 40px rgba(0,163,122,0.15);
+  }
+}
+
+/* Mobile: garante que animação não pese — usa will-change só quando visível */
+@media (max-width: 900px) {
+  .curadoria-card--destaque {
+    animation-duration: 32s; /* mais lento no mobile = menos trabalho para GPU */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curadoria-card--destaque,
+  .curadoria-card--destaque::before,
+  .curadoria-card--destaque::after {
+    animation: none !important;
+    background-size: 100% 100% !important;
   }
 }
 
@@ -1231,7 +1351,8 @@ body::before {
   align-items: center;
   justify-content: center;
   transition: color 0.2s;
-  min-width: 32px; min-height: 32px;
+  min-width: 44px; min-height: 44px;
+  border-radius: 50%;
 }
 .convenios-search-clear:hover { color: var(--silver-dim); }
 .convenios-search-clear.visible { display: flex; }
@@ -2303,6 +2424,15 @@ footer {
 .kw:nth-child(3) { transition-delay: 0.30s; }
 .kw:nth-child(4) { transition-delay: 0.45s; }
 
+/* Counter pop ao terminar */
+@keyframes counterPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.12); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+.counter.done { animation: counterPop 0.5s var(--ease-spring) forwards; }
+
 /* ── Respeitando preferência por menos movimento ────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-left, .reveal-scale,
@@ -2423,6 +2553,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--cyan-border);
 }
@@ -2593,10 +2725,12 @@ footer {
   z-index: 1;
 }
 
-.plano-card:hover {
-  border-color: rgba(0,163,122,0.45);
-  transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(0,163,122,0.07);
+@media (hover: hover) {
+  .plano-card:hover {
+    border-color: rgba(0,163,122,0.45);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 56px rgba(0,163,122,0.09), 0 0 0 1px rgba(0,163,122,0.08);
+  }
 }
 
 .plano-card__tag {
@@ -2789,6 +2923,108 @@ body, main, section, div {
 #filosofia,
 .bento-card__number { max-width: none; }
 
+/* ================================================================
+   MOBILE FIRST — Patch v2 (Auditoria Final)
+   Corrige: touch targets, font-size mobile, flex-wrap, video modal,
+            font legível em labels, plano-card mobile
+================================================================ */
+
+/* Fontes de labels e badges — legíveis em celular sem perder elegância */
+@media (max-width: 480px) {
+  /* Labels e tags uppercase */
+  .label,
+  .curadoria-card__specialty,
+  .curadoria-card__detail,
+  .plano-card__tag,
+  .trat-card__tag,
+  .crm-badge__text,
+  .memberships__title,
+  .timeline-content__date {
+    font-size: max(0.62rem, 11px); /* nunca abaixo de 11px */
+  }
+
+  /* Footer legal — mínimo legível */
+  .footer-legal { font-size: max(0.58rem, 10px); }
+
+  /* Stat pill labels */
+  .stat-pill__label,
+  .achievement-cell__label { font-size: max(0.6rem, 10px); }
+
+  /* Salute badge */
+  .salute-visual__badge-label { font-size: max(0.6rem, 10px); }
+
+  /* Plano card tag */
+  .plano-card__tag { font-size: max(0.65rem, 11px); }
+}
+
+/* Video modal — usável em telas pequenas */
+@media (max-width: 480px) {
+  .video-modal {
+    border-radius: 12px;
+    margin: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+  .video-modal__header {
+    padding: 0.85rem 1rem;
+  }
+  .video-modal__title { font-size: 0.82rem; }
+  .video-modal-overlay { padding: 0.75rem; align-items: flex-end; }
+}
+
+/* Scan divider — não deixa overflow em telas estreitas */
+.scan-divider {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Convenio card — texto truncado em telas muito pequenas */
+@media (max-width: 360px) {
+  .convenio-card__name {
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Plano card — botão CTA legível no mobile */
+@media (max-width: 600px) {
+  .plano-card__cta {
+    font-size: max(0.62rem, 11px);
+  }
+  .plano-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* Exclusividade nota — wrap em tela pequena */
+.exclusividade-nota { flex-wrap: wrap; }
+
+/* CRM badge — não sai da tela em dispositivos < 360px */
+@media (max-width: 360px) {
+  .crm-badge { flex-wrap: wrap; }
+  .hero-eyebrow__text { font-size: 0.55rem; letter-spacing: 0.16em; }
+}
+
+/* Protocolo CTA — full width no mobile já definido mas garante */
+@media (max-width: 480px) {
+  .protocolo-cta .btn-primary,
+  .protocolo-cta .btn-whatsapp {
+    font-size: max(0.68rem, 12px);
+    padding: 0.9rem 1.25rem;
+  }
+}
+
+/* Footer links — toque confortável mesmo após wrap */
+@media (max-width: 480px) {
+  .footer-links li { min-height: 44px; display: flex; align-items: center; }
+}
+
+/* Reduz margem vertical do scan-divider no mobile */
+@media (max-width: 480px) {
+  .scan-divider { margin-block: clamp(2rem, 5vw, 3.5rem); }
+}
+
   </style>
 </head>
 <body>
@@ -2896,15 +3132,15 @@ body, main, section, div {
 
         <div class="hero-stats" aria-label="Números de destaque">
           <div class="stat-pill">
-            <span class="stat-pill__number">15+</span>
+            <span class="stat-pill__number counter" data-target="15" data-suffix="+" data-duration="1800">0</span>
             <span class="stat-pill__label">Anos</span>
           </div>
           <div class="stat-pill">
-            <span class="stat-pill__number">300+</span>
+            <span class="stat-pill__number counter" data-target="300" data-suffix="+" data-duration="2000">0</span>
             <span class="stat-pill__label">Cirurgias</span>
           </div>
           <div class="stat-pill">
-            <span class="stat-pill__number">5.0</span>
+            <span class="stat-pill__number counter" data-target="5.0" data-suffix="" data-duration="1400" data-decimals="1">0.0</span>
             <span class="stat-pill__label">Avaliação</span>
           </div>
         </div>
@@ -2954,6 +3190,7 @@ body, main, section, div {
           <div class="portrait-bg" aria-hidden="true">
             <img
               src="assets/dr_rogerio.jpeg"
+              loading="lazy" decoding="async"
               alt=""
               style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
             />
@@ -3245,7 +3482,7 @@ body, main, section, div {
         border:1px solid rgba(0,200,150,0.14);aspect-ratio:21/5;min-height:120px;
         background:var(--bg-glass);overflow:hidden;">
         <img
-          src="assets/foto_equipamento.jpeg"
+          src="assets/foto_equipamento.jpeg" loading="lazy" decoding="async"
           alt="Equipamentos oftalmológicos de última geração — Hospital de Olhos Salute"
           style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;"
         />
@@ -3458,19 +3695,19 @@ body, main, section, div {
         <div class="reveal reveal-delay-2">
           <div class="achievements" role="list" aria-label="Estatísticas">
             <div class="achievement-cell" role="listitem">
-              <span class="achievement-cell__number">15+</span>
+              <span class="achievement-cell__number counter" data-target="15" data-suffix="+" data-duration="1800">0</span>
               <span class="achievement-cell__label">Anos de experiência clínica e cirúrgica contínua</span>
             </div>
             <div class="achievement-cell" role="listitem">
-              <span class="achievement-cell__number">300+</span>
+              <span class="achievement-cell__number counter" data-target="300" data-suffix="+" data-duration="2000">0</span>
               <span class="achievement-cell__label">Cirurgias bem-sucedidas realizadas</span>
             </div>
             <div class="achievement-cell" role="listitem">
-              <span class="achievement-cell__number">500+</span>
+              <span class="achievement-cell__number counter" data-target="500" data-suffix="+" data-duration="2200">0</span>
               <span class="achievement-cell__label">Pacientes acompanhados com excelência</span>
             </div>
             <div class="achievement-cell" role="listitem">
-              <span class="achievement-cell__number">5.0</span>
+              <span class="achievement-cell__number counter" data-target="5.0" data-suffix="" data-duration="1400" data-decimals="1">0.0</span>
               <span class="achievement-cell__label">Avaliação média nas plataformas de saúde</span>
             </div>
           </div>
@@ -3501,7 +3738,7 @@ body, main, section, div {
         <div class="salute-visual__frame" aria-hidden="true">
           <!-- Fachada photo -->
           <img
-            src="assets/foto_da_fachada.jpeg"
+            src="assets/foto_da_fachada.jpeg" loading="lazy" decoding="async"
             alt="Hospital de Olhos Salute — Fachada em Sobradinho-DF"
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;"
           />
@@ -3515,7 +3752,7 @@ body, main, section, div {
           <div style="position:absolute;top:1.25rem;left:1.25rem;z-index:4;
             background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);
             border:1px solid rgba(0,163,122,0.2);padding:0.5rem 0.75rem;">
-            <img src="assets/logo_da_salutte.jpeg" alt="Logo Hospital de Olhos Salute Sobradinho"
+            <img loading="lazy" decoding="async" src="assets/logo_da_salutte.jpeg" alt="Logo Hospital de Olhos Salute Sobradinho"
                  style="height:36px;width:auto;display:block;filter:brightness(1.1) saturate(0.9);" />
           </div>
           <div class="salute-visual__badge" aria-label="20+ anos de excelência">
@@ -3528,7 +3765,7 @@ body, main, section, div {
         <div style="margin-top:0.75rem;position:relative;overflow:hidden;
           border:1px solid rgba(0,200,150,0.14);aspect-ratio:16/5;">
           <img
-            src="assets/interior_salutte.jpeg"
+            src="assets/interior_salutte.jpeg" loading="lazy" decoding="async"
             alt="Recepção interior do Hospital de Olhos Salute"
             style="width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;"
           />
@@ -3782,7 +4019,7 @@ body, main, section, div {
   <footer>
     <div class="footer-logo">
       <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0.5rem;">
-        <img src="assets/logo_da_salutte.jpeg" alt="Logo Hospital de Olhos Salute"
+        <img loading="lazy" decoding="async" src="assets/logo_da_salutte.jpeg" alt="Logo Hospital de Olhos Salute"
              style="height:32px;width:auto;border-radius:2px;opacity:0.85;" />
       </div>
       Dr. Rogério de Souza Furtado
@@ -4004,12 +4241,69 @@ body, main, section, div {
 
 /* ── Scroll Reveal via IntersectionObserver ──────────────────────── */
 /* ══════════════════════════════════════════════════════════════════
-   ANIMATION ENGINE v2 — Hospital Luxury
-   1. Scroll Reveal aprimorado (stagger automático)
-   2. Typewriter elegante (hero headline)
-   3. Tap Ripple (micro-interação CTA)
-   4. Text Keyword Highlight on scroll
+   ANIMATION ENGINE v3 — Hospital Luxury
+   Novos: Contadores animados · Suavização geral cubic-bezier
+   Existentes aprimorados: Scroll Reveal · Stagger Hero · Tap Ripple
 ══════════════════════════════════════════════════════════════════ */
+
+/* ── CONTADORES ANIMADOS ────────────────────────────────────────── */
+(function initCounters() {
+  if (!('IntersectionObserver' in window)) {
+    // Fallback: mostra valor final imediatamente
+    document.querySelectorAll('.counter').forEach(el => {
+      const t = parseFloat(el.dataset.target);
+      const d = parseInt(el.dataset.decimals || 0);
+      el.textContent = (d ? t.toFixed(d) : t) + (el.dataset.suffix || '');
+    });
+    return;
+  }
+
+  // Respeita prefers-reduced-motion
+  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function easeOutQuart(t) { return 1 - Math.pow(1 - t, 4); }
+
+  function animateCounter(el) {
+    const target   = parseFloat(el.dataset.target);
+    const suffix   = el.dataset.suffix || '';
+    const duration = parseInt(el.dataset.duration || 1600);
+    const decimals = parseInt(el.dataset.decimals || 0);
+    const start    = performance.now();
+
+    if (noMotion) {
+      el.textContent = (decimals ? target.toFixed(decimals) : Math.ceil(target)) + suffix;
+      el.classList.add('done');
+      return;
+    }
+
+    function step(now) {
+      const elapsed  = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased    = easeOutQuart(progress);
+      const current  = target * eased;
+
+      el.textContent = (decimals ? current.toFixed(decimals) : Math.floor(current)) + suffix;
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      } else {
+        el.textContent = (decimals ? target.toFixed(decimals) : Math.ceil(target)) + suffix;
+        el.classList.add('done');
+      }
+    }
+    requestAnimationFrame(step);
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      animateCounter(entry.target);
+      obs.unobserve(entry.target);
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.counter').forEach(el => obs.observe(el));
+})();
 
 /* ── 1. SCROLL REVEAL com stagger automático ─────────────────────── */
 (function initScrollReveal() {
