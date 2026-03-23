@@ -176,6 +176,12 @@ body::before {
   .section-header { grid-template-columns: 1fr; }
 }
 
+/* Evita que o título fique escondido sob a navbar fixa ao navegar por âncoras */
+section[id], div[id] {
+  scroll-margin-top: 96px;
+}
+
+
 /* Glass card base */
 .glass {
   background: var(--bg-glass);
@@ -645,20 +651,43 @@ body::before {
 
 /* Desktop: limita largura do texto no lado esquerdo */
 @media (min-width: 901px) {
+  #hero-stage {
+    display: flex;
+    align-items: stretch;
+  }
+
+  #hero-stage img.hero-bg {
+    left: auto;
+    right: 0;
+    width: 52%;
+    height: 100%;
+    object-position: center 12%;
+  }
+
   #hero-text-block {
-    max-width: 52%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 48%;
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(0) translateZ(0);
+    opacity: 1;
+    padding: clamp(2.5rem, 4vw, 4rem) clamp(2rem, 4vw, 5rem);
     background: linear-gradient(
-      to right,
-      rgba(4,8,12,0.97) 0%,
-      rgba(4,8,12,0.82) 60%,
-      transparent 100%
-    ),
-    linear-gradient(
-      to top,
-      rgba(4,8,12,0.9) 0%,
-      rgba(4,8,12,0.5) 50%,
-      transparent 100%
+      90deg,
+      rgba(4,8,12,0.98) 0%,
+      rgba(4,8,12,0.95) 58%,
+      rgba(4,8,12,0.72) 82%,
+      rgba(4,8,12,0.15) 100%
     );
+  }
+
+  .hero-scroll-hint {
+    display: none;
   }
 }
 
@@ -1843,54 +1872,7 @@ body::before {
   font-weight: 600;
 }
 
-/* ── Convênios ───────────────────────────────────────────────────── */
-#convenios {
-  padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem);
-  max-width: 1440px;
-  margin-inline: auto;
-}
-
-.convenios-header {
-  text-align: center;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-}
-
-.convenios-strip {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
-  gap: 1px;
-  background: rgba(0,163,122,0.05);
-}
-
-.convenio-item {
-  background: var(--bg-glass);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(0,163,122,0.05);
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s, border-color 0.3s;
-}
-
-.convenio-item:hover {
-  background: var(--cyan-ghost);
-  border-color: var(--cyan-border);
-}
-
-.convenio-item__name {
-  font-size: 0.7rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(13,17,23,0.35);
-  text-align: center;
-  transition: color 0.3s;
-}
-
-.convenio-item:hover .convenio-item__name { color: rgba(13,17,23,0.7); }
-
+/* ── Convênios (bloco legado removido: estilos duplicados) ─────── */
 /* ── Protocolo de Atendimento Privado ───────────────────────────── */
 #protocolo {
   padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 5vw, 5rem);
@@ -2907,16 +2889,10 @@ html {
   .scan-divider { margin-block: clamp(2.5rem, 6vw, 4rem); }
 }
 
-/* Evita overflow horizontal global */
-body, main, section, div {
+/* Evita overflow horizontal em mídias sem limitar todos os containers */
+img, video, iframe, svg {
   max-width: 100%;
 }
-/* Exceção para elementos decorativos */
-.hero-orb-1, .hero-orb-2,
-#hero-stage::before,
-#curadoria::before,
-#filosofia,
-.bento-card__number { max-width: none; }
 
 /* ================================================================
    MOBILE FIRST — Patch v2 (Auditoria Final)
@@ -3036,7 +3012,7 @@ body, main, section, div {
       <span class="nav-logo__crm">CRM-DF 10851 · RQE 5861</span>
     </div>
 
-    <ul class="nav-links" role="list">
+    <ul class="nav-links" role="list" id="menu-principal">
       <li><a href="#filosofia">A Filosofia</a></li>
       <li><a href="#curadoria">A Curadoria</a></li>
       <li><a href="#autoridade">Formação</a></li>
@@ -3044,7 +3020,7 @@ body, main, section, div {
       <li><a href="#protocolo" class="nav-cta">Protocolo Privado</a></li>
     </ul>
 
-    <button class="nav-hamburger" aria-label="Abrir menu" id="hamburger">
+    <button class="nav-hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-principal" id="hamburger">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -4154,9 +4130,9 @@ body, main, section, div {
       };
     }
     return {
-      P0_END:  VH * 0.5,
-      P1_END:  VH * 1.5,
-      P2_END:  VH * 2.0,
+      P0_END:  0,
+      P1_END:  VH * 0.9,
+      P2_END:  VH * 1.4,
     };
   }
 
@@ -4173,6 +4149,16 @@ body, main, section, div {
     requestAnimationFrame(() => {
       const sy = window.scrollY;
       const { P0_END, P1_END } = phases;
+
+      if (!isMobile()) {
+        const p = Math.max(0, Math.min(1, prog(sy, 0, P1_END)));
+        textBlock.style.transform = 'translateY(0%) translateZ(0)';
+        textBlock.style.opacity   = '1';
+        if (overlayDiv) overlayDiv.style.opacity = String(lerp(0.72, 1, p));
+        if (hint) hint.classList.add('fade-out');
+        ticking = false;
+        return;
+      }
 
       if (sy < P0_END) {
         // Fase 0: foto sozinha — texto fora de tela
@@ -4475,38 +4461,52 @@ body, main, section, div {
 
   let menuOpen = false;
 
-  hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
+  function closeMenu() {
+    navLinks.style.display = window.innerWidth <= 768 ? 'none' : 'flex';
+    menuOpen = false;
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
 
-    if (menuOpen) {
-      Object.assign(navLinks.style, {
-        display        : 'flex',
-        flexDirection  : 'column',
-        position       : 'fixed',
-        top            : '64px',
-        left           : '0',
-        right          : '0',
-        padding        : '2rem',
-        background     : 'rgba(240,244,248,0.97)',
-        backdropFilter : 'blur(20px)',
-        borderBottom   : '1px solid rgba(0,163,122,0.2)',
-        zIndex         : '999',
-        gap            : '1.5rem',
-      });
-    } else {
-      navLinks.style.display = 'none';
-    }
+  function openMenu() {
+    Object.assign(navLinks.style, {
+      display        : 'flex',
+      flexDirection  : 'column',
+      position       : 'fixed',
+      top            : '64px',
+      left           : '0',
+      right          : '0',
+      padding        : '2rem',
+      background     : 'rgba(240,244,248,0.97)',
+      backdropFilter : 'blur(20px)',
+      borderBottom   : '1px solid rgba(0,163,122,0.2)',
+      zIndex         : '999',
+      gap            : '1.5rem',
+    });
+    menuOpen = true;
+    hamburger.setAttribute('aria-expanded', 'true');
+  }
+
+  hamburger.addEventListener('click', () => {
+    menuOpen ? closeMenu() : openMenu();
   });
 
   // Fecha ao clicar em um link (mobile)
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        navLinks.style.display = 'none';
-        menuOpen = false;
-      }
+      if (window.innerWidth <= 768) closeMenu();
     });
   });
+
+  // Reajusta estado ao redimensionar a tela
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      navLinks.removeAttribute('style');
+      menuOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+    } else if (!menuOpen) {
+      navLinks.style.display = 'none';
+    }
+  }, { passive: true });
 })();
 
 
@@ -4567,7 +4567,7 @@ body, main, section, div {
     placeholder.style.display = 'flex';
   }
 
-  document.querySelectorAll('.curadoria-card__play').forEach(btn => {
+  document.querySelectorAll('button.curadoria-card__play[data-video]').forEach((btn) => {
     btn.addEventListener('click', () => {
       openModal(btn.dataset.titulo || 'Vídeo', btn.dataset.video || '');
     });
