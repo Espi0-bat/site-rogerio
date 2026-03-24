@@ -134,3 +134,9 @@
   width: 28px; height: 1px;
   background: rgba(0,163,122,0.2);
 }
+
+/* Label do Protocolo — exibido em bloco */
+.protocolo-label {
+  display: block;
+  margin-bottom: 1.5rem;
+}

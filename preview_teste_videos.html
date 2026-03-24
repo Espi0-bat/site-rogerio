@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/sections/hero.css" />
   <link rel="stylesheet" href="css/sections/filosofia.css" />
-  <link rel="stylesheet" href="css/sections/curadoria.css" />
+  <link rel="stylesheet" href="css/sections/curadoria-teste.css" />
   <link rel="stylesheet" href="css/sections/convenios.css" />
   <link rel="stylesheet" href="css/sections/autoridade.css" />
   <link rel="stylesheet" href="css/sections/salute.css" />
@@ -331,7 +331,7 @@
 
           <div class="service_cta_wrapper fade_in_up delay-4">
             <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle curadoria-card__play" data-video="assets/Catarata.mp4" data-titulo="Cirurgia de Catarata — Vídeo Explicativo">
+            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -341,9 +341,9 @@
 
       <!-- Slider Antes e Depois -->
       <div class="service_before_after_slider soft_shadow_layer fade_in_up delay-5">
-        <img src="assets/dr_rogerio.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top; pointer-events: none; user-select: none;" draggable="false">
+        <img src="assets/dr_rogerio.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top;">
         <div class="slider_before" style="width: 50%; overflow: hidden; position: absolute; height: 100%; z-index: 2;">
-          <img src="assets/dr_rogerio.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none; pointer-events: none; user-select: none;" draggable="false">
+          <img src="assets/dr_rogerio.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none;">
         </div>
         <div class="slider_handle" style="left: 50%;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M8 9l-4 3 4 3M16 15l4-3-4-3"/></svg>
@@ -386,7 +386,7 @@
 
           <div class="service_cta_wrapper fade_in_up delay-4">
             <a href="#agendar" class="service_cta_primary scale_hover_subtle">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle curadoria-card__play" data-video="assets/Blefaroplastia.mp4" data-titulo="Blefaroplastia — Vídeo Explicativo">
+            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -430,7 +430,7 @@
 
           <div class="service_cta_wrapper fade_in_up delay-4">
             <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle curadoria-card__play" data-video="assets/Refrativa.mp4" data-titulo="Cirurgia Refrativa — Vídeo Explicativo">
+            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>

@@ -101,6 +101,7 @@
 
 
 /* ── HERO — Scroll-driven acelerado ───────────────────────────────── */
+/* ── HERO — Scroll-driven suave ───────────────────────────────────── */
 (function initHeroScroll() {
   const wrapper   = document.getElementById('hero-wrapper');
   const textBlock = document.getElementById('hero-text-block');
@@ -114,57 +115,15 @@
   function getPhases() {
     const VH = window.innerHeight;
     if (isMobile()) {
-      return { P0_END: VH * 0.1, P1_END: VH * 0.7, P2_END: VH * 0.9 };
+      return { P0_END: VH * 0.1, P1_END: VH * 0.8 };
     }
-    return { P0_END: 0, P1_END: VH * 0.5, P2_END: VH * 0.8 };
+    return { P0_END: 0, P1_END: VH * 0.7 };
   }
 
   let phases = getPhases();
 
   function lerp(a, b, t) { return a + (b - a) * Math.max(0, Math.min(1, t)); }
   function prog(val, s, e) { return (val - s) / (e - s); }
-
-  let ticking = false;
-
-  function onScroll() {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const sy = window.scrollY;
-      const { P0_END, P1_END } = phases;
-
-      if (!isMobile()) {
-        const p = Math.max(0, Math.min(1, prog(sy, 0, P1_END)));
-        textBlock.style.transform = 'translateY(0%) translateZ(0)';
-        textBlock.style.opacity   = '1';
-        if (overlayDiv) overlayDiv.style.opacity = String(lerp(0.72, 1, p));
-        if (hint) hint.classList.add('fade-out');
-        ticking = false;
-        return;
-      }
-
-      if (sy < P0_END) {
-        textBlock.style.transform = 'translateY(100%) translateZ(0)';
-        textBlock.style.opacity   = '0';
-        if (overlayDiv) overlayDiv.style.opacity = '0';
-        if (hint) hint.classList.remove('fade-out');
-      } else if (sy < P1_END) {
-        const p  = prog(sy, P0_END, P1_END);
-        const ty = lerp(100, 0, p);
-        textBlock.style.transform = `translateY(${ty}%) translateZ(0)`;
-        textBlock.style.opacity   = String(Math.min(1, lerp(0, 1, p * 1.5)));
-        if (overlayDiv) overlayDiv.style.opacity = String(lerp(0, 1, p));
-        if (hint) hint.classList.toggle('fade-out', p > 0.06);
-      } else {
-        textBlock.style.transform = 'translateY(0%) translateZ(0)';
-        textBlock.style.opacity   = '1';
-        if (overlayDiv) overlayDiv.style.opacity = '1';
-        if (hint) hint.classList.add('fade-out');
-      }
-
-      ticking = false;
-    });
-  }
 
   const overlayDiv = document.createElement('div');
   overlayDiv.id = 'hero-overlay-div';
@@ -181,6 +140,39 @@
   const s = document.createElement('style');
   s.textContent = '#hero-stage::before { opacity: 0 !important; }';
   document.head.appendChild(s);
+
+  let ticking = false;
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const sy = window.scrollY;
+      const { P0_END, P1_END } = phases;
+
+      if (sy <= P0_END) {
+        textBlock.style.transform = 'translateY(30%) translateZ(0)';
+        textBlock.style.opacity   = '0';
+        overlayDiv.style.opacity = '0';
+        if (hint) hint.classList.remove('fade-out');
+      } else if (sy < P1_END) {
+        const p  = prog(sy, P0_END, P1_END);
+        // Transição muito mais leve (30% ao invés de 100%)
+        const ty = lerp(30, 0, p);
+        textBlock.style.transform = `translateY(${ty}%) translateZ(0)`;
+        textBlock.style.opacity   = String(Math.min(1, lerp(0, 1, p * 1.5)));
+        overlayDiv.style.opacity = String(Math.min(1, lerp(0, 1.2, p)));
+        if (hint) hint.classList.toggle('fade-out', p > 0.05);
+      } else {
+        textBlock.style.transform = 'translateY(0%) translateZ(0)';
+        textBlock.style.opacity   = '1';
+        overlayDiv.style.opacity = '1';
+        if (hint) hint.classList.add('fade-out');
+      }
+
+      ticking = false;
+    });
+  }
 
   let resizeTimer;
   window.addEventListener('resize', () => {
@@ -420,7 +412,18 @@
       placeholder.style.display   = 'none';
       iframeWrapper.style.display = 'block';
       const vid = iframeWrapper.querySelector('video');
-      if (vid) vid.focus();
+      if (vid) {
+        vid.focus();
+        if (window.innerWidth < 900) {
+          try {
+            if (vid.requestFullscreen) {
+              vid.requestFullscreen();
+            } else if (vid.webkitEnterFullscreen) {
+              vid.webkitEnterFullscreen();
+            }
+          } catch(err) { console.log(err); }
+        }
+      }
     } else {
       iframeWrapper.style.display = 'none';
       placeholder.style.display   = 'flex';

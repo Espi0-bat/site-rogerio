@@ -148,3 +148,44 @@
   box-shadow: 0 0 5px var(--cyan);
   flex-shrink: 0;
 }
+/* Caixa de texto — Filosofia da Formação */
+.formacao-box {
+  margin-top: 1px;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--cyan-border);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.formacao-box .label {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.formacao-box__text {
+  font-size: clamp(0.88rem, 1.4vw, 1rem);
+  color: var(--silver-dim);
+  line-height: 1.9;
+  font-weight: 300;
+}
+
+/* Nota de plano — Planos de Liberdade Visual */
+.planos-note {
+  text-align: center;
+  font-size: 0.64rem;
+  color: var(--silver-faint);
+  margin-top: 1.5rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* Timeline dot animado */
+.timeline-dot--pulse {
+  animation: pulseCyan 2s infinite;
+}
+
+/* Margem top simples */
+.section-title--mt {
+  margin-top: 0.75rem;
+}

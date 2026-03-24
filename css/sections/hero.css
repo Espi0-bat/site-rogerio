@@ -3,20 +3,22 @@
    Dr. Rogério Furtado — Oftalmologista
 ================================================================ */
 
-/* 1. Wrapper com altura ajustada para uma rolagem mais rápida (160vh) */
+/* 1. Wrapper suportando a rolagem 3-fases (180vh) */
 #hero-wrapper {
   position: relative;
-  height: 160vh;
-  touch-action: pan-y;
+  height: 180vh;
 }
 
-/* 2. Palco sticky original */
+/* 2. Palco sticky */
 #hero-stage {
   position: sticky;
   top: 0;
   height: 100vh;
   overflow: hidden;
   background: #080e14;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   will-change: transform;
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -97,7 +99,23 @@
   animation: fadeIn 1s var(--ease-out-expo) 1.3s forwards;
 }
 
-/* Scroll hint */
+.hero-photo__tag-title {
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0, 163, 122, 0.85);
+  margin-bottom: 0.2rem;
+}
+
+.hero-photo__tag-desc {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #f0f4f8;
+  letter-spacing: 0.05em;
+}
+
+/* Scroll hint suave */
 .hero-scroll-hint {
   position: absolute;
   bottom: 2.25rem;
@@ -163,15 +181,10 @@
 /* 4. Bloco de texto */
 #hero-text-block {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 0; left: 0; right: 0;
   z-index: 5;
-  transform: translateY(100%) translateZ(0);
+  transform: translateY(30%) translateZ(0);
   opacity: 0;
-  transition:
-    transform 0.08s linear,
-    opacity 0.08s linear;
   will-change: transform, opacity;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
@@ -241,8 +254,8 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   padding: 0.4rem 0.9rem;
+  border-radius: 60px;
 }
-
 .hero-eyebrow__dot {
   width: 5px;
   height: 5px;
@@ -255,18 +268,18 @@
 .hero-eyebrow__text {
   font-size: 0.6rem;
   font-weight: 600;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--cyan);
+  color: #ffffff;
 }
 
 .hero-title {
   font-family: var(--ff-display);
-  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 7vw, 4.5rem);
   font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.03em;
-  color: #f0f4f8;
+  letter-spacing: -0.04em;
+  color: #ffffff;
   margin-bottom: 1.25rem;
 }
 
@@ -286,6 +299,16 @@
   max-width: 480px;
   margin-bottom: 2rem;
   line-height: 1.85;
+}
+
+/* Corrige a hierarquia visual das palavras destacadas para o tema escuro da Hero */
+.hero-subtitle .kw {
+  color: rgba(240, 244, 248, 0.35); /* Começa mais apagado que o texto base */
+}
+
+.hero-subtitle .kw-visible {
+  color: #00e8a8; /* Ciano brilhante para contraste com o fundo escuro */
+  text-shadow: 0 0 16px rgba(0, 230, 160, 0.4);
 }
 
 .hero-actions {
@@ -329,16 +352,17 @@
 
 .stat-pill__number {
   font-family: var(--ff-display);
-  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--cyan);
+  color: #00e8a8;
+  text-shadow: 0 0 16px rgba(0, 230, 160, 0.4);
   line-height: 1;
+  letter-spacing: -0.03em;
 }
-
 .stat-pill__label {
   font-size: 0.52rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(240, 244, 248, 0.5);
+  color: rgba(240, 244, 248, 0.7);
 }

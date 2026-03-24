@@ -24,6 +24,23 @@
   margin-bottom: clamp(2rem, 5vw, 3.5rem);
 }
 
+.convenios-header .section-title { margin-top: 0.75rem; }
+
+.convenios-header__desc {
+  font-size: 0.88rem;
+  color: var(--silver-dim);
+  margin-top: 1rem;
+  max-width: 480px;
+  margin-inline: auto;
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.convenios-toggle-wrap {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
 /* Campo de busca */
 .convenios-search-wrap {
   position: relative;
@@ -58,6 +75,7 @@
   transition: border-color 0.3s, box-shadow 0.3s;
   min-height: 52px;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .convenios-search-input::placeholder {
