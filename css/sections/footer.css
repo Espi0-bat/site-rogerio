@@ -57,3 +57,81 @@ footer {
   text-align: right;
   line-height: 1.7;
 }
+
+/* Sub-Rodapé Pixelry */
+.footer-bottom-bar {
+  width: 100%;
+  margin-top: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--cyan-border);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-family: var(--ff-body);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  color: var(--silver-dim);
+}
+
+.fbb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.fbb-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.fbb-links a {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--primary, var(--silver));
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.fbb-links a:hover {
+  color: var(--cyan);
+}
+
+.fbb-agency {
+  text-align: right;
+  text-transform: uppercase;
+  line-height: 1.8;
+  font-weight: 500;
+  color: var(--primary, var(--silver-dim));
+}
+
+.fbb-bottom {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--primary, var(--silver));
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .fbb-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .fbb-agency {
+    text-align: left;
+  }
+  .fbb-bottom {
+    text-align: left;
+    line-height: 1.8;
+    margin-top: 1rem;
+  }
+}
+
