@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Rogério Furtado — Oftalmologista · Sobradinho-DF</title>
+  <meta name="description" content="Dr. Rogério Furtado — Especialista em Cirurgia Refrativa, Blefaroplastia e Catarata. Hospital de Olhos Salute, Sobradinho-DF." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/components.css" />
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ── Navbar ──────────────────────────────────────────────────── -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <span class="nav-logo__name">Dr. Rogério Furtado</span>
+    <span class="nav-logo__crm">CRM-DF 10851 · RQE 5861</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#filosofia">A Filosofia</a></li>
+    <li><a href="#curadoria">A Curadoria</a></li>
+    <li><a href="#autoridade">Formação</a></li>
+    <li><a href="#salute">Hospital Salute</a></li>
+    <li><a href="#protocolo" class="nav-cta">Protocolo Privado</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── Hero ────────────────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow__badge">
+        <span class="hero-eyebrow__dot"></span>
+        <span class="hero-eyebrow__text">Cirurgia Refrativa · Blefaroplastia · Catarata</span>
+      </div>
+    </div>
+
+    <h1 class="hero-title">
+      Acorde amanhã
+      <span class="hero-title__accent">sem óculos.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Dr. Rogério Furtado é especialista em Cirurgia Refrativa, Blefaroplastia
+      e Implante de Lentes Multifocais — devolvendo liberdade visual a centenas
+      de pacientes em Sobradinho-DF há mais de 25 anos.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#protocolo" class="btn-primary">
+        <span>Protocolo Privado</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#curadoria" class="btn-ghost">
+        <span>Conheço os procedimentos</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-pill">
+        <span class="stat-pill__number" data-target="25" data-suffix="+">0</span>
+        <span class="stat-pill__label">Anos</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__number" data-target="1400" data-suffix="+">0</span>
+        <span class="stat-pill__label">Cirurgias</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__number" data-target="5.0" data-decimals="1">0.0</span>
+        <span class="stat-pill__label">Avaliação</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <img
+      src="assets/dr_rogerio.jpeg"
+      alt="Dr. Rogério Furtado — Oftalmologista"
+      class="hero-visual"
+    />
+    <div class="hero-scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Role para ver</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── Filosofia ────────────────────────────────────────────────── -->
+<section id="filosofia">
+  <div class="label reveal">
+    <span class="cyan-line"></span>01 — A Filosofia
+  </div>
+  <h2 class="section-title reveal reveal-delay-1">
+    Atenção. Carinho. <em>Dedicação.</em>
+  </h2>
+
+  <div class="bento" style="margin-top: clamp(3rem,6vw,5rem);">
+
+    <!-- Quote -->
+    <div class="bento-card bento-card--quote reveal reveal-delay-2">
+      <span class="quote-mark">"</span>
+      <p class="quote-text">
+        Meu objetivo não é apenas operar —<br>
+        é devolver ao paciente a liberdade de viver sem depender<br>
+        de óculos para enxergar o próprio mundo.
+      </p>
+      <p class="quote-attr">— Dr. Rogério de Souza Furtado</p>
+    </div>
+
+    <!-- Portrait -->
+    <div class="bento-card bento-card--portrait reveal reveal-delay-3">
+      <div class="portrait-bg">
+        <img src="assets/dr_rogerio.jpeg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center 10%;" />
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,15,26,0.85) 0%,transparent 55%);"></div>
+      </div>
+      <div class="portrait-content">
+        <div class="crm-badge">
+          <span class="crm-badge__dot"></span>
+          <span class="crm-badge__text">CRM-DF 10851 · RQE 5861</span>
+        </div>
+        <div class="bento-card__title">Dr. Rogério de Souza Furtado</div>
+        <div class="bento-card__body">Oftalmologista · Hospital de Olhos Salute</div>
+      </div>
+    </div>
+
+    <!-- Avaliação Individual -->
+    <div class="bento-card bento-card--third reveal">
+      <span class="bento-card__number">01</span>
+      <h3 class="bento-card__title">Avaliação Individual</h3>
+      <p class="bento-card__body">
+        Cada olho é único. Antes de qualquer procedimento, o Dr. Rogério
+        mapeia seu perfil visual completo para encontrar o caminho certo
+        rumo à sua liberdade — sem atalhos.
+      </p>
+    </div>
+
+    <!-- Confiança no Processo -->
+    <div class="bento-card bento-card--third reveal reveal-delay-1">
+      <span class="bento-card__number">02</span>
+      <h3 class="bento-card__title">Confiança no Processo</h3>
+      <p class="bento-card__body">
+        Decidir se operar exige segurança. O Dr. Rogério constrói essa
+        confiança com transparência total — explicando cada etapa, cada
+        risco e cada benefício antes de qualquer decisão.
+      </p>
+    </div>
+
+    <!-- Liberdade Duradoura -->
+    <div class="bento-card bento-card--third reveal reveal-delay-2">
+      <span class="bento-card__number">03</span>
+      <h3 class="bento-card__title">Liberdade Duradoura</h3>
+      <p class="bento-card__body">
+        A jornada não termina na sala cirúrgica. O acompanhamento contínuo
+        do pré ao pós-operatório garante que sua liberdade visual
+        seja conquistada — e mantida para sempre.
+      </p>
+    </div>
+
+    <!-- Rating card -->
+    <div class="bento-card bento-card--half reveal reveal-delay-3">
+      <div class="rating-stars">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="bento-card__body" style="font-style:italic;">
+        "O Dr. Rogério é extremamente cuidadoso e atencioso.
+        Minha cirurgia de catarata foi perfeita — saí enxergando o mundo
+        com clareza que não tinha há anos."
+      </p>
+      <p class="quote-attr" style="margin-top:0.75rem;">Paciente · Google Reviews</p>
+    </div>
+
+    <!-- Pacientes -->
+    <div class="bento-card bento-card--half reveal reveal-delay-4">
+      <div class="bento-card__number" style="font-size:3rem;color:var(--cyan);opacity:1;">500+</div>
+      <h3 class="bento-card__title">Pacientes atendidos</h3>
+      <p class="bento-card__body">
+        Mais de quinhentas histórias de recuperação da visão, construídas
+        com a mesma atenção dedicada ao primeiro paciente.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Curadoria ─────────────────────────────────────────────────── -->
+<section id="curadoria">
+  <div class="curadoria-inner">
+    <div class="section-header">
+      <div>
+        <div class="label reveal"><span class="cyan-line"></span>02 — A Curadoria da Visão</div>
+        <h2 class="section-title reveal reveal-delay-1">
+          Refrativa. Blefaroplastia. <em>Catarata.</em>
+        </h2>
+      </div>
+      <p class="section-header__right reveal reveal-delay-2">
+        Três caminhos de precisão cirúrgica — para libertar você dos óculos,
+        rejuvenescer o olhar ou preservar a visão pelo resto da vida.
+        Cada procedimento executado com o rigor e o cuidado do Dr. Rogério Furtado.
+      </p>
+    </div>
+
+    <div class="curadoria-grid">
+
+      <!-- Catarata -->
+      <div class="curadoria-card reveal">
+        <svg class="curadoria-card__icon" viewBox="0 0 44 44" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+          <circle cx="22" cy="22" r="18" stroke-opacity="0.3"/>
+          <ellipse cx="22" cy="22" rx="10" ry="6"/>
+          <circle cx="22" cy="22" r="3" fill="var(--cyan)" stroke="none"/>
+          <line x1="4" y1="22" x2="10" y2="22" stroke-opacity="0.4"/>
+          <line x1="34" y1="22" x2="40" y2="22" stroke-opacity="0.4"/>
+        </svg>
+        <span class="curadoria-card__specialty">Recupere a nitidez perdida</span>
+        <h3 class="curadoria-card__title">Cirurgia de Catarata</h3>
+        <p class="curadoria-card__desc">
+          A catarata rouba sua visão de forma silenciosa — e com ela, sua
+          liberdade. A cirurgia remove a lente opacificada e implanta lentes
+          intraoculares premium (multifocais ou EDOF), devolvendo uma clareza
+          que muitos pacientes não sentiam há décadas.
+        </p>
+        <div class="curadoria-card__detail">Lentes multifocais · EDOF · Tórico-multifocal</div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;" onclick="openVideoModal(this)" data-video="">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Ver vídeo explicativo
+          </button>
+          <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Cirurgia%20de%20Catarata." class="btn-primary" style="font-size:0.58rem;padding:0.65rem 1rem;">
+            <span>Agendar avaliação</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Blefaroplastia -->
+      <div class="curadoria-card reveal reveal-delay-1">
+        <svg class="curadoria-card__icon" viewBox="0 0 44 44" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+          <path d="M4 22 Q22 8 40 22" stroke-opacity="0.4"/>
+          <path d="M4 22 Q22 36 40 22"/>
+          <circle cx="22" cy="22" r="4" fill="var(--cyan)" stroke="none" opacity="0.8"/>
+          <path d="M4 16 Q22 4 40 16" stroke-opacity="0.2" stroke-dasharray="3 3"/>
+        </svg>
+        <span class="curadoria-card__specialty">Rejuvenescimento do olhar</span>
+        <h3 class="curadoria-card__title">Blefaroplastia (Cirurgia das Pálpebras)</h3>
+        <p class="curadoria-card__desc">
+          O excesso de pele e as bolsas de gordura nas pálpebras fazem o olhar
+          parecer cansado — independente de como você se sente. A blefaroplastia
+          corrige essa condição com precisão cirúrgica, devolvendo um aspecto
+          descansado, jovial e naturalmente expressivo ao seu olhar.
+        </p>
+        <div class="curadoria-card__detail">Pálpebras superiores · Inferiores · Funcional</div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;" onclick="openVideoModal(this)" data-video="">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Ver vídeo explicativo
+          </button>
+          <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Blefaroplastia." class="btn-primary" style="font-size:0.58rem;padding:0.65rem 1rem;">
+            <span>Agendar avaliação</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Refrativa -->
+      <div class="curadoria-card reveal reveal-delay-2">
+        <svg class="curadoria-card__icon" viewBox="0 0 44 44" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+          <circle cx="22" cy="22" r="18" stroke-opacity="0.2"/>
+          <circle cx="22" cy="22" r="11" stroke-opacity="0.5"/>
+          <circle cx="22" cy="22" r="5"/>
+          <line x1="22" y1="4" x2="22" y2="10" stroke-opacity="0.4"/>
+          <line x1="22" y1="34" x2="22" y2="40" stroke-opacity="0.4"/>
+          <line x1="4" y1="22" x2="10" y2="22" stroke-opacity="0.4"/>
+          <line x1="34" y1="22" x2="40" y2="22" stroke-opacity="0.4"/>
+        </svg>
+        <span class="curadoria-card__specialty">Liberdade definitiva dos óculos</span>
+        <h3 class="curadoria-card__title">Cirurgia Refrativa a Laser (PRK e LASIK)</h3>
+        <p class="curadoria-card__desc">
+          Acorde amanhã sem precisar dos óculos. A cirurgia refrativa corrige
+          miopia, astigmatismo e hipermetropia com tecnologia de precisão
+          milimétrica. <strong>LASIK</strong> para recuperação ultrarrápida;
+          <strong>PRK</strong> para quem tem córneas mais finas — técnica
+          selecionada pelo Dr. Rogério após avaliação individual completa.
+        </p>
+        <div class="curadoria-card__detail">LASIK · PRK · Recuperação rápida</div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;" onclick="openVideoModal(this)" data-video="">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Ver vídeo explicativo
+          </button>
+          <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20gostaria%20de%20saber%20mais%20sobre%20a%20Cirurgia%20Refrativa." class="btn-primary" style="font-size:0.58rem;padding:0.65rem 1rem;">
+            <span>Agendar avaliação</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Liberdade dos Óculos -->
+      <div class="curadoria-card reveal reveal-delay-3">
+        <svg class="curadoria-card__icon" viewBox="0 0 44 44" fill="none" stroke="var(--cyan)" stroke-width="1.5">
+          <rect x="4" y="16" width="14" height="10" rx="5" stroke-opacity="0.6"/>
+          <rect x="26" y="16" width="14" height="10" rx="5" stroke-opacity="0.6"/>
+          <line x1="18" y1="21" x2="26" y2="21"/>
+          <line x1="4" y1="21" x2="2" y2="19" stroke-opacity="0.4"/>
+          <line x1="40" y1="21" x2="42" y2="19" stroke-opacity="0.4"/>
+          <line x1="6" y1="8" x2="38" y2="36" stroke="var(--cyan)" stroke-opacity="0.35" stroke-width="1"/>
+        </svg>
+        <span class="curadoria-card__specialty">O objetivo central</span>
+        <h3 class="curadoria-card__title">Liberdade dos Óculos</h3>
+        <p class="curadoria-card__desc">
+          Acordar sem procurar os óculos. Nadar, dirigir, trabalhar e ler
+          sem depender de nada. Esse é o objetivo de cada cirurgia realizada
+          pelo Dr. Rogério — devolver sua liberdade visual de forma definitiva,
+          segura e personalizada para o seu perfil.
+        </p>
+        <div class="curadoria-card__detail">Refrativa · PRK · LASIK · Blefaroplastia</div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <button class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;" onclick="openVideoModal(this)" data-video="">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Ver vídeo explicativo
+          </button>
+          <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20quero%20avaliar%20minha%20liberdade%20dos%20óculos." class="btn-primary" style="font-size:0.58rem;padding:0.65rem 1rem;">
+            <span>Agendar avaliação</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Equipment banner -->
+    <div style="margin-top:clamp(3rem,6vw,5rem);position:relative;overflow:hidden;border:1px solid var(--cyan-border);aspect-ratio:21/5;" class="reveal">
+      <img src="assets/foto_equipamento.jpeg" alt="Equipamentos oftalmológicos de última geração — Hospital de Olhos Salute" style="width:100%;height:100%;object-fit:cover;" />
+      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,15,26,0.7) 0%,transparent 50%);display:flex;flex-direction:column;justify-content:center;padding:clamp(1.5rem,4vw,3rem);">
+        <div class="label" style="margin-bottom:0.5rem;"><span class="cyan-line"></span>Infraestrutura Clínica</div>
+        <div style="font-family:var(--ff-display);font-size:clamp(1.2rem,2.5vw,2rem);font-weight:600;color:var(--silver);">Tecnologia de Ponta para Diagnóstico de Precisão</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Planos ─────────────────────────────────────────────────────── -->
+<section style="padding:clamp(5rem,10vw,9rem) clamp(1.25rem,5vw,5rem);background:var(--bg-deep);">
+  <div style="max-width:1440px;margin-inline:auto;">
+    <div class="section-header">
+      <div>
+        <div class="label reveal"><span class="cyan-line"></span>03 — Planos de Liberdade Visual</div>
+        <h2 class="section-title reveal reveal-delay-1">Escolha o seu nível de <em>liberdade.</em></h2>
+      </div>
+      <p class="section-header__right reveal reveal-delay-2">
+        Cada paciente tem um perfil visual único. Os planos do Dr. Rogério
+        são desenhados para entregar o nível exato de liberdade que você deseja —
+        da correção essencial à independência total dos óculos.
+      </p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:rgba(0,200,150,0.06);">
+
+      <div class="glass reveal" style="padding:clamp(1.75rem,3vw,2.5rem);display:flex;flex-direction:column;gap:0.75rem;">
+        <div class="label">Plano 01</div>
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:600;color:var(--silver);">Padrão</h3>
+        <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);">Correção Visual Essencial</p>
+        <p style="font-size:0.82rem;color:var(--silver-dim);line-height:1.8;font-weight:300;flex:1;">
+          A porta de entrada para a liberdade visual. Correção cirúrgica
+          da miopia, hipermetropia ou astigmatismo com técnica consagrada —
+          para quem quer se libertar dos óculos com segurança e custo acessível.
+        </p>
+        <a href="#protocolo" class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;margin-top:auto;">Saiba mais</a>
+      </div>
+
+      <div class="glass reveal reveal-delay-1" style="padding:clamp(1.75rem,3vw,2.5rem);display:flex;flex-direction:column;gap:0.75rem;">
+        <div class="label">Plano 02</div>
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:600;color:var(--silver);">Personalizado</h3>
+        <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);">Liberdade Longe</p>
+        <p style="font-size:0.82rem;color:var(--silver-dim);line-height:1.8;font-weight:300;flex:1;">
+          Ideal para quem depende dos óculos para enxergar de longe.
+          Com mapeamento corneal individual, o Dr. Rogério entrega uma
+          correção sob medida para sua anatomia — visão nítida a distância, sem óculos, todos os dias.
+        </p>
+        <a href="#protocolo" class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;margin-top:auto;">Saiba mais</a>
+      </div>
+
+      <div class="glass reveal reveal-delay-2" style="padding:clamp(1.75rem,3vw,2.5rem);display:flex;flex-direction:column;gap:0.75rem;">
+        <div class="label">Plano 03</div>
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:600;color:var(--silver);">Plus</h3>
+        <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);">Liberdade Longe + 50% Perto</p>
+        <p style="font-size:0.82rem;color:var(--silver-dim);line-height:1.8;font-weight:300;flex:1;">
+          O equilíbrio perfeito entre liberdade e custo-benefício.
+          Visão nítida a distância com redução significativa da dependência
+          dos óculos de leitura — dirigir, trabalhar e ler com muito mais leveza no dia a dia.
+        </p>
+        <a href="#protocolo" class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;margin-top:auto;">Saiba mais</a>
+      </div>
+
+      <div class="glass reveal reveal-delay-3" style="padding:clamp(1.75rem,3vw,2.5rem);display:flex;flex-direction:column;gap:0.75rem;border-color:rgba(0,200,150,0.35);">
+        <div class="label">Plano 04</div>
+        <h3 style="font-family:var(--ff-display);font-size:1.4rem;font-weight:600;color:var(--silver);">Premium</h3>
+        <p style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--cyan);">80% Liberdade Perto</p>
+        <p style="font-size:0.82rem;color:var(--silver-dim);line-height:1.8;font-weight:300;flex:1;">
+          A experiência máxima de independência visual. Com Implante de
+          Lentes Multifocais de última geração, você conquista visão
+          funcional em todas as distâncias — longe, intermediária e perto.
+          Viver sem óculos em praticamente nenhum momento do dia.
+        </p>
+        <a href="#protocolo" class="btn-ghost" style="font-size:0.58rem;padding:0.65rem 1rem;margin-top:auto;">Saiba mais</a>
+      </div>
+
+    </div>
+
+    <p style="margin-top:1.5rem;text-align:center;font-size:0.65rem;color:var(--silver-faint);letter-spacing:0.1em;">
+      O plano ideal é definido após avaliação oftalmológica completa com o Dr. Rogério. Consulte disponibilidade.
+    </p>
+  </div>
+</section>
+
+<!-- ── Autoridade / Formação ──────────────────────────────────────── -->
+<section id="autoridade">
+  <div class="label reveal"><span class="cyan-line"></span>03 — Formação & Credenciais</div>
+  <h2 class="section-title reveal reveal-delay-1">Uma Trajetória de <em>Excelência</em></h2>
+
+  <div class="autoridade-layout">
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-content__date">Graduação</div>
+          <div class="timeline-content__title">Medicina — Universidade de Brasília</div>
+          <div class="timeline-content__place">UnB · Faculdade de Medicina · Brasília-DF</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-content__date">Residência Médica</div>
+          <div class="timeline-content__title">Especialização em Oftalmologia</div>
+          <div class="timeline-content__place">Hospital de Base do DF (HBDF) · Brasília-DF</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-content__date">Atuação clínica</div>
+          <div class="timeline-content__title">Diretor Clínico — Hospital de Olhos Salute</div>
+          <div class="timeline-content__place">Sobradinho-DF · +20 anos de excelência</div>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-content__date">Presente</div>
+          <div class="timeline-content__title">+25 anos de prática especializada</div>
+          <div class="timeline-content__place">Cirurgias de alta complexidade · CRM-DF 10851 · RQE 5861</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements + Memberships -->
+    <div>
+      <div class="achievements">
+        <div class="achievement-cell reveal">
+          <div class="achievement-cell__number" data-target="25" data-suffix="+">0</div>
+          <div class="achievement-cell__label">Anos de experiência clínica e cirúrgica contínua</div>
+        </div>
+        <div class="achievement-cell reveal reveal-delay-1">
+          <div class="achievement-cell__number" data-target="1400" data-suffix="+">0</div>
+          <div class="achievement-cell__label">Cirurgias bem-sucedidas realizadas</div>
+        </div>
+        <div class="achievement-cell reveal reveal-delay-2">
+          <div class="achievement-cell__number" data-target="500" data-suffix="+">0</div>
+          <div class="achievement-cell__label">Pacientes acompanhados com excelência</div>
+        </div>
+        <div class="achievement-cell reveal reveal-delay-3">
+          <div class="achievement-cell__number" data-target="5.0" data-decimals="1">0.0</div>
+          <div class="achievement-cell__label">Avaliação média nas plataformas de saúde</div>
+        </div>
+      </div>
+
+      <div class="memberships reveal" style="margin-top:1.5rem;">
+        <div class="memberships__title">Filiações e Registros</div>
+        <ul class="memberships__list">
+          <li class="memberships__item">Conselho Brasileiro de Oftalmologia (CBO)</li>
+          <li class="memberships__item">Conselho Federal de Medicina (CFM)</li>
+          <li class="memberships__item">Conselho Regional de Medicina do DF (CRM-DF 10851)</li>
+          <li class="memberships__item">Registro de Qualificação de Especialista (RQE 5861)</li>
+        </ul>
+      </div>
+
+      <div class="bento-card reveal" style="margin-top:1.5rem;">
+        <p class="bento-card__body">
+          Formado na Universidade de Brasília e especializado no principal hospital
+          de referência do Distrito Federal, o Dr. Rogério construiu sua formação
+          nos mais rigorosos centros de excelência da Capital Federal — base sólida
+          para uma prática cirúrgica de altíssima precisão.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Avaliações ────────────────────────────────────────────────── -->
+<section id="avaliacoes" style="padding:clamp(5rem,10vw,9rem) clamp(1.25rem,5vw,5rem);background:var(--bg-mid);position:relative;overflow:hidden;">
+  <div style="max-width:1440px;margin-inline:auto;">
+
+    <div class="section-header">
+      <div>
+        <div class="label reveal"><span class="cyan-line"></span>O Que os Pacientes Dizem</div>
+        <h2 class="section-title reveal reveal-delay-1">Histórias reais de <em>liberdade visual.</em></h2>
+      </div>
+      <div class="reveal reveal-delay-2" style="display:flex;align-items:flex-end;">
+        <a
+          href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmo/sobradinho#opinions"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-ghost"
+          style="font-size:0.62rem;display:inline-flex;align-items:center;gap:0.6rem;"
+        >
+          Ver todas as avaliações no Doctoralia
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(0,200,150,0.06);">
+
+      <!-- Review 1 -->
+      <div class="glass reveal" style="padding:clamp(1.75rem,3vw,2.25rem);">
+        <div class="rating-stars" style="margin-bottom:1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:1.8;font-style:italic;font-weight:300;">
+          "Fiz a cirurgia de catarata com o Dr. Rogério e o resultado foi incrível. Ele é muito atencioso, explicou tudo antes da cirurgia e o pós-operatório foi tranquilo. Recomendo demais!"
+        </p>
+        <div style="margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--cyan-ghost);border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;color:var(--cyan);">M</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;color:var(--silver);">Maria Aparecida S.</div>
+            <div style="font-size:0.6rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">Doctoralia · Catarata</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 2 -->
+      <div class="glass reveal reveal-delay-1" style="padding:clamp(1.75rem,3vw,2.25rem);">
+        <div class="rating-stars" style="margin-bottom:1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:1.8;font-style:italic;font-weight:300;">
+          "Fiz LASIK há 6 meses e minha vida mudou completamente. Acordo sem óculos, dirijo, trabalho — nunca imaginei que seria tão simples. O Dr. Rogério é um profissional excepcional."
+        </p>
+        <div style="margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--cyan-ghost);border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;color:var(--cyan);">R</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;color:var(--silver);">Ricardo M.</div>
+            <div style="font-size:0.6rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">Doctoralia · LASIK</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 3 -->
+      <div class="glass reveal reveal-delay-2" style="padding:clamp(1.75rem,3vw,2.25rem);">
+        <div class="rating-stars" style="margin-bottom:1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:1.8;font-style:italic;font-weight:300;">
+          "A blefaroplastia foi transformadora. O olhar ficou jovial, descansado, natural. O Dr. Rogério é muito cuidadoso e a equipe do Salute é excelente do início ao fim."
+        </p>
+        <div style="margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--cyan-ghost);border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;color:var(--cyan);">A</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;color:var(--silver);">Ana Luíza F.</div>
+            <div style="font-size:0.6rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">Doctoralia · Blefaroplastia</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Review 4 -->
+      <div class="glass reveal reveal-delay-3" style="padding:clamp(1.75rem,3vw,2.25rem);">
+        <div class="rating-stars" style="margin-bottom:1rem;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p style="font-size:0.85rem;color:var(--silver);line-height:1.8;font-style:italic;font-weight:300;">
+          "Passei anos convivendo com catarata e adiando a cirurgia por medo. O Dr. Rogério me deu toda a segurança que precisava. Hoje enxergo com nitidez que não tinha há muito tempo. Gratidão enorme."
+        </p>
+        <div style="margin-top:1.25rem;display:flex;align-items:center;gap:0.75rem;">
+          <div style="width:32px;height:32px;border-radius:50%;background:var(--cyan-ghost);border:1px solid var(--cyan-border);display:flex;align-items:center;justify-content:center;font-size:0.75rem;font-weight:600;color:var(--cyan);">J</div>
+          <div>
+            <div style="font-size:0.75rem;font-weight:600;color:var(--silver);">José Carlos B.</div>
+            <div style="font-size:0.6rem;color:var(--cyan);letter-spacing:0.1em;text-transform:uppercase;">Doctoralia · Catarata</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Doctoralia -->
+    <div style="margin-top:2.5rem;text-align:center;" class="reveal">
+      <a
+        href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmo/sobradinho#opinions"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-ghost"
+        style="display:inline-flex;align-items:center;gap:0.75rem;"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Ver todas as avaliações no Doctoralia
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── Hospital Salute ────────────────────────────────────────────── -->
+<section id="salute">
+  <div class="salute-inner">
+
+    <div class="salute-visual reveal">
+      <div class="salute-visual__frame">
+        <img src="assets/foto_da_fachada.jpeg" alt="Hospital de Olhos Salute — Fachada em Sobradinho-DF" style="width:100%;height:100%;object-fit:cover;" />
+        <div class="salute-visual__badge">
+          <span class="salute-visual__badge-num">20+</span>
+          <span class="salute-visual__badge-label">Anos de<br>Excelência</span>
+        </div>
+      </div>
+      <div style="margin-top:1rem;display:flex;gap:1rem;align-items:center;">
+        <img src="assets/logo_da_salutte.jpeg" alt="Logo Hospital de Olhos Salute Sobradinho" style="height:40px;object-fit:contain;opacity:0.8;" />
+        <div style="display:flex;gap:0.5rem;flex:1;overflow:hidden;">
+          <div class="glass" style="flex:1;aspect-ratio:16/9;overflow:hidden;">
+            <img src="assets/interior_salutte.jpeg" alt="Recepção interior do Hospital de Olhos Salute" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="salute-content reveal reveal-delay-2">
+      <div class="label" style="margin-bottom:0.75rem;"><span class="cyan-line"></span>04 — Hospital de Olhos Salute</div>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">Um Centro de Referência em <em>Sobradinho</em></h2>
+
+      <p>
+        O <strong>Hospital de Olhos Salute</strong>, localizado em Sobradinho-DF,
+        é um dos centros oftalmológicos de maior prestígio do Distrito Federal.
+        Com mais de duas décadas de atuação, é referência em cirurgias
+        de alta complexidade e atendimento humanizado.
+      </p>
+      <p>
+        Como <strong>Diretor Clínico</strong>, o Dr. Rogério lidera os protocolos
+        de qualidade, segurança cirúrgica e atualização tecnológica que posicionam
+        o Salute entre os melhores centros oftalmológicos do Centro-Oeste.
+      </p>
+
+      <div class="salute-features">
+        <div class="salute-feature">
+          <div class="salute-feature__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+          </div>
+          <div class="salute-feature__text">
+            <strong>Centro Cirúrgico de Referência</strong>
+            Equipamentos de última geração
+          </div>
+        </div>
+        <div class="salute-feature">
+          <div class="salute-feature__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+          </div>
+          <div class="salute-feature__text">
+            <strong>Atendimento Personalizado</strong>
+            Foco na experiência do paciente
+          </div>
+        </div>
+        <div class="salute-feature">
+          <div class="salute-feature__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div class="salute-feature__text">
+            <strong>Protocolos de Excelência</strong>
+            Segurança e qualidade cirúrgica
+          </div>
+        </div>
+        <div class="salute-feature">
+          <div class="salute-feature__icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <div class="salute-feature__text">
+            <strong>+20 Anos de História</strong>
+            Tradição em Sobradinho-DF
+          </div>
+        </div>
+      </div>
+    </div>
+

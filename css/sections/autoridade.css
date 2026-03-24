@@ -1,0 +1,150 @@
+/* ================================================================
+   autoridade.css — Seção Formação & Credenciais
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+#autoridade {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem);
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.autoridade-layout {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: clamp(3rem, 6vw, 8rem);
+  align-items: start;
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+/* Timeline */
+.timeline { display: flex; flex-direction: column; gap: 0; }
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 1.25rem;
+  padding-bottom: 2.25rem;
+  position: relative;
+}
+
+.timeline-item:not(:last-child) .timeline-dot::after {
+  content: '';
+  position: absolute;
+  top: 20px; left: 9px;
+  width: 1px; height: calc(100% - 12px);
+  background: linear-gradient(to bottom, rgba(0,163,122,0.3), transparent);
+}
+
+.timeline-dot {
+  width: 6px; height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  position: relative;
+  box-shadow: 0 0 8px var(--cyan), 0 0 3px var(--cyan);
+}
+
+.timeline-content__date {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.timeline-content__title {
+  font-family: var(--ff-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--silver);
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content__place {
+  font-size: 0.76rem;
+  color: var(--silver-dim);
+  font-weight: 300;
+}
+
+/* Achievements grid */
+.achievements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(0,163,122,0.07);
+}
+
+.achievement-cell {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border: 1px solid transparent;
+  transition: background 0.35s, border-color 0.35s, box-shadow 0.35s;
+}
+
+.achievement-cell:hover {
+  background: rgba(0,209,255,0.04);
+  border-color: var(--cyan-border);
+  box-shadow: 0 0 30px rgba(0,163,122,0.05);
+}
+
+.achievement-cell__number {
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1;
+}
+
+.achievement-cell__label {
+  font-size: 0.72rem;
+  color: var(--silver-dim);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* Memberships panel */
+.memberships {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--cyan-border);
+}
+
+.memberships__title {
+  font-size: 0.58rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.memberships__list  { display: flex; flex-direction: column; gap: 0.6rem; }
+
+.memberships__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.79rem;
+  color: var(--silver-dim);
+  font-weight: 300;
+}
+
+.memberships__item::before {
+  content: '';
+  width: 4px; height: 4px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 5px var(--cyan);
+  flex-shrink: 0;
+}

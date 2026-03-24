@@ -1,0 +1,59 @@
+/* ================================================================
+   footer.css — Rodapé
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+footer {
+  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 5rem);
+  border-top: 1px solid var(--cyan-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.footer-logo {
+  font-family: var(--ff-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--silver);
+}
+
+.footer-logo small {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-top: 0.2rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--silver-dim);
+  transition: color 0.3s;
+  font-weight: 500;
+}
+
+.footer-links a:hover { color: var(--cyan); }
+
+.footer-legal {
+  font-size: 0.58rem;
+  color: rgba(13,17,23,0.25);
+  text-align: right;
+  line-height: 1.7;
+}

@@ -1,0 +1,115 @@
+/* ================================================================
+   salute.css — Seção Hospital Salute
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+#salute {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem);
+  background: var(--bg-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+.salute-inner {
+  max-width: 1440px;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 6fr 6fr;
+  gap: clamp(3rem, 6vw, 8rem);
+  align-items: center;
+}
+
+.salute-visual__frame {
+  aspect-ratio: 4/5;
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--cyan-border);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.salute-visual__frame::before {
+  content: '';
+  position: absolute; inset: 16px;
+  border: 1px solid rgba(0,163,122,0.07);
+  pointer-events: none;
+}
+
+.salute-visual__frame::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+  opacity: 0.4;
+  animation: scanH 4s ease-in-out infinite;
+}
+
+.salute-visual__badge {
+  position: absolute;
+  bottom: 0; right: 0;
+  background: var(--cyan);
+  color: var(--bg-deep);
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.salute-visual__badge-num {
+  font-family: var(--ff-display);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.salute-visual__badge-label {
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.salute-content p {
+  font-size: 0.88rem;
+  color: var(--silver-dim);
+  line-height: 1.9;
+  margin-bottom: 1.25rem;
+  font-weight: 300;
+}
+
+.salute-content p strong { color: var(--silver); font-weight: 600; }
+
+.salute-features {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.salute-feature { display: flex; align-items: flex-start; gap: 0.75rem; }
+
+.salute-feature__icon {
+  width: 32px; height: 32px;
+  border: 1px solid var(--cyan-border);
+  background: var(--cyan-ghost);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.salute-feature__text { font-size: 0.77rem; color: var(--silver-dim); line-height: 1.5; }
+
+.salute-feature__text strong {
+  display: block;
+  color: var(--silver);
+  font-size: 0.81rem;
+  margin-bottom: 0.15rem;
+  font-weight: 600;
+}

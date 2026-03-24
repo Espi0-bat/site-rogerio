@@ -1,0 +1,264 @@
+/* ================================================================
+   curadoria.css — Seção Curadoria da Visão
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+#curadoria {
+  padding: clamp(3.5rem, 10vw, 9rem) clamp(1rem, 5vw, 5rem);
+  background: var(--bg-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+#curadoria::before {
+  content: '';
+  position: absolute;
+  top: -300px; right: -200px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0,209,255,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.curadoria-inner { max-width: 1440px; margin-inline: auto; }
+
+.curadoria-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  background: rgba(0,163,122,0.05);
+  margin-top: clamp(2rem, 6vw, 5rem);
+}
+
+.curadoria-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: clamp(1.5rem, 5vw, 2.75rem);
+  border: 1px solid var(--cyan-border);
+  margin: -1px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.45s var(--ease-premium),
+    background   0.45s var(--ease-premium),
+    transform    0.45s var(--ease-premium),
+    box-shadow   0.45s var(--ease-premium);
+}
+
+.curadoria-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--grad-lens);
+  pointer-events: none;
+}
+
+.curadoria-card::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: -2px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    var(--cyan) 20%,
+    rgba(0,230,160,0.9) 50%,
+    var(--cyan) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 6px rgba(0,200,150,0.6), 0 0 12px rgba(0,163,122,0.3);
+  animation: cardScan 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.curadoria-card:nth-child(2)::after { animation-delay: -1.0s; }
+.curadoria-card:nth-child(3)::after { animation-delay: -2.0s; }
+.curadoria-card:nth-child(4)::after { animation-delay: -3.0s; }
+
+@media (hover: hover) {
+  .curadoria-card:hover {
+    border-color: rgba(0,163,122,0.45);
+    background: rgba(0,209,255,0.04);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 56px rgba(0,163,122,0.09), 0 0 0 1px rgba(0,163,122,0.06);
+  }
+  .curadoria-card:hover::after {
+    animation-duration: 1.8s;
+    box-shadow: 0 0 10px rgba(0,200,150,0.8), 0 0 20px rgba(0,163,122,0.4);
+  }
+  .curadoria-card:hover .curadoria-card__play-icon {
+    background: var(--cyan);
+    box-shadow: 0 0 16px rgba(0,163,122,0.4);
+  }
+  .curadoria-card:hover .curadoria-card__play-icon svg { color: #fff; }
+}
+
+.curadoria-card__icon {
+  width: 44px; height: 44px;
+  margin-bottom: 1.5rem;
+}
+
+.curadoria-card__specialty {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.curadoria-card__title {
+  font-family: var(--ff-display);
+  font-size: clamp(1.2rem, 5vw, 1.6rem);
+  font-weight: 600;
+  color: var(--silver);
+  line-height: 1.2;
+  margin-bottom: 0.9rem;
+}
+
+.curadoria-card__desc {
+  font-size: clamp(0.85rem, 3.5vw, 0.88rem);
+  color: var(--silver-dim);
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.curadoria-card__detail {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(0,163,122,0.08);
+  font-size: 0.68rem;
+  color: var(--cyan);
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.curadoria-card__detail::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--cyan);
+  flex-shrink: 0;
+  box-shadow: 0 0 4px var(--cyan);
+}
+
+/* Botão play */
+.curadoria-card__play {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-top: 1.1rem;
+  font-size: clamp(0.65rem, 2.8vw, 0.68rem);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--ff-body);
+  transition: gap 0.3s var(--ease-out-expo), color 0.3s;
+  position: relative;
+  z-index: 1;
+  min-height: 44px;
+  text-decoration: none;
+  width: 100%;
+}
+
+@media (hover: hover) {
+  .curadoria-card__play:hover { color: var(--silver); gap: 0.9rem; }
+}
+
+.curadoria-card__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.25rem;
+}
+
+.curadoria-card__play-icon {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--cyan-ghost);
+  border: 1px solid var(--cyan-border);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.curadoria-card__play-icon svg {
+  color: var(--cyan);
+  transition: color 0.3s;
+}
+
+/* Card destaque — Liberdade dos Óculos */
+.curadoria-card--destaque {
+  background:
+    linear-gradient(
+      135deg,
+      #007a5c  0%,
+      #0d4a38 20%,
+      #005c46 40%,
+      #0a6650 60%,
+      #083226 80%,
+      #007a5c 100%
+    );
+  background-size: 400% 400%;
+  animation: fluidGreen 28s ease-in-out infinite;
+  border-color: rgba(0,163,122,0.6);
+  box-shadow:
+    0 0 0 1px rgba(0,230,160,0.15) inset,
+    0 20px 60px rgba(0,122,92,0.25);
+  will-change: background-position;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.curadoria-card--destaque::before {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%,
+      rgba(255,255,255,0.10) 0%,
+      transparent 60%
+    ),
+    radial-gradient(ellipse 60% 80% at 80% 80%,
+      rgba(0,230,160,0.08) 0%,
+      transparent 65%
+    );
+  animation: shimmerFloat 18s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.curadoria-card--destaque::after {
+  background: radial-gradient(ellipse 70% 50% at 70% 30%,
+    rgba(0,255,180,0.06) 0%,
+    transparent 70%
+  );
+  animation: shimmerFloat 24s ease-in-out infinite reverse;
+  height: 100%;
+  top: 0; right: 0;
+  box-shadow: none;
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .curadoria-card--destaque:hover {
+    border-color: rgba(0,200,150,0.7);
+    background-size: 400% 400%;
+    animation: fluidGreen 14s ease-in-out infinite;
+    box-shadow:
+      0 0 0 1px rgba(0,230,160,0.2) inset,
+      0 24px 70px rgba(0,122,92,0.35),
+      0 0 40px rgba(0,163,122,0.15);
+  }
+}
+
+@media (max-width: 900px) {
+  .curadoria-card--destaque {
+    animation-duration: 32s;
+  }
+}

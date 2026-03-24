@@ -1,0 +1,136 @@
+/* ================================================================
+   protocolo.css — Seção Protocolo de Atendimento Privado
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+#protocolo {
+  padding: clamp(6rem, 12vw, 11rem) clamp(1.25rem, 5vw, 5rem);
+  background: var(--bg-mid);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+#protocolo::before {
+  content: '';
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px; height: 900px;
+  background: radial-gradient(circle, rgba(0,163,122,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+#protocolo::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0; height: 100%;
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 80px,
+    rgba(0,209,255,0.015) 80px, rgba(0,209,255,0.015) 81px
+  );
+  pointer-events: none;
+}
+
+.protocolo-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin-inline: auto;
+}
+
+.protocolo-title {
+  font-family: var(--ff-display);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  line-height: 1.08;
+  color: var(--silver);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.protocolo-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, var(--cyan) 0%, #00e8a8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.protocolo-desc {
+  font-size: clamp(0.88rem, 1.5vw, 1.05rem);
+  font-weight: 300;
+  color: var(--silver-dim);
+  line-height: 1.85;
+  margin-bottom: 3.5rem;
+}
+
+.protocolo-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-bottom: 3.5rem;
+  background: rgba(0,163,122,0.07);
+}
+
+.protocolo-step {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--cyan-border);
+  padding: 2rem 1.5rem;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.protocolo-step:hover {
+  background: rgba(0,209,255,0.04);
+  box-shadow: 0 0 30px rgba(0,163,122,0.05);
+}
+
+.protocolo-step__num {
+  font-family: var(--ff-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(0,209,255,0.18);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.protocolo-step__title {
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--silver);
+  margin-bottom: 0.5rem;
+}
+
+.protocolo-step__desc {
+  font-size: 0.78rem;
+  color: var(--silver-dim);
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.protocolo-cta { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; }
+
+.exclusividade-nota {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  color: var(--silver-faint);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  flex-wrap: wrap;
+}
+
+.exclusividade-nota::before,
+.exclusividade-nota::after {
+  content: '';
+  width: 28px; height: 1px;
+  background: rgba(0,163,122,0.2);
+}

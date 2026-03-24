@@ -1,0 +1,260 @@
+/* ================================================================
+   mobile.css — Todos os patches responsivos consolidados por breakpoint
+   Dr. Rogério Furtado — Oftalmologista
+   
+   ORDEM: maior → menor (1100px → 900px → 768px → 640px → 600px → 480px → 360px)
+================================================================ */
+
+/* ── ≤ 1100px ───────────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .bento-card--wide, .bento-card--medium { grid-column: span 12; }
+  .bento-card--third                     { grid-column: span 6; }
+  .bento-card--portrait { grid-column: span 12; grid-row: span 1; min-height: 320px; }
+  .planos-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── ≤ 900px ────────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #hero-wrapper { height: 230vh; }
+
+  #hero-stage img.hero-bg {
+    object-position: 60% 8%;
+  }
+
+  .hero-photo__tag,
+  .hero-photo__reticle { display: none; }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.7rem;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-ghost {
+    justify-content: center;
+    width: 100%;
+    min-height: 52px;
+    font-size: 0.68rem;
+  }
+
+  .hero-actions .btn-ghost {
+    color: rgba(240,244,248,0.8);
+    border-color: rgba(240,244,248,0.22);
+  }
+
+  #hero-text-block {
+    padding-bottom: clamp(2rem, 8vw, 3rem);
+  }
+
+  .autoridade-layout { grid-template-columns: 1fr; }
+  .salute-inner      { grid-template-columns: 1fr; }
+
+  .curadoria-card--destaque {
+    animation-duration: 32s;
+  }
+}
+
+/* ── ≤ 768px ────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Navbar */
+  .nav-links      { display: none; }
+  .nav-hamburger  { display: flex; }
+
+  /* Section header */
+  .section-header { grid-template-columns: 1fr; }
+
+  /* Curadoria */
+  .curadoria-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .curadoria-card {
+    margin: 0;
+    border-radius: 0;
+    border-bottom: 1px solid var(--cyan-border);
+  }
+  .curadoria-card:last-child { border-bottom: none; }
+  .curadoria-card__icon { width: 36px; height: 36px; margin-bottom: 1.1rem; }
+
+  /* Footer */
+  footer         { flex-direction: column; align-items: flex-start; }
+  .footer-legal  { text-align: left; }
+}
+
+/* ── ≤ 640px ────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Hero */
+  .hero-left { padding: 6rem 1.25rem 2.5rem; gap: 0; }
+  .hero-eyebrow { margin-bottom: 1.25rem; }
+  .hero-title   { font-size: clamp(2.2rem, 10vw, 3rem); margin-bottom: 1rem; }
+  .hero-subtitle { font-size: 0.88rem; margin-bottom: 2rem; max-width: 100%; }
+  .hero-stats { gap: 0.6rem; flex-wrap: wrap; }
+  .stat-pill { flex: 1 1 auto; min-width: 72px; padding: 0.7rem 0.9rem; }
+  .stat-pill__number { font-size: 1.5rem; }
+
+  /* Salute */
+  .salute-visual__frame { aspect-ratio: 16 / 10; }
+  .salute-features { grid-template-columns: 1fr; gap: 0.85rem; }
+
+  /* Protocolo */
+  .protocolo-title { font-size: clamp(2rem, 9vw, 3rem); }
+  .protocolo-cta { flex-direction: column; align-items: stretch; }
+  .protocolo-cta .btn-primary, .protocolo-cta .btn-whatsapp {
+    justify-content: center;
+    width: 100%;
+  }
+
+  /* Equipment banner */
+  [style*="aspect-ratio:21/5"],
+  [style*="aspect-ratio: 21/5"] {
+    aspect-ratio: 16 / 7 !important;
+    min-height: 110px;
+    overflow: hidden !important;
+  }
+  [style*="aspect-ratio:21/5"] img,
+  [style*="aspect-ratio: 21/5"] img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .section-title { font-size: clamp(1.7rem, 8vw, 2.4rem); }
+  .section-header { gap: 1.25rem; }
+
+  /* Hub */
+  .hub-header__title { font-size: clamp(1.4rem, 7vw, 2rem); }
+  .hub-header__sub   { font-size: 0.82rem; }
+  .card__name        { font-size: 1rem; }
+  .card__desc        { font-size: 0.74rem; }
+}
+
+/* ── ≤ 600px ────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .bento-card--third, .bento-card--half  { grid-column: span 12; }
+  .convenios-grid { grid-template-columns: 1fr; }
+  .convenio-card { border-bottom: 1px solid rgba(0,163,122,0.06); }
+  .protocolo-steps { grid-template-columns: 1fr; }
+  .planos-grid { grid-template-columns: 1fr; }
+
+  .plano-card__cta {
+    font-size: max(0.62rem, 11px);
+  }
+  .plano-card {
+    padding: 1.5rem 1.25rem;
+  }
+}
+
+/* ── ≤ 480px ────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Navbar */
+  #navbar { padding-inline: 1.1rem; padding-block: 1.1rem; }
+  .nav-logo__name { font-size: clamp(0.78rem, 4vw, 0.9rem); }
+  .nav-logo__crm  { font-size: 0.5rem; letter-spacing: 0.14em; }
+  .nav-hamburger  { padding: 8px; }
+
+  /* Section header */
+  .section-header__right {
+    font-size: 0.85rem;
+    padding-top: 0.5rem;
+  }
+  .label { font-size: 0.58rem; }
+
+  /* Bento */
+  .bento { grid-template-columns: 1fr; gap: 0.6rem; }
+  .bento-card--wide, .bento-card--medium, .bento-card--third,
+  .bento-card--half, .bento-card--quote, .bento-card--portrait { grid-column: span 1 !important; }
+  .bento-card--portrait { min-height: 260px; }
+  .quote-text { font-size: 0.98rem; }
+  .quote-mark { font-size: 3.5rem; }
+  .bento-card--half,
+  .bento-card--quote { grid-column: span 12; }
+  .bento-card--half [style*="flex:1"] {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+
+  /* Planos */
+  .plano-card { padding: 1.5rem 1.25rem; }
+  .plano-card__name { font-size: 1.3rem; }
+
+  /* Autoridade */
+  .achievements { grid-template-columns: 1fr 1fr; }
+  .achievement-cell__number { font-size: 2rem; }
+  .timeline-content__title  { font-size: 0.9rem; }
+  .timeline-content__place  { font-size: 0.72rem; }
+  .memberships__item        { font-size: 0.78rem; }
+
+  /* Salute */
+  .salute-feature { padding: 0.85rem 0; }
+  .salute-content { font-size: 0.88rem; }
+
+  /* Protocolo */
+  .protocolo-step { padding: 1.5rem 1.25rem; }
+  .protocolo-cta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+  .protocolo-cta .btn-primary, .protocolo-cta .btn-whatsapp {
+    justify-content: center;
+    width: 100%;
+    font-size: max(0.68rem, 12px);
+    padding: 0.9rem 1.25rem;
+  }
+  .protocolo-desc { font-size: 0.88rem; }
+
+  /* Convênios */
+  .convenios-search-input { font-size: 1rem; }
+  .convenio-card { min-height: 48px; padding: 0.9rem 1rem; }
+
+  /* Footer */
+  footer { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .footer-legal { text-align: left; font-size: max(0.58rem, 10px); }
+  .footer-links { gap: 1rem; }
+  .footer-links a { min-height: 44px; display: inline-flex; align-items: center; }
+  .footer-links li { min-height: 44px; display: flex; align-items: center; }
+
+  /* Scan divider */
+  .scan-divider { margin-block: clamp(2rem, 5vw, 3.5rem); }
+
+  /* Labels e tags uppercase — mínimo legível */
+  .label,
+  .curadoria-card__specialty,
+  .curadoria-card__detail,
+  .plano-card__tag,
+  .crm-badge__text,
+  .memberships__title,
+  .timeline-content__date {
+    font-size: max(0.62rem, 11px);
+  }
+  .footer-legal { font-size: max(0.58rem, 10px); }
+  .stat-pill__label,
+  .achievement-cell__label { font-size: max(0.6rem, 10px); }
+  .salute-visual__badge-label { font-size: max(0.6rem, 10px); }
+  .plano-card__tag { font-size: max(0.65rem, 11px); }
+
+  /* Video modal */
+  .video-modal {
+    border-radius: 12px;
+    margin: 0.75rem;
+    width: calc(100% - 1.5rem);
+  }
+  .video-modal__header { padding: 0.85rem 1rem; }
+  .video-modal__title { font-size: 0.82rem; }
+  .video-modal-overlay { padding: 0.75rem; align-items: flex-end; }
+}
+
+/* ── ≤ 360px ────────────────────────────────────────────────────── */
+@media (max-width: 360px) {
+  .convenio-card__name {
+    font-size: 0.68rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .crm-badge { flex-wrap: wrap; }
+  .hero-eyebrow__text { font-size: 0.55rem; letter-spacing: 0.16em; }
+}

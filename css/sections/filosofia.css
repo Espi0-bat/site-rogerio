@@ -1,0 +1,164 @@
+/* ================================================================
+   filosofia.css — Seção Filosofia (Bento Grid)
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+#filosofia {
+  padding: clamp(5rem, 10vw, 9rem) clamp(1.25rem, 5vw, 5rem);
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(0.5rem, 1vw, 0.875rem);
+}
+
+.bento-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border: 1px solid var(--cyan-border);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  position: relative;
+  overflow: hidden;
+  transition:
+    border-color 0.45s var(--ease-premium),
+    transform    0.45s var(--ease-premium),
+    box-shadow   0.45s var(--ease-premium);
+  will-change: transform;
+}
+
+.bento-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: var(--grad-lens);
+  pointer-events: none;
+}
+
+.bento-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 100%;
+  height: 1px;
+  background: var(--cyan);
+  transition: right 0.5s var(--ease-out-expo), box-shadow 0.5s;
+}
+
+@media (hover: hover) {
+  .bento-card:hover {
+    border-color: rgba(0,163,122,0.4);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 16px 48px rgba(0,163,122,0.07), 0 0 0 1px rgba(0,163,122,0.08);
+  }
+  .bento-card:hover::after { right: 0; box-shadow: 0 0 8px var(--cyan); }
+}
+
+.bento-card--wide   { grid-column: span 7; }
+.bento-card--medium { grid-column: span 5; }
+.bento-card--third  { grid-column: span 4; }
+.bento-card--half   { grid-column: span 6; }
+
+.bento-card__number {
+  font-family: var(--ff-display);
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgba(0,163,122,0.07);
+  line-height: 1;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.bento-card__title {
+  font-family: var(--ff-display);
+  font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  font-weight: 600;
+  color: var(--silver);
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.bento-card__body {
+  font-size: 0.83rem;
+  line-height: 1.8;
+  color: var(--silver-dim);
+  font-weight: 300;
+}
+
+/* Portrait card */
+.bento-card--portrait {
+  grid-column: span 5;
+  grid-row: span 2;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.bento-card--portrait .portrait-bg {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+
+.bento-card--portrait .portrait-content { position: relative; z-index: 1; }
+
+/* CRM badge */
+.crm-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--cyan-border);
+  background: var(--cyan-ghost);
+  padding: 0.35rem 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.crm-badge__dot {
+  width: 5px; height: 5px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--cyan);
+}
+
+.crm-badge__text {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+/* Quote card */
+.bento-card--quote {
+  grid-column: span 7;
+  background: linear-gradient(135deg, rgba(0,163,122,0.05) 0%, rgba(240,244,248,0.6) 60%);
+  border-color: rgba(0,163,122,0.25);
+}
+
+.quote-mark {
+  font-family: var(--ff-display);
+  font-size: 5rem;
+  color: var(--cyan);
+  opacity: 0.2;
+  line-height: 0.7;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.quote-text {
+  font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+  font-weight: 300;
+  color: var(--silver);
+  line-height: 1.65;
+}
+
+.quote-attr {
+  margin-top: 1.25rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  font-weight: 600;
+}
