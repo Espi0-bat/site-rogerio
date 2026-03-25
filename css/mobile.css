@@ -145,6 +145,11 @@
   .nav-logo__crm  { font-size: 0.5rem; letter-spacing: 0.14em; }
   .nav-hamburger  { padding: 8px; }
 
+  .btn-facilitar {
+    bottom: 11.5rem;
+    right: 1.1rem;
+  }
+
   /* Section header */
   .section-header__right {
     font-size: 0.85rem;

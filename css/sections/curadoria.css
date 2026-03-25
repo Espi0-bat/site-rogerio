@@ -131,7 +131,8 @@
 .service_cta_primary {
   background: var(--cyan);
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 0.9rem 2rem;
+  min-height: 48px;
   border-radius: 30px;
   font-weight: 600;
   text-decoration: none;
@@ -165,7 +166,8 @@
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.2);
   color: #fff;
-  padding: 1rem 2rem;
+  padding: 0.9rem 2rem;
+  min-height: 48px;
   border-radius: 30px;
   font-weight: 600;
   font-family: inherit;
@@ -256,7 +258,8 @@
   text-align: left;
   background: transparent;
   color: #fff;
-  padding: 1rem 1.25rem;
+  padding: 0.9rem 1.25rem;
+  min-height: 48px;
   font-weight: 600;
   font-family: inherit;
   border: none;

@@ -33,8 +33,8 @@
           </div>
 
           <div class="service_cta_wrapper fade_in_up delay-4">
-            <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
+            <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Cirurgia%20de%20Catarata." target="_blank" rel="noopener noreferrer" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
+            <button class="service_cta_secondary scale_hover_subtle" onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -88,8 +88,8 @@
           </div>
 
           <div class="service_cta_wrapper fade_in_up delay-4">
-            <a href="#agendar" class="service_cta_primary scale_hover_subtle">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
+            <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Blefaroplastia." target="_blank" rel="noopener noreferrer" class="service_cta_primary scale_hover_subtle">Agendar avaliação</a>
+            <button class="service_cta_secondary scale_hover_subtle" onclick="abrirModalVideo('Blefaroplastia', 'assets/Blefaroplastia.mp4')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -132,8 +132,8 @@
           </div>
 
           <div class="service_cta_wrapper fade_in_up delay-4">
-            <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
+            <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Cirurgia%20Refrativa." target="_blank" rel="noopener noreferrer" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
+            <button class="service_cta_secondary scale_hover_subtle" onclick="abrirModalVideo('Cirurgia Refrativa', 'assets/Refrativa.mp4')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>

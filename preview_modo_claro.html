@@ -31,12 +31,14 @@
     .btn-facilitar {
       position: fixed;
       right: 1.1rem;
-      bottom: 8.5rem;        /* empilhado acima do WhatsApp sem sobrepor */
+      bottom: 8.5rem;
+      /* empilhado acima do WhatsApp sem sobrepor */
       z-index: 9999;
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       padding: 0.5rem 1.1rem;
+      min-height: 48px;
       font-family: inherit;
       font-size: 0.8rem;
       font-weight: 600;
@@ -51,7 +53,7 @@
       box-shadow:
         0 3px 0 #031a15,
         0 6px 18px rgba(0, 163, 122, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.08);
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
       /* glow suave */
       filter: drop-shadow(0 0 7px rgba(0, 195, 160, 0.28));
       transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
@@ -62,7 +64,7 @@
       box-shadow:
         0 3px 0 #031a15,
         0 8px 24px rgba(0, 195, 160, 0.45),
-        inset 0 1px 0 rgba(255,255,255,0.1);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
       filter: drop-shadow(0 0 12px rgba(0, 195, 160, 0.5));
       transform: translateY(-2px);
     }
@@ -72,7 +74,7 @@
       box-shadow:
         0 1px 0 #031a15,
         0 3px 8px rgba(0, 195, 160, 0.2),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
     .btn-facilitar.ativo {
@@ -82,7 +84,7 @@
       box-shadow:
         0 3px 0 #003d2e,
         0 8px 26px rgba(0, 195, 160, 0.55),
-        inset 0 1px 0 rgba(255,255,255,0.15);
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
       filter: drop-shadow(0 0 14px rgba(0, 220, 170, 0.6));
     }
 
@@ -251,7 +253,8 @@
         <div class="bento-card bento-card--quote reveal" role="listitem">
           <span class="quote-mark">"</span>
           <p class="quote-text">
-            Não restauro apenas a visão; busco devolver ao paciente o brilho de ver o mundo como ele é: vibrante, nítido e cheio de beleza. Porque enxergar a vida com liberdade é a forma mais bonita de apreciá-la.
+            Não restauro apenas a visão; busco devolver ao paciente o brilho de ver o mundo como ele é: vibrante, nítido
+            e cheio de beleza. Porque enxergar a vida com liberdade é a forma mais bonita de apreciá-la.
           </p>
           <p class="quote-attr">— Dr. Rogério de Souza Furtado</p>
         </div>
@@ -305,35 +308,65 @@
         </div>
 
         <!-- Reviews Carousel (Doctoralia Integration) -->
-        <div class="bento-card bento-card--half bento-card--carousel reveal reveal-delay-2" role="region" aria-label="Avaliações de Pacientes">
-          
+        <div class="bento-card bento-card--half bento-card--carousel reveal reveal-delay-2" role="region"
+          aria-label="Avaliações de Pacientes">
+
           <!-- Controles Desktop -->
           <button class="carousel-control carousel-control--prev" aria-label="Avaliação anterior">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
           </button>
           <button class="carousel-control carousel-control--next" aria-label="Próxima avaliação">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
           </button>
 
           <div class="reviews-carousel" id="doctoralia-carousel">
-            
+
             <!-- Slide 1 -->
             <div class="review-premium-slide">
               <div class="review-premium__header">
                 <div class="review-premium__author">
                   <div class="review-premium__avatar" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
                   </div>
                   <div class="review-premium__info">
                     <h4 class="review-premium__name">Paulo Henrique Lima</h4>
-                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho" target="_blank" rel="noopener noreferrer" class="review-premium__badge">
-                       <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                       Avaliação Verificada
+                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho"
+                      target="_blank" rel="noopener noreferrer" class="review-premium__badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5">
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                      </svg>
+                      Avaliação Verificada
                     </a>
                   </div>
                 </div>
                 <div class="review-premium__stars" aria-label="Avaliação 5 de 5 estrelas">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
                 </div>
               </div>
               <div class="review-premium__body">
@@ -348,18 +381,41 @@
               <div class="review-premium__header">
                 <div class="review-premium__author">
                   <div class="review-premium__avatar" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
                   </div>
                   <div class="review-premium__info">
                     <h4 class="review-premium__name">Irene P.</h4>
-                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho" target="_blank" rel="noopener noreferrer" class="review-premium__badge">
-                       <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                       Avaliação Verificada
+                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho"
+                      target="_blank" rel="noopener noreferrer" class="review-premium__badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5">
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                      </svg>
+                      Avaliação Verificada
                     </a>
                   </div>
                 </div>
                 <div class="review-premium__stars" aria-label="Avaliação 5 de 5 estrelas">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
                 </div>
               </div>
               <div class="review-premium__body">
@@ -368,29 +424,53 @@
                 </p>
               </div>
             </div>
-            
+
             <!-- Slide 3 -->
             <div class="review-premium-slide">
               <div class="review-premium__header">
                 <div class="review-premium__author">
                   <div class="review-premium__avatar" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
                   </div>
                   <div class="review-premium__info">
                     <h4 class="review-premium__name">Antônio Gomes</h4>
-                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho" target="_blank" rel="noopener noreferrer" class="review-premium__badge">
-                       <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                       Avaliação Verificada
+                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho"
+                      target="_blank" rel="noopener noreferrer" class="review-premium__badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5">
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                      </svg>
+                      Avaliação Verificada
                     </a>
                   </div>
                 </div>
                 <div class="review-premium__stars" aria-label="Avaliação 5 de 5 estrelas">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
                 </div>
               </div>
               <div class="review-premium__body">
                 <p class="review-premium__quote">
-                  Gostei muito da clínica, do atendimento atencioso do doutor e também de toda a clareza durante a consulta. Recomendo!
+                  Gostei muito da clínica, do atendimento atencioso do doutor e também de toda a clareza durante a
+                  consulta. Recomendo!
                 </p>
               </div>
             </div>
@@ -400,36 +480,60 @@
               <div class="review-premium__header">
                 <div class="review-premium__author">
                   <div class="review-premium__avatar" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                      <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
                   </div>
                   <div class="review-premium__info">
                     <h4 class="review-premium__name">Salvador Almeida</h4>
-                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho" target="_blank" rel="noopener noreferrer" class="review-premium__badge">
-                       <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                       Avaliação Verificada
+                    <a href="https://www.doctoralia.com.br/rogerio-de-souza-furtado/oftalmologista/sobradinho"
+                      target="_blank" rel="noopener noreferrer" class="review-premium__badge">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="#00c3a5">
+                        <path
+                          d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                      </svg>
+                      Avaliação Verificada
                     </a>
                   </div>
                 </div>
                 <div class="review-premium__stars" aria-label="Avaliação 5 de 5 estrelas">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg><svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                  </svg>
                 </div>
               </div>
               <div class="review-premium__body">
                 <p class="review-premium__quote">
-                  O Dr. Rogério foi muito atencioso, esclarecedor e bem didático para a cirurgia refrativa LASIK. Muito gentil!
+                  O Dr. Rogério foi muito atencioso, esclarecedor e bem didático para a cirurgia refrativa LASIK. Muito
+                  gentil!
                 </p>
               </div>
             </div>
 
           </div>
-          
+
           <!-- Controles de Swipe Visual Hint (Opcionais) -->
           <div class="carousel-hint">
-             <span class="carousel-dot active"></span>
-             <span class="carousel-dot"></span>
-             <span class="carousel-dot"></span>
-             <span class="carousel-dot"></span>
-             <span class="carousel-hint__text">Arraste para o lado →</span>
+            <span class="carousel-dot active"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-dot"></span>
+            <span class="carousel-hint__text">Arraste para o lado →</span>
           </div>
 
         </div>
@@ -457,39 +561,60 @@
     <section class="section_service_fullscreen" id="servico-catarata">
       <div class="service_hero_media">
         <div class="overlay_gradient_dark"></div>
-        <video src="assets/Catarata.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+        <video src="assets/Catarata.mp4" autoplay loop muted playsinline preload="metadata" aria-hidden="true"></video>
       </div>
 
       <div class="service_proof_badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+        </svg>
         Lentes Premium (Multifocais/EDOF)
       </div>
 
       <div class="depth_layers">
         <div class="service_overlay_content glassmorphism_light soft_shadow_layer">
           <h2 class="service_headline fade_in_up">Recupere a nitidez perdida da juventude.</h2>
-          <p class="service_subheadline fade_in_up delay-1">A Cirurgia de Catarata não apenas restaura a sua visão, mas oferece a chance de se libertar dos óculos definitivamente com lentes intraoculares premium.</p>
-          
+          <p class="service_subheadline fade_in_up delay-1">A Cirurgia de Catarata não apenas restaura a sua visão, mas
+            oferece a chance de se libertar dos óculos definitivamente com lentes intraoculares premium.</p>
+
           <ul class="service_benefits_list fade_in_up delay-2">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Procedimento rápido e seguro</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Alta na mesma hora</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Independência visual contínua</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Procedimento rápido e seguro</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Alta na mesma hora</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Independência visual contínua</li>
           </ul>
 
           <div class="service_expandable_details fade_in_up delay-3">
             <button class="service_expandable_btn" aria-expanded="false">
               <span>Detalhes Técnicos & Lentes</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </button>
             <div class="service_expandable_content">
-              <p>A facoemulsificação com implante de Lente Intraocular (LIO) substitui o cristalino opaco por uma lente artificial de altíssima precisão. O Dr. Rogério utiliza lentes Multifocais, Tórico-Multifocais e EDOF (Foco Estendido) mapeadas sob medida para o seu olho.</p>
+              <p>A facoemulsificação com implante de Lente Intraocular (LIO) substitui o cristalino opaco por uma lente
+                artificial de altíssima precisão. O Dr. Rogério utiliza lentes Multifocais, Tórico-Multifocais e EDOF
+                (Foco Estendido) mapeadas sob medida para o seu olho.</p>
             </div>
           </div>
 
           <div class="service_cta_wrapper fade_in_up delay-4">
-            <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Cirurgia%20de%20Catarata."
+              target="_blank" rel="noopener noreferrer"
+              class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
+            <button class="service_cta_secondary scale_hover_subtle"
+              onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
               Ver como funciona
             </button>
           </div>
@@ -498,12 +623,17 @@
 
       <!-- Slider Antes e Depois -->
       <div class="service_before_after_slider soft_shadow_layer fade_in_up delay-5" style="user-select: none;">
-        <img src="assets/foto teste.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top; pointer-events: none;">
-        <div class="slider_before" style="width: 50%; overflow: hidden; position: absolute; height: 100%; z-index: 2; pointer-events: none;">
-          <img src="assets/foto teste.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none; pointer-events: none;">
+        <img src="assets/foto teste.jpeg" class="slider_image slider_after" alt="Visão nítida"
+          style="filter: blur(0px); object-position: top; pointer-events: none;">
+        <div class="slider_before"
+          style="width: 50%; overflow: hidden; position: absolute; height: 100%; z-index: 2; pointer-events: none;">
+          <img src="assets/foto teste.jpeg" class="slider_image" alt="Visão com catarata"
+            style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none; pointer-events: none;">
         </div>
         <div class="slider_handle" style="left: 50%; cursor: ew-resize; z-index: 10;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M8 9l-4 3 4 3M16 15l4-3-4-3"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+            <path d="M8 9l-4 3 4 3M16 15l4-3-4-3" />
+          </svg>
         </div>
       </div>
     </section>
@@ -512,39 +642,60 @@
     <section class="section_service_fullscreen" id="servico-blefaroplastia">
       <div class="service_hero_media">
         <div class="overlay_gradient_dark"></div>
-        <video src="assets/Blefaroplastia.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+        <video src="assets/Blefaroplastia.mp4" autoplay loop muted playsinline preload="metadata" aria-hidden="true"></video>
       </div>
 
       <div class="service_proof_badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+        </svg>
         Rejuvenescimento Natural
       </div>
 
       <div class="depth_layers">
         <div class="service_overlay_content glassmorphism_light soft_shadow_layer">
           <h2 class="service_headline fade_in_up">Devolva a leveza e a juventude ao seu olhar.</h2>
-          <p class="service_subheadline fade_in_up delay-1">A Blefaroplastia remove o excesso de pele e bolsas de gordura que causam aspecto de cansaço facial, restaurando o contorno harmônico das pálpebras.</p>
-          
+          <p class="service_subheadline fade_in_up delay-1">A Blefaroplastia remove o excesso de pele e bolsas de
+            gordura que causam aspecto de cansaço facial, restaurando o contorno harmônico das pálpebras.</p>
+
           <ul class="service_benefits_list fade_in_up delay-2">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Expressão descansada instantânea</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Cicatrizes imperceptíveis</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Melhora no campo visual superior</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Expressão descansada instantânea</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Cicatrizes imperceptíveis</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Melhora no campo visual superior</li>
           </ul>
 
           <div class="service_expandable_details fade_in_up delay-3">
             <button class="service_expandable_btn" aria-expanded="false">
               <span>Como funciona a recuperação?</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </button>
             <div class="service_expandable_content">
-              <p>O procedimento é feito com anestesia local e sedação leve. O paciente retorna para casa no mesmo dia. O inchaço principal cede na primeira semana, e os resultados definitivos ganham forma completa ao longo de alguns meses, com cicatrizes que ficam escondidas nas dobras naturais da pele.</p>
+              <p>O procedimento é feito com anestesia local e sedação leve. O paciente retorna para casa no mesmo dia. O
+                inchaço principal cede na primeira semana, e os resultados definitivos ganham forma completa ao longo de
+                alguns meses, com cicatrizes que ficam escondidas nas dobras naturais da pele.</p>
             </div>
           </div>
 
           <div class="service_cta_wrapper fade_in_up delay-4">
-            <a href="#agendar" class="service_cta_primary scale_hover_subtle">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Blefaroplastia."
+              target="_blank" rel="noopener noreferrer" class="service_cta_primary scale_hover_subtle">Agendar
+              avaliação</a>
+            <button class="service_cta_secondary scale_hover_subtle"
+              onclick="abrirModalVideo('Blefaroplastia', 'assets/Blefaroplastia.mp4')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
               Ver como funciona
             </button>
           </div>
@@ -556,39 +707,60 @@
     <section class="section_service_fullscreen" id="servico-refrativa">
       <div class="service_hero_media">
         <div class="overlay_gradient_dark"></div>
-        <video src="assets/Refrativa.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
+        <video src="assets/Refrativa.mp4" autoplay loop muted playsinline preload="metadata" aria-hidden="true"></video>
       </div>
 
       <div class="service_proof_badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+        </svg>
         Tecnologia Laser de Precisão
       </div>
 
       <div class="depth_layers">
         <div class="service_overlay_content glassmorphism_light soft_shadow_layer">
           <h2 class="service_headline fade_in_up">A liberdade de acordar enxergando perfeitamente.</h2>
-          <p class="service_subheadline fade_in_up delay-1">Liberdade definitiva dos óculos de grau e lentes de contato. Corrige Miopia, Astigmatismo e Hipermetropia em minutos.</p>
-          
+          <p class="service_subheadline fade_in_up delay-1">Liberdade definitiva dos óculos de grau e lentes de contato.
+            Corrige Miopia, Astigmatismo e Hipermetropia em minutos.</p>
+
           <ul class="service_benefits_list fade_in_up delay-2">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Precisão de micrômetros (Laser)</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Retorno rápido às atividades</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Fim da dependência de óculos</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Precisão de micrômetros (Laser)</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Retorno rápido às atividades</li>
+            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg> Fim da dependência de óculos</li>
           </ul>
 
           <div class="service_expandable_details fade_in_up delay-3">
             <button class="service_expandable_btn" aria-expanded="false">
               <span>Técnicas LASIK e PRK</span>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </button>
             <div class="service_expandable_content">
-              <p>O Dr. Rogério avaliará detalhadamente a espessura e curvatura da sua córnea. O <strong>LASIK</strong> oferece recuperação visual em 24h. O <strong>PRK</strong> é ideal para córneas mais finas, com uma cicatrização mais gradual, mas igualmente eficaz em resultados definitivos.</p>
+              <p>O Dr. Rogério avaliará detalhadamente a espessura e curvatura da sua córnea. O <strong>LASIK</strong>
+                oferece recuperação visual em 24h. O <strong>PRK</strong> é ideal para córneas mais finas, com uma
+                cicatrização mais gradual, mas igualmente eficaz em resultados definitivos.</p>
             </div>
           </div>
 
           <div class="service_cta_wrapper fade_in_up delay-4">
-            <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o%20para%20Cirurgia%20Refrativa."
+              target="_blank" rel="noopener noreferrer"
+              class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
+            <button class="service_cta_secondary scale_hover_subtle"
+              onclick="abrirModalVideo('Cirurgia Refrativa', 'assets/Refrativa.mp4')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
               Ver como funciona
             </button>
           </div>
@@ -604,7 +776,7 @@
           let active = false;
           let sc = slider.querySelector('.slider_before');
           let handle = slider.querySelector('.slider_handle');
-          
+
           slider.addEventListener('mousedown', (e) => {
             e.preventDefault();
             active = true;
@@ -621,7 +793,7 @@
           slider.addEventListener('touchstart', (e) => {
             e.preventDefault();
             active = true;
-          }, {passive: false});
+          }, { passive: false });
           document.addEventListener('touchend', () => active = false);
           document.addEventListener('touchmove', (e) => {
             if (!active) return;
@@ -630,7 +802,7 @@
             x = Math.max(0, Math.min(x, slider.offsetWidth));
             sc.style.width = x + 'px';
             handle.style.left = x + 'px';
-          }, {passive: false});
+          }, { passive: false });
         });
 
         // Expandable Details
@@ -638,7 +810,7 @@
           btn.addEventListener('click', () => {
             const content = btn.nextElementSibling;
             const isExpanded = content.classList.contains('expanded');
-            
+
             // Fecha todos os outros primeiro
             document.querySelectorAll('.service_expandable_content').forEach(c => c.classList.remove('expanded'));
             document.querySelectorAll('.service_expandable_btn').forEach(b => {
@@ -666,7 +838,7 @@
         document.querySelectorAll('.section_service_fullscreen').forEach(sec => {
           observer.observe(sec);
         });
-        
+
       });
     </script>
   </div>
@@ -714,7 +886,8 @@
             para quem quer se libertar dos óculos com segurança e
             custo acessível.
           </p>
-          <a href="https://hosobradinho.com.br/refrativa/" target="_blank" rel="noopener noreferrer" class="plano-card__cta">
+          <a href="https://hosobradinho.com.br/refrativa/" target="_blank" rel="noopener noreferrer"
+            class="plano-card__cta">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -733,7 +906,8 @@
             correção sob medida para sua anatomia — visão nítida a distância,
             sem óculos, todos os dias.
           </p>
-          <a href="https://hosobradinho.com.br/refrativa/" target="_blank" rel="noopener noreferrer" class="plano-card__cta">
+          <a href="https://hosobradinho.com.br/refrativa/" target="_blank" rel="noopener noreferrer"
+            class="plano-card__cta">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -752,7 +926,7 @@
             dos óculos de leitura — dirigir, trabalhar e ler com muito
             mais leveza no dia a dia.
           </p>
-          <button class="plano-card__cta" onclick="abrirModalCatarata()">
+          <button class="plano-card__cta" onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -771,7 +945,7 @@
             funcional em todas as distâncias — longe, intermediária e perto.
             Viver sem óculos em praticamente nenhum momento do dia.
           </p>
-          <button class="plano-card__cta" onclick="abrirModalCatarata()">
+          <button class="plano-card__cta" onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -1234,12 +1408,8 @@
   </div>
 
   <!-- Botão Flutuante Facilitar Leitura -->
-  <button
-    id="btnFacilitarLeitura"
-    class="btn-facilitar"
-    aria-pressed="false"
-    title="Aumentar o tamanho das fontes para facilitar a leitura"
-  >
+  <button id="btnFacilitarLeitura" class="btn-facilitar" aria-pressed="false"
+    title="Aumentar o tamanho das fontes para facilitar a leitura">
     <span class="btn-facilitar__icon" aria-hidden="true">🔍</span>
     <span>Facilitar Leitura</span>
   </button>
@@ -1289,20 +1459,17 @@
     })();
   </script>
 
-  <!-- ── Abre modal com vídeo de Catarata (global) ────────────── -->
+  <!-- ── Abre modal com vídeo (global) ────────────── -->
   <script>
-    function abrirModalCatarata() {
-      const overlay        = document.getElementById('videoModal');
-      const modalTitle     = document.getElementById('videoModalTitle');
-      const placeholder    = document.getElementById('videoPlaceholder');
+    function abrirModalVideo(titulo, videoUrl) {
+      const overlay = document.getElementById('videoModal');
+      const modalTitle = document.getElementById('videoModalTitle');
+      const placeholder = document.getElementById('videoPlaceholder');
       const placeholderTit = document.getElementById('videoPlaceholderTitle');
-      const iframeWrapper  = document.getElementById('videoIframeWrapper');
+      const iframeWrapper = document.getElementById('videoIframeWrapper');
       if (!overlay) return;
 
-      const titulo   = 'Cirurgia de Catarata';
-      const videoUrl = 'assets/Catarata.mp4';
-
-      modalTitle.textContent     = titulo;
+      modalTitle.textContent = titulo;
       placeholderTit.textContent = titulo;
 
       iframeWrapper.innerHTML = `
@@ -1317,8 +1484,8 @@
           </p>
         </video>`;
 
-      placeholder.style.display    = 'none';
-      iframeWrapper.style.display  = 'block';
+      placeholder.style.display = 'none';
+      iframeWrapper.style.display = 'block';
       overlay.classList.add('open');
       document.body.style.overflow = 'hidden';
 

@@ -593,29 +593,68 @@
 
   const getScrollAmount = () => {
     const card = carousel.querySelector('.review-premium-slide');
-    return card ? card.offsetWidth + 24 : 320; // 24px = 1.5rem gap
+    if (!card) return 320;
+    const style = window.getComputedStyle(carousel);
+    const gap = parseFloat(style.gap) || 24;
+    return card.offsetWidth + gap;
   };
 
-  // Setas Desktop
-  if (btnNext) btnNext.addEventListener('click', () => carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }));
-  if (btnPrev) btnPrev.addEventListener('click', () => carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
+  const scrollToSlide = (index) => {
+    carousel.scrollTo({
+      left: index * getScrollAmount(),
+      behavior: 'smooth'
+    });
+  };
+
+  // Seta Próxima
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+      if (carousel.scrollLeft >= maxScrollLeft - 20) {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      }
+    });
+  }
+
+  // Seta Anterior
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      if (carousel.scrollLeft <= 20) {
+        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+        carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
+      } else {
+        carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+      }
+    });
+  }
 
   // Bolinhas Sincronizadas (Dots)
   if (dots.length > 0) {
     carousel.addEventListener('scroll', () => {
       let activeIndex = Math.round(carousel.scrollLeft / getScrollAmount());
-      activeIndex = Math.max(0, Math.min(activeIndex, dots.length - 1)); // Protecao limitadora de Indice
+      activeIndex = Math.max(0, Math.min(activeIndex, dots.length - 1));
       
       dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === activeIndex);
       });
     }, { passive: true });
 
-    // Clicar numa bolinha rola pro slide correspondente
     dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => {
-         carousel.scrollTo({ left: i * getScrollAmount(), behavior: 'smooth' });
-      });
+      dot.addEventListener('click', () => scrollToSlide(i));
     });
   }
+
+  // Autoplay Opcional (Opcional, mas melhora a percepção de infinito)
+  let autoplayInterval = setInterval(() => {
+    if (btnNext) btnNext.click();
+  }, 6000);
+
+  // Pausa autoplay na interação
+  carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
+  carousel.addEventListener('mouseleave', () => {
+    autoplayInterval = setInterval(() => { if (btnNext) btnNext.click(); }, 6000);
+  });
+  carousel.addEventListener('touchstart', () => clearInterval(autoplayInterval), { passive: true });
 })();

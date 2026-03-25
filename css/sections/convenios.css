@@ -78,6 +78,14 @@
   appearance: none;
 }
 
+.convenios-search-input::-webkit-search-decoration,
+.convenios-search-input::-webkit-search-cancel-button,
+.convenios-search-input::-webkit-search-results-button,
+.convenios-search-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+
 .convenios-search-input::placeholder {
   color: var(--silver-faint);
   font-weight: 300;
