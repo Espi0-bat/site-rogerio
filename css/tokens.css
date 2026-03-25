@@ -157,10 +157,10 @@ body::before {
 }
 
 .section-header__right {
-  font-size: 0.88rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  font-weight: 400;
   color: var(--silver-dim);
-  line-height: 1.85;
+  line-height: 1.75;
 }
 
 /* Glass card base */

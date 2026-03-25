@@ -31,7 +31,7 @@
     .btn-facilitar {
       position: fixed;
       right: 1.1rem;
-      bottom: 8.5rem;
+      bottom: 12rem;
       /* empilhado acima do WhatsApp sem sobrepor */
       z-index: 9999;
       display: inline-flex;
@@ -571,10 +571,6 @@
 
           <!-- Controles de Swipe Visual Hint (Opcionais) -->
           <div class="carousel-hint">
-            <span class="carousel-dot active"></span>
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
-            <span class="carousel-dot"></span>
             <span class="carousel-hint__text">Arraste para o lado →</span>
           </div>
 
@@ -653,7 +649,7 @@
               target="_blank" rel="noopener noreferrer"
               class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
             <button class="service_cta_secondary scale_hover_subtle"
-              onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
+              data-titulo="Cirurgia de Catarata" data-video="assets/Catarata.mp4">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -735,7 +731,7 @@
               target="_blank" rel="noopener noreferrer" class="service_cta_primary scale_hover_subtle">Agendar
               avaliação</a>
             <button class="service_cta_secondary scale_hover_subtle"
-              onclick="abrirModalVideo('Blefaroplastia', 'assets/Blefaroplastia.mp4')">
+              data-titulo="Blefaroplastia" data-video="assets/Blefaroplastia.mp4">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -801,7 +797,7 @@
               target="_blank" rel="noopener noreferrer"
               class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
             <button class="service_cta_secondary scale_hover_subtle"
-              onclick="abrirModalVideo('Cirurgia Refrativa', 'assets/Refrativa.mp4')">
+              data-titulo="Cirurgia Refrativa" data-video="assets/Refrativa.mp4">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -1388,26 +1384,39 @@
        FOOTER
   ══════════════════════════════════════════════ -->
   <footer>
-    <div class="footer-logo">
-      <div class="footer-logo__row">
-        <img loading="lazy" decoding="async" src="assets/logo_da_salutte.jpeg" alt="Logo Hospital de Olhos Salute"
-          class="footer-logo__img" />
+    <div class="footer-bottom-bar">
+      <div class="fbb-top">
+        <div class="footer-logo">
+          <div class="footer-logo__row">
+            <img loading="lazy" decoding="async" src="assets/logo_da_salutte.jpeg"
+              alt="Logo Hospital de Olhos Salute" class="footer-logo__img" />
+          </div>
+          Dr. Rogério de Souza Furtado
+          <small>Oftalmologista · CRM-DF 10851 · RQE 5861</small>
+        </div>
+        <ul class="fbb-links">
+          <li><a href="#filosofia">Filosofia</a></li>
+          <li><a href="#curadoria">Cirurgias</a></li>
+          <li><a href="#planos">Planos</a></li>
+          <li><a href="#autoridade">Formação</a></li>
+          <li><a href="#salute">Hospital Salute</a></li>
+          <li><a href="#convenios">Convênios</a></li>
+          <li><a href="#protocolo">Protocolo Privado</a></li>
+          <li><a href="https://wa.me/5561998338898" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+        </ul>
+        <div class="fbb-agency">
+          Design &amp; Desenvolvimento<br>
+          <strong style="font-size:0.7rem;letter-spacing:0.18em;">Pixelry</strong> · Tecnologia &amp; Identidade Digital<br>
+          <a href="mailto:contato@pixelry.com.br" style="color:inherit;opacity:0.6;">contato@pixelry.com.br</a>
+        </div>
       </div>
-      Dr. Rogério de Souza Furtado
-      <small>Oftalmologista · CRM-DF 10851 · RQE 5861</small>
+      <div class="fbb-bottom">
+        Hospital de Olhos Salute · Sobradinho — Brasília, DF &nbsp;·&nbsp;
+        <a href="https://wa.me/5561998338898" style="color:inherit;">(61) 99833-8898</a> &nbsp;·&nbsp;
+        CFM Res. 2.336/2023 — Publicidade Médica<br>
+        © 2026 Pixelry — Todos os direitos reservados · Site produzido para Dr. Rogério de Souza Furtado · CRM-DF 10851
+      </div>
     </div>
-
-    <ul class="footer-links" role="list">
-      <li><a href="#filosofia">A Filosofia</a></li>
-      <li><a href="#curadoria">Especialidades</a></li>
-      <li><a href="#protocolo">Agendar</a></li>
-    </ul>
-
-    <p class="footer-legal">
-      Hospital de Olhos Salute · Sobradinho-DF<br>
-      © 2025 Dr. Rogério Furtado. Todos os direitos reservados.<br>
-      CFM Resolução 2.336/2023 — Publicidade Médica
-    </p>
   </footer>
 
 
@@ -1503,41 +1512,10 @@
     })();
   </script>
 
-  <!-- ── Abre modal com vídeo (global) ────────────── -->
+  <!-- Scripts Centralizados -->
+  <script src="js/main.js"></script>
+
   <script>
-    function abrirModalVideo(titulo, videoUrl) {
-      const overlay = document.getElementById('videoModal');
-      const modalTitle = document.getElementById('videoModalTitle');
-      const placeholder = document.getElementById('videoPlaceholder');
-      const placeholderTit = document.getElementById('videoPlaceholderTitle');
-      const iframeWrapper = document.getElementById('videoIframeWrapper');
-      if (!overlay) return;
-
-      modalTitle.textContent = titulo;
-      placeholderTit.textContent = titulo;
-
-      iframeWrapper.innerHTML = `
-        <video
-          src="${videoUrl}"
-          controls autoplay playsinline preload="none"
-          style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"
-          aria-label="${titulo}">
-          <p style="color:#fff;padding:1rem;">
-            Seu navegador não suporta reprodução de vídeo.
-            <a href="${videoUrl}" download style="color:var(--cyan)">Baixar vídeo</a>.
-          </p>
-        </video>`;
-
-      placeholder.style.display = 'none';
-      iframeWrapper.style.display = 'block';
-      overlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-
-      const vid = iframeWrapper.querySelector('video');
-      if (vid) vid.focus();
-    }
-  
-    // ── Efeito Parallax Suave (Exclusivo Teste) ─────────────
     (function initParallax() {
       const bgImage = document.querySelector('#hero-stage img.hero-bg');
       const watermark = document.getElementById('watermarkIris');

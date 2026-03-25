@@ -146,14 +146,15 @@
   .nav-hamburger  { padding: 8px; }
 
   .btn-facilitar {
-    bottom: 11.5rem;
+    bottom: 15rem;
     right: 1.1rem;
   }
 
   /* Section header */
   .section-header__right {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     padding-top: 0.5rem;
+    line-height: 1.65;
   }
   .label { font-size: 0.58rem; }
 

@@ -1,74 +1,86 @@
 /* ================================================================
    footer.css — Rodapé
    Dr. Rogério Furtado — Oftalmologista
+   Desenvolvido por Pixelry · 2026
 ================================================================ */
 
 footer {
-  padding: clamp(2.5rem, 5vw, 4rem) clamp(1.25rem, 5vw, 5rem);
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 5rem) clamp(1.5rem, 3vw, 2rem);
   border-top: 1px solid var(--cyan-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1.5rem;
   max-width: 1440px;
   margin-inline: auto;
 }
 
+/* ── Logo / Identidade ─────────────────────────────────── */
 .footer-logo {
   font-family: var(--ff-display);
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--silver);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
 }
 
 .footer-logo small {
   display: block;
   font-family: var(--ff-body);
-  font-size: 0.56rem;
+  font-size: 0.55rem;
   font-weight: 600;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--cyan);
-  margin-top: 0.2rem;
+  margin-top: 0.3rem;
 }
 
+/* ── Links de Navegação ────────────────────────────────── */
 .footer-links {
   display: flex;
-  gap: 1.5rem;
+  gap: 0.5rem 1.75rem;
   list-style: none;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .footer-links a {
   font-size: 0.62rem;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--silver-dim);
   transition: color 0.3s;
   font-weight: 500;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .footer-links a:hover { color: var(--cyan); }
 
+/* ── Texto Legal ────────────────────────────────────────── */
 .footer-legal {
   font-size: 0.58rem;
-  color: rgba(13,17,23,0.25);
+  color: rgba(13,17,23,0.35);
   text-align: right;
-  line-height: 1.7;
+  line-height: 1.85;
 }
 
-/* Sub-Rodapé Pixelry */
+.footer-legal a {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+  color: var(--cyan);
+}
+
+/* ── Sub-Rodapé Pixelry ────────────────────────────────── */
 .footer-bottom-bar {
   width: 100%;
-  margin-top: 1rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--cyan-border);
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   font-family: var(--ff-body);
-  font-size: 0.55rem;
+  font-size: 0.56rem;
   letter-spacing: 0.05em;
   color: var(--silver-dim);
 }
@@ -85,7 +97,7 @@ footer {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.25rem 1.5rem;
   padding: 0;
   margin: 0;
 }
@@ -94,9 +106,12 @@ footer {
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 0.12em;
-  color: var(--primary, var(--silver));
+  color: rgba(13,17,23,0.4);
   text-decoration: none;
   transition: color 0.3s;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .fbb-links a:hover {
@@ -106,32 +121,64 @@ footer {
 .fbb-agency {
   text-align: right;
   text-transform: uppercase;
-  line-height: 1.8;
+  line-height: 1.9;
   font-weight: 500;
-  color: var(--primary, var(--silver-dim));
+  color: rgba(13,17,23,0.38);
+  letter-spacing: 0.08em;
+}
+
+.fbb-agency strong {
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+}
+
+.fbb-agency a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+  opacity: 0.7;
+}
+
+.fbb-agency a:hover {
+  color: var(--cyan);
+  opacity: 1;
 }
 
 .fbb-bottom {
   text-align: center;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
-  color: var(--primary, var(--silver));
-  opacity: 0.8;
+  color: rgba(13,17,23,0.25);
+  font-size: 0.52rem;
+  padding-bottom: 0.5rem;
 }
 
+/* ── Responsivo ─────────────────────────────────────────── */
 @media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-legal {
+    text-align: left;
+  }
+
   .fbb-top {
     flex-direction: column;
     align-items: flex-start;
   }
+
   .fbb-agency {
     text-align: left;
   }
+
   .fbb-bottom {
     text-align: left;
-    line-height: 1.8;
-    margin-top: 1rem;
+    line-height: 1.9;
+    margin-top: 0.5rem;
   }
 }
-

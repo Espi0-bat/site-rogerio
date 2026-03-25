@@ -468,3 +468,11 @@
     height: 28px;
   }
 }
+
+/* ── Ocultar botões quando modal de vídeo aberto ───────────────── */
+body.modal-video-open .whatsapp-float,
+body.modal-video-open .btn-facilitar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}

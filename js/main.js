@@ -431,12 +431,14 @@
 
     overlay.classList.add('open');
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-video-open');
     closeBtn.focus();
   }
 
   function closeModal() {
     overlay.classList.remove('open');
     document.body.style.overflow = '';
+    document.body.classList.remove('modal-video-open');
     const vid = iframeWrapper.querySelector('video');
     if (vid) { vid.pause(); vid.src = ''; }
     iframeWrapper.innerHTML = '';
@@ -444,7 +446,7 @@
     placeholder.style.display = 'flex';
   }
 
-  document.querySelectorAll('button.curadoria-card__play[data-video]').forEach((btn) => {
+  document.querySelectorAll('button.curadoria-card__play[data-video], .service_cta_secondary[data-video]').forEach((btn) => {
     btn.addEventListener('click', () => {
       openModal(btn.dataset.titulo || 'Vídeo', btn.dataset.video || '');
     });
@@ -630,21 +632,22 @@
     });
   }
 
-  // Bolinhas Sincronizadas (Dots)
-  if (dots.length > 0) {
-    carousel.addEventListener('scroll', () => {
-      let activeIndex = Math.round(carousel.scrollLeft / getScrollAmount());
-      activeIndex = Math.max(0, Math.min(activeIndex, dots.length - 1));
-      
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === activeIndex);
-      });
-    }, { passive: true });
+  // Loop Infinito no Swipe (Mobile)
+  let isScrolling = false;
+  carousel.addEventListener('scroll', () => {
+    if (isScrolling) return;
+    
+    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
+    // Se chegou muito perto do final, volta pro começo suavemente
+    if (carousel.scrollLeft >= maxScrollLeft - 10) {
+      isScrolling = true;
+      setTimeout(() => {
+        carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        setTimeout(() => isScrolling = false, 500);
+      }, 150);
+    }
+  }, { passive: true });
 
-    dots.forEach((dot, i) => {
-      dot.addEventListener('click', () => scrollToSlide(i));
-    });
-  }
 
   // Autoplay Opcional (Opcional, mas melhora a percepção de infinito)
   let autoplayInterval = setInterval(() => {
