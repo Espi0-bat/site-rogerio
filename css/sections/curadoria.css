@@ -1,14 +1,13 @@
 /* 
-  curadoria-teste.css
+  curadoria.css
   Estilos focados na arquitetura UX/UI conversiva exigida no teste.
 */
 
 .section_service_fullscreen {
   position: relative;
   width: 100%;
-  height: 100vh;
-  height: 100dvh;
-  min-height: 700px;
+  min-height: 100vh;
+  height: auto;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -58,6 +57,53 @@
 .service_overlay_content {
   max-width: 600px;
   margin-bottom: clamp(6rem, 10vh, 8rem); /* Espaço para CTA sticky mobile */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* 🔄 Inversão de Layout (Z-Pattern) */
+.section_service_fullscreen--reverse .depth_layers {
+  align-items: flex-end;
+}
+
+.section_service_fullscreen--reverse .service_overlay_content {
+  text-align: right;
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.section_service_fullscreen--reverse .service_benefits_list li {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.section_service_fullscreen--reverse .service_cta_wrapper {
+  justify-content: flex-end;
+}
+
+.section_service_fullscreen--reverse .service_proof_badge {
+  right: auto;
+  left: clamp(1.25rem, 5vw, 5rem);
+}
+
+.section_service_fullscreen--reverse .service_before_after_slider {
+  right: auto;
+  left: clamp(1.25rem, 5vw, 5rem);
+  transform: translateX(-30px);
+}
+
+.section_service_fullscreen--reverse.is-visible .service_before_after_slider {
+  transform: translateX(0);
+}
+
+/* Divisor Sutil */
+.section_divider {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+  margin: 0;
+  width: 100%;
+  opacity: 0.6;
 }
 
 /* Glassmorphism Light */
@@ -131,8 +177,7 @@
 .service_cta_primary {
   background: var(--cyan);
   color: #fff;
-  padding: 0.9rem 2rem;
-  min-height: 48px;
+  padding: 1rem 2rem;
   border-radius: 30px;
   font-weight: 600;
   text-decoration: none;
@@ -166,8 +211,7 @@
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.2);
   color: #fff;
-  padding: 0.9rem 2rem;
-  min-height: 48px;
+  padding: 1rem 2rem;
   border-radius: 30px;
   font-weight: 600;
   font-family: inherit;
@@ -258,8 +302,7 @@
   text-align: left;
   background: transparent;
   color: #fff;
-  padding: 0.9rem 1.25rem;
-  min-height: 48px;
+  padding: 1rem 1.25rem;
   font-weight: 600;
   font-family: inherit;
   border: none;
@@ -288,9 +331,11 @@
 
 /* Animations Trigger */
 .fade_in_up {
-  will-change: transform, opacity;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
+
 .section_service_fullscreen.is-visible .fade_in_up {
   opacity: 1;
   transform: translateY(0) translateX(0);
