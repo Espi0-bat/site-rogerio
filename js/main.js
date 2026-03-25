@@ -585,21 +585,37 @@
 /* ── Doctoralia Reviews Carousel ──────────────────────────────────── */
 (function initDoctoraliaCarousel() {
   const carousel = document.getElementById('doctoralia-carousel');
+  if (!carousel) return;
+
   const btnPrev = document.querySelector('.carousel-control--prev');
   const btnNext = document.querySelector('.carousel-control--next');
-
-  if (!carousel || !btnPrev || !btnNext) return;
+  const dots    = document.querySelectorAll('.carousel-dot');
 
   const getScrollAmount = () => {
     const card = carousel.querySelector('.review-premium-slide');
     return card ? card.offsetWidth + 24 : 320; // 24px = 1.5rem gap
   };
 
-  btnNext.addEventListener('click', () => {
-    carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
-  });
+  // Setas Desktop
+  if (btnNext) btnNext.addEventListener('click', () => carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' }));
+  if (btnPrev) btnPrev.addEventListener('click', () => carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' }));
 
-  btnPrev.addEventListener('click', () => {
-    carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-  });
+  // Bolinhas Sincronizadas (Dots)
+  if (dots.length > 0) {
+    carousel.addEventListener('scroll', () => {
+      let activeIndex = Math.round(carousel.scrollLeft / getScrollAmount());
+      activeIndex = Math.max(0, Math.min(activeIndex, dots.length - 1)); // Protecao limitadora de Indice
+      
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === activeIndex);
+      });
+    }, { passive: true });
+
+    // Clicar numa bolinha rola pro slide correspondente
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+         carousel.scrollTo({ left: i * getScrollAmount(), behavior: 'smooth' });
+      });
+    });
+  }
 })();

@@ -5,8 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description"
-    content="Oftalmologista em Sobradinho-DF. Livre-se dos óculos com o Dr. Rogério Furtado. Especialista em Cirurgia Refrativa (LASIK, PRK, SMILE), Catarata e Implante de Lentes. Agende já." />
-  <title>Oftalmologista em Sobradinho-DF — Dr. Rogério Furtado · Refrativa e Catarata</title>
+    content="Livre-se dos óculos com o Dr. Rogério Furtado. Especialista em Cirurgia Refrativa (LASIK, PRK, SMILE), Catarata e Implante de Lentes Multifocais em Sobradinho-DF. Agende sua avaliação." />
+  <title>Dr. Rogério Furtado — Cirurgia Refrativa, Catarata e Lentes Multifocais · Sobradinho-DF</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/sections/hero.css" />
   <link rel="stylesheet" href="css/sections/filosofia.css" />
-  <link rel="stylesheet" href="css/sections/curadoria.css" />
+  <link rel="stylesheet" href="css/sections/curadoria-teste.css" />
   <link rel="stylesheet" href="css/sections/convenios.css" />
   <link rel="stylesheet" href="css/sections/autoridade.css" />
   <link rel="stylesheet" href="css/sections/salute.css" />
@@ -27,7 +27,74 @@
   <link rel="stylesheet" href="css/sections/footer.css" />
   <link rel="stylesheet" href="css/mobile.css" />
   <style>
-    /* reservado para overrides pontuais */
+    /* ── Botão Facilitar Leitura (flutuante fixo) ─────────── */
+    .btn-facilitar {
+      position: fixed;
+      right: 1.1rem;
+      bottom: 8.5rem;        /* empilhado acima do WhatsApp sem sobrepor */
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.1rem;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #e0faf5;
+      background: linear-gradient(145deg, #0a3d35 0%, #06241e 100%);
+      border: 1px solid rgba(0, 195, 160, 0.35);
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+      /* profundidade 3D */
+      box-shadow:
+        0 3px 0 #031a15,
+        0 6px 18px rgba(0, 163, 122, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      /* glow suave */
+      filter: drop-shadow(0 0 7px rgba(0, 195, 160, 0.28));
+      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-facilitar:hover {
+      background: linear-gradient(145deg, #0d5246 0%, #082e26 100%);
+      box-shadow:
+        0 3px 0 #031a15,
+        0 8px 24px rgba(0, 195, 160, 0.45),
+        inset 0 1px 0 rgba(255,255,255,0.1);
+      filter: drop-shadow(0 0 12px rgba(0, 195, 160, 0.5));
+      transform: translateY(-2px);
+    }
+
+    .btn-facilitar:active {
+      transform: translateY(1px);
+      box-shadow:
+        0 1px 0 #031a15,
+        0 3px 8px rgba(0, 195, 160, 0.2),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .btn-facilitar.ativo {
+      background: linear-gradient(145deg, #00a37a 0%, #007a5a 100%);
+      color: #fff;
+      border-color: rgba(0, 255, 200, 0.5);
+      box-shadow:
+        0 3px 0 #003d2e,
+        0 8px 26px rgba(0, 195, 160, 0.55),
+        inset 0 1px 0 rgba(255,255,255,0.15);
+      filter: drop-shadow(0 0 14px rgba(0, 220, 170, 0.6));
+    }
+
+    .btn-facilitar__icon {
+      font-size: 1em;
+      line-height: 1;
+    }
+
+    /* Modo leitura facilitada — aumenta a escala tipográfica em ~20% */
+    html.leitura-facilitada {
+      font-size: 118%;
+    }
   </style>
 </head>
 
@@ -172,7 +239,7 @@
           </h2>
         </div>
         <div class="section-header__right">
-          Ao longo de mais de quinze anos, o Dr. Rogério construiu uma prática fundada
+          Ao longo de mais de vinte e cinco anos, o Dr. Rogério construiu uma prática fundada
           em um princípio inegociável: cada paciente merece o melhor de sua arte e de
           sua presença — sem pressa, sem protocolo impessoal.
         </div>
@@ -351,7 +418,7 @@
               </div>
               <div class="review-premium__body">
                 <p class="review-premium__quote">
-                  O Dr Rogério foi muito antencioso, esclarecedor e bem didático para a cirurgia refrativa LASIK. Muito gentil!
+                  O Dr. Rogério foi muito atencioso, esclarecedor e bem didático para a cirurgia refrativa LASIK. Muito gentil!
                 </p>
               </div>
             </div>
@@ -374,7 +441,7 @@
           <span class="label"><span class="cyan-line"></span>Pacientes atendidos</span>
           <p class="stats-number">2000+</p>
           <p class="stats-desc">
-            Mais de quinhentas histórias de recuperação da visão, construídas
+            Mais de duas mil histórias de recuperação da visão, construídas
             com a mesma atenção dedicada ao primeiro paciente.
           </p>
         </div>
@@ -392,7 +459,7 @@
     <section class="section_service_fullscreen" id="servico-catarata">
       <div class="service_hero_media">
         <div class="overlay_gradient_dark"></div>
-        <video class="bg-video-lazy" data-src="assets/Catarata.mp4" loop muted playsinline aria-hidden="true" preload="none"></video>
+        <video src="assets/Catarata.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
       </div>
 
       <div class="service_proof_badge">
@@ -423,7 +490,7 @@
 
           <div class="service_cta_wrapper fade_in_up delay-4">
             <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle curadoria-card__play" data-video="assets/Catarata.mp4" data-titulo="Cirurgia de Catarata — Vídeo Explicativo" aria-label="Abrir vídeo explicativo sobre Cirurgia de Catarata">
+            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -433,9 +500,9 @@
 
       <!-- Slider Antes e Depois -->
       <div class="service_before_after_slider soft_shadow_layer fade_in_up delay-5">
-        <img src="assets/dr_rogerio.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top; pointer-events: none; user-select: none;" draggable="false">
+        <img src="assets/dr_rogerio.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top;">
         <div class="slider_before" style="width: 50%; overflow: hidden; position: absolute; height: 100%; z-index: 2;">
-          <img src="assets/dr_rogerio.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none; pointer-events: none; user-select: none;" draggable="false">
+          <img src="assets/dr_rogerio.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none;">
         </div>
         <div class="slider_handle" style="left: 50%;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M8 9l-4 3 4 3M16 15l4-3-4-3"/></svg>
@@ -447,7 +514,7 @@
     <section class="section_service_fullscreen" id="servico-blefaroplastia">
       <div class="service_hero_media">
         <div class="overlay_gradient_dark"></div>
-        <video class="bg-video-lazy" data-src="assets/Blefaroplastia.mp4" loop muted playsinline aria-hidden="true" preload="none"></video>
+        <video src="assets/Blefaroplastia.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
       </div>
 
       <div class="service_proof_badge">
@@ -478,7 +545,7 @@
 
           <div class="service_cta_wrapper fade_in_up delay-4">
             <a href="#agendar" class="service_cta_primary scale_hover_subtle">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle curadoria-card__play" data-video="assets/Blefaroplastia.mp4" data-titulo="Blefaroplastia — Vídeo Explicativo" aria-label="Abrir vídeo explicativo sobre Blefaroplastia">
+            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -491,12 +558,12 @@
     <section class="section_service_fullscreen" id="servico-refrativa">
       <div class="service_hero_media">
         <div class="overlay_gradient_dark"></div>
-        <video class="bg-video-lazy" data-src="assets/Refrativa.mp4" loop muted playsinline aria-hidden="true" preload="none"></video>
+        <video src="assets/Refrativa.mp4" autoplay loop muted playsinline aria-hidden="true"></video>
       </div>
 
       <div class="service_proof_badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
-        Tecnologia a Laser Precision
+        Tecnologia Laser de Precisão
       </div>
 
       <div class="depth_layers">
@@ -522,7 +589,7 @@
 
           <div class="service_cta_wrapper fade_in_up delay-4">
             <a href="#agendar" class="service_cta_primary scale_hover_subtle pulse_inactivity">Agendar avaliação</a>
-            <button class="service_cta_secondary scale_hover_subtle curadoria-card__play" data-video="assets/Refrativa.mp4" data-titulo="Cirurgia Refrativa — Vídeo Explicativo" aria-label="Abrir vídeo explicativo sobre Cirurgia Refrativa">
+            <button class="service_cta_secondary scale_hover_subtle" onclick="document.getElementById('videoModal').classList.add('active')">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
               Ver como funciona
             </button>
@@ -581,27 +648,11 @@
           });
         });
 
-        // Intersection Observer p/ Animações e Lazy Load Videos
+        // Intersection Observer p/ Animações
         const observer = new IntersectionObserver((entries) => {
           entries.forEach(entry => {
             if (entry.isIntersecting) {
               entry.target.classList.add('is-visible');
-              
-              // Lazy load de vídeos da seção
-              const vid = entry.target.querySelector('video.bg-video-lazy');
-              if (vid) {
-                if (vid.dataset.src) {
-                  vid.src = vid.dataset.src;
-                  vid.removeAttribute('data-src');
-                }
-                vid.play().catch(() => {});
-              }
-            } else {
-              // Pausar vídeos quando fora de vista
-              const vid = entry.target.querySelector('video.bg-video-lazy');
-              if (vid && !vid.paused) {
-                vid.pause();
-              }
             }
           });
         }, { threshold: 0.3 });
@@ -695,12 +746,12 @@
             dos óculos de leitura — dirigir, trabalhar e ler com muito
             mais leveza no dia a dia.
           </p>
-          <a href="https://hosobradinho.com.br/refrativa/" target="_blank" rel="noopener noreferrer" class="plano-card__cta">
+          <button class="plano-card__cta" onclick="abrirModalCatarata()">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
             </svg>
-          </a>
+          </button>
         </div>
 
         <!-- Premium -->
@@ -714,12 +765,12 @@
             funcional em todas as distâncias — longe, intermediária e perto.
             Viver sem óculos em praticamente nenhum momento do dia.
           </p>
-          <a href="https://hosobradinho.com.br/refrativa/" target="_blank" rel="noopener noreferrer" class="plano-card__cta">
+          <button class="plano-card__cta" onclick="abrirModalCatarata()">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
             </svg>
-          </a>
+          </button>
         </div>
 
       </div>
@@ -811,7 +862,7 @@
             <div class="achievement-cell" role="listitem">
               <span class="achievement-cell__number counter" data-target="1500" data-suffix="+"
                 data-duration="2000">0</span>
-              <span class="achievement-cell__label">Cirurgias de alta complexidade conjuntas</span>
+              <span class="achievement-cell__label">Cirurgias realizadas com excelência e precisão</span>
             </div>
             <div class="achievement-cell" role="listitem">
               <span class="achievement-cell__number counter" data-target="2000" data-suffix="+"
@@ -891,7 +942,7 @@
         <p class="salute-content">
           Como <strong>Diretor Clínico</strong>, o Dr. Rogério lidera os protocolos
           de qualidade, segurança cirúrgica e atualização tecnológica que posicionam
-          o Salute entre os melhores centros oftalmológicos do Centro-Oeste.
+          a Salute entre os melhores centros oftalmológicos do Centro-Oeste.
         </p>
 
         <div class="salute-features">
@@ -1020,7 +1071,7 @@
             Não localizamos seu convênio na lista. Entre em contato para verificar
             condições de atendimento particular ou outras formas de acesso.
           </p>
-          <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20gostaria%20de%20verificar%20condições%20de%20atendimento%20para%20meu%20convênio."
+          <a href="https://wa.me/5561998338898?text=Ol%C3%A1%20Dr.%20Rog%C3%A9rio%2C%20gostaria%20de%20verificar%20condi%C3%A7%C3%B5es%20de%20atendimento%20para%20meu%20conv%C3%AAnio."
             class="convenios-not-found__cta" target="_blank" rel="noopener noreferrer">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path
@@ -1087,7 +1138,7 @@
       </div>
 
       <div class="protocolo-cta reveal reveal-delay-3">
-        <a href="https://wa.me/5561999999999?text=Olá%20Dr.%20Rogério%2C%20gostaria%20de%20agendar%20uma%20consulta."
+        <a href="https://wa.me/5561998338898?text=Ol%C3%A1%20Dr.%20Rog%C3%A9rio%2C%20gostaria%20de%20agendar%20uma%20consulta."
           class="btn-primary" target="_blank" rel="noopener noreferrer">
           <span>Iniciar Protocolo via WhatsApp</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -1128,22 +1179,11 @@
       <li><a href="#protocolo">Agendar</a></li>
     </ul>
 
-    <div class="footer-bottom-bar">
-      <div class="fbb-top">
-        <ul class="fbb-links">
-          <li><a href="javascript:void(0);">Privacidade</a></li>
-          <li><a href="javascript:void(0);">Termos</a></li>
-          <li><a href="javascript:void(0);">Compliance CFM</a></li>
-        </ul>
-        <div class="fbb-agency">
-          RAZÃO SOCIAL: PIXELRY AGÊNCIA DIGITAL<br>
-          COPYRIGHT © 2026 PIXELRY. TODOS OS DIREITOS RESERVADOS.
-        </div>
-      </div>
-      <div class="fbb-bottom">
-        DR. ROGÉRIO DE SOUZA FURTADO - OFTALMOLOGISTA - DESENVOLVIDO POR PIXELRY © 2026
-      </div>
-    </div>
+    <p class="footer-legal">
+      Hospital de Olhos Salute · Sobradinho-DF<br>
+      © 2025 Dr. Rogério Furtado. Todos os direitos reservados.<br>
+      CFM Resolução 2.336/2023 — Publicidade Médica
+    </p>
   </footer>
 
 
@@ -1187,8 +1227,19 @@
     </div>
   </div>
 
+  <!-- Botão Flutuante Facilitar Leitura -->
+  <button
+    id="btnFacilitarLeitura"
+    class="btn-facilitar"
+    aria-pressed="false"
+    title="Aumentar o tamanho das fontes para facilitar a leitura"
+  >
+    <span class="btn-facilitar__icon" aria-hidden="true">🔍</span>
+    <span>Facilitar Leitura</span>
+  </button>
+
   <!-- Botão Flutuante WhatsApp -->
-  <a href="https://wa.me/556199999999?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
+  <a href="https://wa.me/5561998338898?text=Ol%C3%A1%2C%20Dr.%20Rog%C3%A9rio%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o."
     class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
       <path
@@ -1198,6 +1249,77 @@
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
+
+  <!-- ── Facilitar Leitura ─────────────────────────────────── -->
+  <script>
+    (function () {
+      const btn = document.getElementById('btnFacilitarLeitura');
+      const html = document.documentElement;
+      const KEY = 'leituraFacilitada';
+
+      function aplicar(ativo) {
+        if (ativo) {
+          html.classList.add('leitura-facilitada');
+          btn.classList.add('ativo');
+          btn.setAttribute('aria-pressed', 'true');
+          btn.querySelector('span:last-child').textContent = 'Leitura Normal';
+          localStorage.setItem(KEY, '1');
+        } else {
+          html.classList.remove('leitura-facilitada');
+          btn.classList.remove('ativo');
+          btn.setAttribute('aria-pressed', 'false');
+          btn.querySelector('span:last-child').textContent = 'Facilitar Leitura';
+          localStorage.removeItem(KEY);
+        }
+      }
+
+      // Recupera preferência salva
+      if (localStorage.getItem(KEY)) aplicar(true);
+
+      btn.addEventListener('click', function () {
+        const jaAtivo = html.classList.contains('leitura-facilitada');
+        aplicar(!jaAtivo);
+      });
+    })();
+  </script>
+
+  <!-- ── Abre modal com vídeo de Catarata (global) ────────────── -->
+  <script>
+    function abrirModalCatarata() {
+      const overlay        = document.getElementById('videoModal');
+      const modalTitle     = document.getElementById('videoModalTitle');
+      const placeholder    = document.getElementById('videoPlaceholder');
+      const placeholderTit = document.getElementById('videoPlaceholderTitle');
+      const iframeWrapper  = document.getElementById('videoIframeWrapper');
+      if (!overlay) return;
+
+      const titulo   = 'Cirurgia de Catarata';
+      const videoUrl = 'assets/Catarata.mp4';
+
+      modalTitle.textContent     = titulo;
+      placeholderTit.textContent = titulo;
+
+      iframeWrapper.innerHTML = `
+        <video
+          src="${videoUrl}"
+          controls autoplay playsinline preload="none"
+          style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000;"
+          aria-label="${titulo}">
+          <p style="color:#fff;padding:1rem;">
+            Seu navegador não suporta reprodução de vídeo.
+            <a href="${videoUrl}" download style="color:var(--cyan)">Baixar vídeo</a>.
+          </p>
+        </video>`;
+
+      placeholder.style.display    = 'none';
+      iframeWrapper.style.display  = 'block';
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+
+      const vid = iframeWrapper.querySelector('video');
+      if (vid) vid.focus();
+    }
+  </script>
 </body>
 
 </html>

@@ -133,6 +133,13 @@
   position: relative;
   z-index: 1;
   transition: gap 0.3s var(--ease-out-expo);
+  /* reset para quando usado como <button> */
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .plano-card:hover .plano-card__cta { gap: 0.9rem; }
