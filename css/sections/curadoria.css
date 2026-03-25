@@ -285,6 +285,7 @@
 
 /* Animations Trigger */
 .fade_in_up {
+  will-change: transform, opacity;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 .section_service_fullscreen.is-visible .fade_in_up {

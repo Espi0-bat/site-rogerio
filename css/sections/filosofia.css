@@ -264,3 +264,284 @@
   max-width: 320px;
   font-weight: 300;
 }
+
+/* =========================================================
+   AVALIAÇÕES / DEPOIMENTOS (PREMIUM)
+   ========================================================= */
+.bento-card--review-premium {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.02);
+  border: 1px solid rgba(0, 163, 122, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bento-card--review-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.review-premium__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.review-premium__author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.review-premium__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--silver-dim);
+  border: 1px solid var(--cyan-border);
+  flex-shrink: 0;
+}
+
+.review-premium__avatar svg {
+  width: 24px;
+  height: 24px;
+  opacity: 0.6;
+}
+
+.review-premium__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.review-premium__name {
+  font-family: var(--ff-body);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--silver);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.review-premium__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--cyan);
+  text-decoration: none;
+  background: rgba(0, 163, 122, 0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 20px;
+  transition: background 0.2s ease;
+}
+
+.review-premium__badge:hover {
+  background: rgba(0, 163, 122, 0.15);
+}
+
+.review-premium__stars {
+  display: flex;
+  gap: 2px;
+  color: #D4AF37;
+}
+
+.review-premium__stars svg {
+  width: 18px;
+  height: 18px;
+}
+
+.review-premium__body {
+  position: relative;
+  width: 100%;
+}
+
+.review-premium__quote {
+  font-family: var(--ff-display);
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--silver-dim);
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  quotes: "“" "”" "‘" "’";
+}
+
+.review-premium__quote::before {
+  content: open-quote;
+  position: absolute;
+  top: -15px;
+  left: -20px;
+  font-size: 3rem;
+  color: rgba(0, 163, 122, 0.15);
+  font-family: Georgia, serif;
+  line-height: 1;
+  z-index: -1;
+}
+
+.review-premium__quote::after {
+  content: close-quote;
+  margin-left: 0.1em;
+  font-family: Georgia, serif;
+  opacity: 0; /* invisible but properly formatted */
+}
+
+
+/* =========================================================
+   CARROSSEL NATIVO (MOBILE / DESKTOP)
+   ========================================================= */
+.bento-card--carousel {
+  padding: 1.5rem 0 0 0 !important; /* Sangrar margin lateral */
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.reviews-carousel {
+  display: flex !important;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 1rem 1.5rem 2.5rem 1.5rem; /* Espaço pro box-shadow respirar */
+  -ms-overflow-style: none; /* IE/Edge */
+  scrollbar-width: none; /* Firefox */
+  /* Fade lateral nas bordas para UI Premium */
+  mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+}
+
+@media(max-width: 768px) {
+  .reviews-carousel {
+    mask-image: none;
+    -webkit-mask-image: none;
+    padding: 1rem 1rem 2rem 1rem;
+    gap: 1rem;
+  }
+}
+
+.reviews-carousel::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Container de cada cartao individual dentro do carrossel */
+.review-premium-slide {
+  flex: 0 0 100%;
+  max-width: 480px;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.02);
+  border: 1px solid rgba(0, 163, 122, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.review-premium-slide:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.08), 0 2px 5px rgba(0,0,0,0.03);
+}
+
+@media(min-width: 1024px) {
+  .review-premium-slide {
+    flex: 0 0 calc(50% - 0.75rem);
+  }
+}
+
+.carousel-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-bottom: 1.25rem;
+  margin-top: -1rem;
+}
+
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--silver-dim);
+  opacity: 0.3;
+  transition: opacity 0.3s;
+}
+.carousel-dot.active {
+  background: var(--cyan);
+  opacity: 1;
+}
+
+.carousel-hint__text {
+  font-size: 0.75rem;
+  color: var(--silver-dim);
+  margin-left: 0.5rem;
+  opacity: 0.8;
+  font-style: italic;
+}
+
+/* Controles de Navegação (Setas Desktop) */
+.carousel-control {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-deep);
+  border: 1px solid var(--cyan-border);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: var(--cyan);
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.carousel-control:hover {
+  background: var(--bg-glass-light);
+  border-color: var(--cyan);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.carousel-control svg {
+  width: 20px;
+  height: 20px;
+}
+
+.carousel-control--prev {
+  left: 1rem;
+}
+
+.carousel-control--next {
+  right: 1rem;
+}
+
+/* Esconder em telas pequenas (mobile já tem swipe nativo instintivo) */
+@media(max-width: 1024px) {
+  .carousel-control {
+    display: none !important;
+  }
+}

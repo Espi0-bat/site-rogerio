@@ -581,3 +581,25 @@
     });
   });
 })();
+
+/* ── Doctoralia Reviews Carousel ──────────────────────────────────── */
+(function initDoctoraliaCarousel() {
+  const carousel = document.getElementById('doctoralia-carousel');
+  const btnPrev = document.querySelector('.carousel-control--prev');
+  const btnNext = document.querySelector('.carousel-control--next');
+
+  if (!carousel || !btnPrev || !btnNext) return;
+
+  const getScrollAmount = () => {
+    const card = carousel.querySelector('.review-premium-slide');
+    return card ? card.offsetWidth + 24 : 320; // 24px = 1.5rem gap
+  };
+
+  btnNext.addEventListener('click', () => {
+    carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+  });
+
+  btnPrev.addEventListener('click', () => {
+    carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+  });
+})();
