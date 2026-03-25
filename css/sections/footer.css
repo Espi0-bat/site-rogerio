@@ -159,26 +159,36 @@ footer {
 /* ── Responsivo ─────────────────────────────────────────── */
 @media (max-width: 768px) {
   footer {
-    flex-direction: column;
-    align-items: flex-start;
+    padding: clamp(2.5rem, 5vw, 3rem) 1.5rem clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
   }
 
-  .footer-legal {
-    text-align: left;
+  .footer-logo {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
   }
 
   .fbb-top {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .fbb-links {
+    justify-content: center;
+    gap: 1rem 1.5rem;
   }
 
   .fbb-agency {
-    text-align: left;
+    text-align: center;
   }
 
   .fbb-bottom {
-    text-align: left;
-    line-height: 1.9;
-    margin-top: 0.5rem;
+    text-align: center;
+    line-height: 2;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 163, 122, 0.1);
   }
 }

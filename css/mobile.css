@@ -21,10 +21,22 @@
     object-position: 60% 8%;
   }
 
+  .hero-title {
+    font-size: clamp(2.2rem, 10vw, 3.2rem);
+    letter-spacing: -0.01em;
+  }
+
+  .hero-subtitle {
+     font-size: 0.88rem;
+     line-height: 1.75;
+     margin-bottom: 1.5rem;
+  }
+
   .hero-photo__tag,
   .hero-photo__reticle { display: none; }
 
   .hero-actions {
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0.7rem;
@@ -32,19 +44,17 @@
 
   .hero-actions .btn-primary,
   .hero-actions .btn-ghost {
+    display: inline-flex;
     justify-content: center;
+    align-items: center;
     width: 100%;
     min-height: 52px;
-    font-size: 0.68rem;
-  }
-
-  .hero-actions .btn-ghost {
-    color: rgba(240,244,248,0.8);
-    border-color: rgba(240,244,248,0.22);
+    font-size: 0.72rem;
   }
 
   #hero-text-block {
-    padding-bottom: clamp(2rem, 8vw, 3rem);
+    padding: 2.5rem 1.5rem 4rem;
+    background: linear-gradient(to top, rgba(4, 8, 12, 1) 0%, rgba(4, 8, 12, 0.8) 65%, transparent 100%);
   }
 
   .autoridade-layout { grid-template-columns: 1fr; }
@@ -77,15 +87,12 @@
   .curadoria-card:last-child { border-bottom: none; }
   .curadoria-card__icon { width: 36px; height: 36px; margin-bottom: 1.1rem; }
 
-  /* Footer */
-  footer         { flex-direction: column; align-items: flex-start; }
-  .footer-legal  { text-align: left; }
+  /* Footer mobile — gerenciado por footer.css */
 }
 
 /* ── ≤ 640px ────────────────────────────────────────────────────── */
 @media (max-width: 640px) {
   /* Hero */
-  .hero-left { padding: 6rem 1.25rem 2.5rem; gap: 0; }
   .hero-eyebrow { margin-bottom: 1.25rem; }
   .hero-title   { font-size: clamp(2.2rem, 10vw, 3rem); margin-bottom: 1rem; }
   .hero-subtitle { font-size: 0.88rem; margin-bottom: 2rem; max-width: 100%; }
@@ -206,10 +213,7 @@
   .convenios-search-input { font-size: 1rem; }
   .convenio-card { min-height: 48px; padding: 0.9rem 1rem; }
 
-  /* Footer */
-  footer { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
-  .footer-legal { text-align: left; font-size: max(0.58rem, 10px); }
-  .footer-links { gap: 1rem; }
+  /* Footer mobile — gerenciado por footer.css */
   .footer-links a { min-height: 44px; display: inline-flex; align-items: center; }
   .footer-links li { min-height: 44px; display: flex; align-items: center; }
 

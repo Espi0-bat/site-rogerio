@@ -476,3 +476,71 @@ body.modal-video-open .btn-facilitar {
   pointer-events: none !important;
   visibility: hidden !important;
 }
+
+/* ── Botão Facilitar Leitura (flutuante fixo) ─────────────────── */
+.btn-facilitar {
+  position: fixed;
+  right: 1.1rem;
+  bottom: 12rem;
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  min-height: 48px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: #e0faf5;
+  background: linear-gradient(145deg, #0a3d35 0%, #06241e 100%);
+  border: 1px solid rgba(0, 195, 160, 0.35);
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow:
+    0 3px 0 #031a15,
+    0 6px 18px rgba(0, 163, 122, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  filter: drop-shadow(0 0 7px rgba(0, 195, 160, 0.28));
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
+}
+
+.btn-facilitar:hover {
+  background: linear-gradient(145deg, #0d5246 0%, #082e26 100%);
+  box-shadow:
+    0 3px 0 #031a15,
+    0 8px 24px rgba(0, 195, 160, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  filter: drop-shadow(0 0 12px rgba(0, 195, 160, 0.5));
+  transform: translateY(-2px);
+}
+
+.btn-facilitar:active {
+  transform: translateY(1px);
+  box-shadow:
+    0 1px 0 #031a15,
+    0 3px 8px rgba(0, 195, 160, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.btn-facilitar.ativo {
+  background: linear-gradient(145deg, #00a37a 0%, #007a5a 100%);
+  color: #fff;
+  border-color: rgba(0, 255, 200, 0.5);
+  box-shadow:
+    0 3px 0 #003d2e,
+    0 8px 26px rgba(0, 195, 160, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  filter: drop-shadow(0 0 14px rgba(0, 220, 170, 0.6));
+}
+
+.btn-facilitar__icon {
+  font-size: 1em;
+  line-height: 1;
+}
+
+/* Modo leitura facilitada — aumenta a escala tipográfica em ~20% */
+html.leitura-facilitada {
+  font-size: 118%;
+}

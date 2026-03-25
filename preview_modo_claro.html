@@ -26,78 +26,7 @@
   <link rel="stylesheet" href="css/sections/planos.css" />
   <link rel="stylesheet" href="css/sections/footer.css" />
   <link rel="stylesheet" href="css/mobile.css" />
-  <style>
-    /* ── Botão Facilitar Leitura (flutuante fixo) ─────────── */
-    .btn-facilitar {
-      position: fixed;
-      right: 1.1rem;
-      bottom: 12rem;
-      /* empilhado acima do WhatsApp sem sobrepor */
-      z-index: 9999;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1.1rem;
-      min-height: 48px;
-      font-family: inherit;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      color: #e0faf5;
-      background: linear-gradient(145deg, #0a3d35 0%, #06241e 100%);
-      border: 1px solid rgba(0, 195, 160, 0.35);
-      border-radius: 9999px;
-      cursor: pointer;
-      white-space: nowrap;
-      /* profundidade 3D */
-      box-shadow:
-        0 3px 0 #031a15,
-        0 6px 18px rgba(0, 163, 122, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      /* glow suave */
-      filter: drop-shadow(0 0 7px rgba(0, 195, 160, 0.28));
-      transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease, background 0.2s ease;
-    }
-
-    .btn-facilitar:hover {
-      background: linear-gradient(145deg, #0d5246 0%, #082e26 100%);
-      box-shadow:
-        0 3px 0 #031a15,
-        0 8px 24px rgba(0, 195, 160, 0.45),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      filter: drop-shadow(0 0 12px rgba(0, 195, 160, 0.5));
-      transform: translateY(-2px);
-    }
-
-    .btn-facilitar:active {
-      transform: translateY(1px);
-      box-shadow:
-        0 1px 0 #031a15,
-        0 3px 8px rgba(0, 195, 160, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    }
-
-    .btn-facilitar.ativo {
-      background: linear-gradient(145deg, #00a37a 0%, #007a5a 100%);
-      color: #fff;
-      border-color: rgba(0, 255, 200, 0.5);
-      box-shadow:
-        0 3px 0 #003d2e,
-        0 8px 26px rgba(0, 195, 160, 0.55),
-        inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      filter: drop-shadow(0 0 14px rgba(0, 220, 170, 0.6));
-    }
-
-    .btn-facilitar__icon {
-      font-size: 1em;
-      line-height: 1;
-    }
-
-    /* Modo leitura facilitada — aumenta a escala tipográfica em ~20% */
-    html.leitura-facilitada {
-      font-size: 118%;
-    }
-  </style>
+  <!-- Estilos do botão Facilitar Leitura agora em css/components.css -->
 </head>
 
 <body>
@@ -966,7 +895,7 @@
             dos óculos de leitura — dirigir, trabalhar e ler com muito
             mais leveza no dia a dia.
           </p>
-          <button class="plano-card__cta" onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
+          <button class="plano-card__cta" data-titulo="Cirurgia Refrativa (LASIK/PRK)" data-video="assets/Refrativa.mp4">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -985,7 +914,7 @@
             funcional em todas as distâncias — longe, intermediária e perto.
             Viver sem óculos em praticamente nenhum momento do dia.
           </p>
-          <button class="plano-card__cta" onclick="abrirModalVideo('Cirurgia de Catarata', 'assets/Catarata.mp4')">
+          <button class="plano-card__cta" data-titulo="Implante de Lentes Multifocais" data-video="assets/Catarata.mp4">
             Saiba mais
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
               <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -1407,7 +1336,6 @@
         <div class="fbb-agency">
           Design &amp; Desenvolvimento<br>
           <strong style="font-size:0.7rem;letter-spacing:0.18em;">Pixelry</strong> · Tecnologia &amp; Identidade Digital<br>
-          <a href="mailto:contato@pixelry.com.br" style="color:inherit;opacity:0.6;">contato@pixelry.com.br</a>
         </div>
       </div>
       <div class="fbb-bottom">

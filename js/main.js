@@ -446,7 +446,7 @@
     placeholder.style.display = 'flex';
   }
 
-  document.querySelectorAll('button.curadoria-card__play[data-video], .service_cta_secondary[data-video]').forEach((btn) => {
+  document.querySelectorAll('button.curadoria-card__play[data-video], .service_cta_secondary[data-video], button.plano-card__cta[data-video]').forEach((btn) => {
     btn.addEventListener('click', () => {
       openModal(btn.dataset.titulo || 'Vídeo', btn.dataset.video || '');
     });

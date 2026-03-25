@@ -247,6 +247,9 @@
   .hero-scroll-hint {
     display: none;
   }
+  #hero-text-block {
+    padding: 2rem 1.5rem 3.5rem;
+  }
 }
 
 /* Elementos do bloco de texto */
