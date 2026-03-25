@@ -5,6 +5,14 @@
  * Dr. Rogério de Souza Furtado — Oftalmologista
  */
 
+(function() {
+    // Prevent multiple initializations
+    if (window.mainJSInitialized) {
+        console.warn('main.js already initialized. Skipping.');
+        return;
+    }
+    window.mainJSInitialized = true;
+
 /* ── Cursor personalizado ────────────────────────────────────────── */
 (function initCursor() {
   const cursor     = document.getElementById('cursor');
@@ -461,22 +469,22 @@
 /* ── Convênios — Busca Inteligente ───────────────────────────────── */
 (function initConvenioSearch() {
   const CONVENIOS = [
-    'AFEB BRASAL', 'AFFEGO', 'ASETE/ASTE', 'Amil', 'ASSEFAZ', 'ASPDF', 'ASOF', 
-    'Allianz Saúde', 'ASFUB', 'ASSEDF', 'Vida Card', 'BACEN', 'BENECAP', 'Bombeiros', 
-    'BRB Saúde', 'CAEME-GO', 'CAESAN', 'Cartão Executivo', 'Camed', 'CAA/DF', 'Cassi', 
-    'Claro S/A', 'Conab', 'Correios (Postal Saúde)', 'Care Plus', 'CASEC (CODEVASF)', 
-    'Casembrapa', 'CNTI', 'Doutor Hoje', 'E-VIDA (Eletronorte)', 'Embratel', 
-    'Embaixada da Austrália', 'Embaixada da Dinamarca', 'Embaixada da Costa do Marfim', 
-    'Embaixada da África do Sul', 'Embaixada do Quênia', 'FACEB', 'FAPES/BNDES', 'Fascal', 
-    'FUSEX', 'GAMA Saúde', 'GDF Saúde', 'Golden Cross', 'GEAP', 'Gravia', 'Hello Med', 
-    'HFA', 'HFAB', 'Hospital Naval', 'Interclinicas do Brasil', 'Life Empresarial', 
-    'Mediservice', 'NotreDame Intermédica', 'Omint', 'Petrobras Distribuidora', 
-    'Petrobras Petróleo', 'Porto Seguro', 'Plan Assiste (MPF, MPM, MPT, MPDFT)', 
-    'Polícia Militar (PMDF)', 'Proasa', 'Real Grandeza', 'Rhede Club', 'SAMP/AGMP', 
-    'Saúde Caixa', 'Salutá Card', 'S1 Saúde', 'SERPRO Saúde', 'SIS (Senado)', 'STF-MED', 
-    'STJ (Pró-Ser)', 'SulAmérica', 'STM (Plas/JMU)', 'Telos', 'TJDFT (Pró-Saúde)', 
-    'Top Life Saúde', 'TRE Saúde', 'TRF (Pró-Social)', 'TRT 10ª Região', 'TST Saúde', 
-    'Unafisco/Sindifisco', 'Unimed Planalto', 'Unimed Norte e Nordeste', 'Unimed Seguros', 'Vale Saúde'
+    'AFEB BRASAL (AMHPDF)', 'AFFEGO (AMHPDF)', 'ALLIANZ SAÚDE', 'AMIL', 'ASFUB', 'ASOF', 'ASPDF', 
+    'ASSEDF/VIDA CARD (ACB)', 'ASSEFAZ', 'ASSETE/ASTE (AMHPDF)', 'BACEN', 'BENECAP', 'BOMBEIROS', 
+    'BRB SAÚDE', 'CAA/DF', 'CAEME-GO (AMHPDF)', 'CAESAN (AMHPDF)', 'CAMED', 'CARE PLUS (AMHPDF)', 
+    'CARTÃO EXECUTIVO', 'CASEC/CODEVASF (AMHPDF)', 'CASEMBRAPA (AMHPDF)', 'CASSI', 'CLARO S/A (ACB)', 
+    'CNTI (AMHPDF)', 'CONAB', 'CORREIOS (POSTAL SAÚDE)', 'DOUTOR HOJE', 'E-VIDA (ELETRONORTE)', 
+    'EMBAIXADA DA ÁFRICA DO SUL (ACB)', 'EMBAIXADA DA AUSTRÁLIA (ACB)', 'EMBAIXADA DA COSTA DO MARFIM (ACB)', 
+    'EMBAIXADA DO QUÊNIA (ACB)', 'EMBAIXADA REAL DA DINAMARCA (ACB)', 'EMBRATEL/DEMAIS PLANOS (AMHPDF)', 
+    'FACEB', 'FAPES/BNDES (AMHPDF)', 'FASCAL (AMHPDF)', 'FUSEX', 'GAMA SAÚDE', 'GDF-SAÚDE', 
+    'GEAP', 'GOLDEN CROSS', 'GRAVIA (AMHPDF)', 'HELLO MED', 'HFA', 'HFAB', 'HOSPITAL NAVAL', 
+    'INTERCLINICAS DO BRASIL', 'LIFE EMPRESARIAL (AMHPDF)', 'MEDISERVICE', 'NOTREDAME (AMHPDF)', 
+    'OMINT SAÚDE (AMHPDF)', 'PETROBRAS DISTRIBUIDORA (AMHPDF)', 'PETROBRAS PETRÓLEO (AMHPDF)', 
+    'PLAN ASSISTE (MPF, MPM, MPT, MPDFT)', 'POLÍCIA MILITAR DO DISTRITO FEDERAL (PMDF)', 'PORTO SEGURO', 
+    'PROASA (AMHPDF)', 'REAL GRANDEZA', 'RHEDE CLUB', 'S1 SAÚDE', 'SALUTÁ CARD', 'SAMP/AGMP (ACB)', 
+    'SAÚDE CAIXA', 'SERPRO', 'SIS (SENADO)', 'STF-MED', 'STJ (PRÓ-SER)', 'STM (PLAS/JMU)', 'SUL AMÉRICA', 
+    'TELOS (ACB)', 'TJDFT (PRÓ-SAÚDE)', 'TOP LIFE SAÚDE', 'TRE-SAÚDE', 'TRF (PRÓ-SOCIAL)', 'TRT 10ª REGIÃO', 
+    'TST SAÚDE', 'UNAFISCO/SINDIFISCO (AMHPDF)', 'UNIMED NORTE E NORDESTE', 'UNIMED PLANALTO', 'UNIMED SEGUROS', 'VALE SAÚDE'
   ].sort();
 
   const grid     = document.getElementById('conveniosGrid');
@@ -660,4 +668,5 @@
     autoplayInterval = setInterval(() => { if (btnNext) btnNext.click(); }, 6000);
   });
   carousel.addEventListener('touchstart', () => clearInterval(autoplayInterval), { passive: true });
+})();
 })();
