@@ -6,8 +6,8 @@
 .section_service_fullscreen {
   position: relative;
   width: 100%;
-  height: 100vh;
-  min-height: 700px;
+  min-height: 100vh;
+  height: auto;
   overflow: hidden;
   display: flex;
   align-items: center;

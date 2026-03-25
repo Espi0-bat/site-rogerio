@@ -251,9 +251,7 @@
         <div class="bento-card bento-card--quote reveal" role="listitem">
           <span class="quote-mark">"</span>
           <p class="quote-text">
-            Meu objetivo não é apenas operar —
-            é devolver ao paciente a liberdade de viver sem depender
-            de óculos para enxergar o próprio mundo.
+            Não restauro apenas a visão; busco devolver ao paciente o brilho de ver o mundo como ele é: vibrante, nítido e cheio de beleza. Porque enxergar a vida com liberdade é a forma mais bonita de apreciá-la.
           </p>
           <p class="quote-attr">— Dr. Rogério de Souza Furtado</p>
         </div>
@@ -499,12 +497,12 @@
       </div>
 
       <!-- Slider Antes e Depois -->
-      <div class="service_before_after_slider soft_shadow_layer fade_in_up delay-5">
-        <img src="assets/dr_rogerio.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top;">
-        <div class="slider_before" style="width: 50%; overflow: hidden; position: absolute; height: 100%; z-index: 2;">
-          <img src="assets/dr_rogerio.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none;">
+      <div class="service_before_after_slider soft_shadow_layer fade_in_up delay-5" style="user-select: none;">
+        <img src="assets/foto teste.jpeg" class="slider_image slider_after" alt="Visão nítida" style="filter: blur(0px); object-position: top; pointer-events: none;">
+        <div class="slider_before" style="width: 50%; overflow: hidden; position: absolute; height: 100%; z-index: 2; pointer-events: none;">
+          <img src="assets/foto teste.jpeg" class="slider_image" alt="Visão com catarata" style="filter: blur(8px) contrast(0.8); object-position: top; width: 320px; max-width: none; pointer-events: none;">
         </div>
-        <div class="slider_handle" style="left: 50%;">
+        <div class="slider_handle" style="left: 50%; cursor: ew-resize; z-index: 10;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M8 9l-4 3 4 3M16 15l4-3-4-3"/></svg>
         </div>
       </div>
@@ -607,24 +605,32 @@
           let sc = slider.querySelector('.slider_before');
           let handle = slider.querySelector('.slider_handle');
           
-          slider.addEventListener('mousedown', () => active = true);
+          slider.addEventListener('mousedown', (e) => {
+            e.preventDefault();
+            active = true;
+          });
           document.addEventListener('mouseup', () => active = false);
           document.addEventListener('mousemove', (e) => {
             if (!active) return;
-            let x = e.pageX - slider.getBoundingClientRect().left;
+            let rect = slider.getBoundingClientRect();
+            let x = e.pageX - rect.left - window.scrollX;
             x = Math.max(0, Math.min(x, slider.offsetWidth));
             sc.style.width = x + 'px';
             handle.style.left = x + 'px';
           });
-          slider.addEventListener('touchstart', () => active = true, {passive: true});
+          slider.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            active = true;
+          }, {passive: false});
           document.addEventListener('touchend', () => active = false);
           document.addEventListener('touchmove', (e) => {
             if (!active) return;
-            let x = e.touches[0].pageX - slider.getBoundingClientRect().left;
+            let rect = slider.getBoundingClientRect();
+            let x = e.touches[0].pageX - rect.left - window.scrollX;
             x = Math.max(0, Math.min(x, slider.offsetWidth));
             sc.style.width = x + 'px';
             handle.style.left = x + 'px';
-          }, {passive: true});
+          }, {passive: false});
         });
 
         // Expandable Details
