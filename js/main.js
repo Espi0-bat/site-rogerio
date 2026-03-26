@@ -39,7 +39,7 @@
     requestAnimationFrame(animateRing);
   })();
 
-  const hoverTargets = 'a, button, .curadoria-card, .bento-card, .convenio-item, .protocolo-step';
+  const hoverTargets = 'a, button, .curadoria-card, .bento-card, .convenio-card, .protocolo-step';
   document.querySelectorAll(hoverTargets).forEach((el) => {
     el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
@@ -499,6 +499,7 @@
     const card = document.createElement('div');
     card.className = 'convenio-card' + (isParticular ? ' convenio-card--particular' : '');
     card.setAttribute('role', 'listitem');
+    card.setAttribute('tabindex', '0');
     const dot = document.createElement('span');
     dot.className = 'convenio-card__dot';
     dot.setAttribute('aria-hidden', 'true');
@@ -571,7 +572,15 @@
       toggleBtn.setAttribute('aria-expanded', String(willOpen));
       collapsible.classList.toggle('collapsed', !willOpen);
       toggleBtn.querySelector('.convenio-toggle-btn__text').textContent =
-        willOpen ? 'Ocultar convênios' : 'Ver convênios aceitos';
+        willOpen ? 'Ocultar convênios' : 'Ver lista completa';
+      
+      if (willOpen) {
+        setTimeout(() => {
+          const yOffset = -120;
+          const y = collapsible.getBoundingClientRect().top + window.pageYOffset + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 150);
+      }
     });
   }
 

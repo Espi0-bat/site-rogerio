@@ -481,38 +481,70 @@ body.modal-video-open .btn-facilitar {
 .btn-facilitar {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 1rem;
-  min-height: 40px;
+  gap: 0.75rem;
+  padding: 0.6rem 1.4rem;
+  min-height: 46px;
   font-family: inherit;
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--silver-dim);
-  background: transparent;
-  border: 1px solid rgba(0, 163, 122, 0.25);
+  color: var(--cyan);
+  background: var(--bg-glass-light);
+  border: 1.5px solid var(--cyan-border);
   border-radius: 9999px;
   cursor: pointer;
   white-space: nowrap;
-  transition: all 0.3s var(--ease-out-expo);
+  transition: all 0.4s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 4px 12px rgba(0, 163, 122, 0.08),
+    inset 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
-/* Variante para o navbar — mais sutil e integrada */
+/* Shimmer effect for attention */
+.btn-facilitar::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: rotate(25deg);
+  animation: shimmerBtn 6s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerBtn {
+  0% { left: -100%; }
+  15% { left: 150%; }
+  100% { left: 150%; }
+}
+
+/* Variante para o navbar — integrada mas agora com mais destaque */
 .btn-facilitar--nav {
-  font-size: 0.65rem;
-  padding: 0.4rem 1rem;
-  min-height: 36px;
-  border-color: rgba(0, 163, 122, 0.15);
-  margin: 0 0.5rem;
+  padding: 0.5rem 1.25rem;
+  min-height: 42px;
+  margin: 0 0.75rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
 }
 
 .btn-facilitar:hover {
-  color: var(--cyan);
-  background: rgba(0, 163, 122, 0.06);
+  color: #fff;
+  background: var(--cyan);
   border-color: var(--cyan);
-  box-shadow: 0 0 15px rgba(0, 163, 122, 0.1);
-  transform: translateY(-1px);
+  box-shadow: 
+    0 8px 25px rgba(0, 163, 122, 0.3),
+    0 0 0 4px rgba(0, 163, 122, 0.1);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .btn-facilitar:active {
@@ -524,23 +556,40 @@ body.modal-video-open .btn-facilitar {
   background: var(--cyan);
   color: #ffffff;
   border-color: var(--cyan);
-  box-shadow: 0 0 20px rgba(0, 163, 122, 0.35);
+  box-shadow: 
+    0 10px 30px rgba(0, 163, 122, 0.4),
+    inset 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .btn-facilitar__icon-svg {
-  width: 14px;
-  height: 14px;
-  transition: transform 0.3s;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.4s var(--ease-spring);
 }
 
 .btn-facilitar:hover .btn-facilitar__icon-svg {
   transform: scale(1.1);
 }
 
-/* Ocultar o botão de leitura no hamburger mobile — fica visível apenas no desktop */
+/* Ajuste do botão de leitura no mobile — visível mas reduzido em telas pequenas */
 @media (max-width: 768px) {
   .btn-facilitar--nav {
+    padding: 0.4rem 0.8rem;
+    margin: 0 0.5rem;
+    min-height: 38px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .btn-facilitar--nav span {
     display: none;
+  }
+  .btn-facilitar--nav {
+    padding: 0.4rem;
+    min-width: 38px;
+    justify-content: center;
+    gap: 0;
   }
 }
 

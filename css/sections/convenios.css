@@ -293,8 +293,8 @@
   flex-shrink: 0;
 }
 
-.convenio-toggle-btn[aria-expanded="false"] .convenio-toggle-btn__icon {
-  transform: rotate(-90deg);
+.convenio-toggle-btn[aria-expanded="true"] .convenio-toggle-btn__icon {
+  transform: rotate(180deg);
 }
 
 /* Collapsible */
@@ -303,7 +303,7 @@
   transition:
     max-height 0.55s var(--ease-out-expo),
     opacity    0.45s var(--ease-out-expo);
-  max-height: 2000px;
+  max-height: 8000px;
   opacity: 1;
 }
 
