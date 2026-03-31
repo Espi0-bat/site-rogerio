@@ -163,7 +163,8 @@
 
       if (sy <= P0_END) {
         if (isMobile()) {
-          textBlock.style.transform = 'translateY(180px) translateZ(0)';
+          const shiftY = window.innerHeight * 0.18;
+          textBlock.style.transform = `translateY(${shiftY}px) translateZ(0)`;
           textBlock.style.opacity   = '1';
 
           if (title) {
@@ -194,7 +195,8 @@
         
         if (isMobile()) {
           // Mobile: Parallax no bloco todo + Fade/Slide no conteúdo
-          const blockTy = lerp(180, 0, p);
+          const shiftY = window.innerHeight * 0.18;
+          const blockTy = lerp(shiftY, 0, p);
           textBlock.style.transform = `translateY(${blockTy}px) translateZ(0)`;
           textBlock.style.opacity   = '1';
 
@@ -206,7 +208,7 @@
             const ty = lerp(30, 0, p);
             revealItems.forEach(item => {
               item.style.transform = `translateY(${ty}px) translateZ(0)`;
-              item.style.opacity = String(p);
+              item.style.opacity = String(Math.min(1, p * 1.5));
             });
           }
           // Escurecimento progressivo
