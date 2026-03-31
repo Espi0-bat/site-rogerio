@@ -18,7 +18,7 @@
   #hero-wrapper { height: 210vh; }
 
   #hero-stage img.hero-bg {
-    object-position: 60% 8%;
+    object-position: center center;
   }
 
   .hero-title {
