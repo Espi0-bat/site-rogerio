@@ -27,6 +27,33 @@
   <link rel="stylesheet" href="css/sections/footer.css" />
   <link rel="stylesheet" href="css/mobile.css" />
   <!-- Estilos do botão Facilitar Leitura agora em css/components.css -->
+
+  <style>
+    /* Overrides específicos para o teste de animação mobile */
+    @media (max-width: 900px) {
+      #hero-text-block {
+        background: none !important; /* Remove gradiente fixo do pai */
+      }
+      .hero-title {
+        will-change: transform, opacity;
+      }
+      .hero-reveal-item {
+        will-change: transform, opacity;
+      }
+    }
+
+    /* Correções de cor para o Hero no Modo Claro (para manter bom contraste) */
+    #hero-text-block .hero-subtitle { 
+      color: rgba(240, 244, 248, 0.85); 
+    }
+    #hero-text-block .btn-ghost { 
+      color: #ffffff; 
+      border-color: rgba(255,255,255,0.4); 
+    }
+    #hero-text-block .btn-ghost:hover { 
+      background: rgba(255,255,255,0.1); 
+    }
+  </style>
 </head>
 
 <body>
@@ -77,7 +104,7 @@
     <div id="hero-stage">
 
       <!-- Foto de fundo -->
-      <img src="assets/dr_rogerio.jpeg" class="hero-bg" alt="Dr. Rogério Furtado — Oftalmologista"
+      <img src="assets/Dr Rogerio Furtado-80.jpg" class="hero-bg" alt="Dr. Rogério Furtado — Oftalmologista"
         fetchpriority="high" />
 
       <!-- Orbs decorativos -->
@@ -107,7 +134,7 @@
       <!-- BLOCO DE TEXTO — animado por JS via scroll -->
       <div id="hero-text-block">
 
-        <div class="hero-eyebrow">
+        <div class="hero-eyebrow hero-reveal-item">
           <div class="hero-eyebrow__badge">
             <span class="hero-eyebrow__dot"></span>
             <span class="hero-eyebrow__text">Cirurgia Refrativa · Blefaroplastia · Catarata</span>
@@ -119,13 +146,13 @@
           <span class="hero-title__accent line-typed" id="heroTyped" aria-label="sem precisar dos óculos."></span>
         </h1>
 
-        <p class="hero-subtitle">
+        <p class="hero-subtitle hero-reveal-item">
           Dr. Rogério Furtado é especialista em <span class="kw">Cirurgia Refrativa</span>, Blefaroplastia
           e Implante de Lentes Multifocais — devolvendo <span class="kw">liberdade visual</span> a centenas
           de pacientes em Sobradinho-DF há mais de <span class="kw">25 anos</span>.
         </p>
 
-        <div class="hero-actions">
+        <div class="hero-actions hero-reveal-item">
           <a href="#protocolo" class="btn-primary">
             <span>Protocolo Privado</span>
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -140,7 +167,7 @@
           </a>
         </div>
 
-        <div class="hero-stats" aria-label="Números de destaque">
+        <div class="hero-stats hero-reveal-item" aria-label="Números de destaque">
           <div class="stat-pill">
             <span class="stat-pill__number counter" data-target="25" data-suffix="+" data-duration="1800">0</span>
             <span class="stat-pill__label">Anos</span>

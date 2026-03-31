@@ -151,6 +151,9 @@
 
   let ticking = false;
 
+  const title = textBlock.querySelector('.hero-title');
+  const revealItems = textBlock.querySelectorAll('.hero-reveal-item');
+
   function onScroll() {
     if (ticking) return;
     ticking = true;
@@ -159,21 +162,88 @@
       const { P0_END, P1_END } = phases;
 
       if (sy <= P0_END) {
-        textBlock.style.transform = 'translateY(30%) translateZ(0)';
-        textBlock.style.opacity   = '0';
-        overlayDiv.style.opacity = '0';
+        if (isMobile()) {
+          textBlock.style.transform = 'translateY(180px) translateZ(0)';
+          textBlock.style.opacity   = '1';
+
+          if (title) {
+            title.style.transform = 'translateY(0) translateZ(0)';
+            title.style.opacity = '0.9';
+          }
+          if (revealItems.length) {
+            revealItems.forEach(item => {
+              item.style.transform = 'translateY(30px) translateZ(0)';
+              item.style.opacity = '0';
+            });
+          }
+          overlayDiv.style.opacity = '0.45'; // Escurecimento inicial no mobile
+        } else {
+          textBlock.style.transform = 'translateY(0px) translateZ(0)';
+          textBlock.style.opacity   = '1';
+          if (revealItems.length) {
+            revealItems.forEach(item => {
+              item.style.transform = 'translateY(0px) translateZ(0)';
+              item.style.opacity = '1';
+            });
+          }
+          overlayDiv.style.opacity = '0';
+        }
         if (hint) hint.classList.remove('fade-out');
       } else if (sy < P1_END) {
         const p  = prog(sy, P0_END, P1_END);
-        // Transição muito mais leve (30% ao invés de 100%)
-        const ty = lerp(30, 0, p);
-        textBlock.style.transform = `translateY(${ty}%) translateZ(0)`;
-        textBlock.style.opacity   = String(Math.min(1, lerp(0, 1, p * 1.5)));
-        overlayDiv.style.opacity = String(Math.min(1, lerp(0, 1.2, p)));
+        
+        if (isMobile()) {
+          // Mobile: Parallax no bloco todo + Fade/Slide no conteúdo
+          const blockTy = lerp(180, 0, p);
+          textBlock.style.transform = `translateY(${blockTy}px) translateZ(0)`;
+          textBlock.style.opacity   = '1';
+
+          if (title) {
+            title.style.transform = 'none';
+            title.style.opacity = String(Math.min(1, 0.9 + p));
+          }
+          if (revealItems.length) {
+            const ty = lerp(30, 0, p);
+            revealItems.forEach(item => {
+              item.style.transform = `translateY(${ty}px) translateZ(0)`;
+              item.style.opacity = String(p);
+            });
+          }
+          // Escurecimento progressivo
+          overlayDiv.style.opacity = String(lerp(0.45, 1, p));
+        } else {
+          // Desktop: Mantém texto fixo, anima apenas overlay
+          textBlock.style.transform = 'translateY(0px) translateZ(0)';
+          textBlock.style.opacity = '1';
+          if (revealItems.length) {
+            revealItems.forEach(item => {
+              item.style.transform = 'translateY(0px) translateZ(0)';
+              item.style.opacity = '1';
+            });
+          }
+          overlayDiv.style.opacity = String(Math.min(1, lerp(0, 1.2, p)));
+        }
+
         if (hint) hint.classList.toggle('fade-out', p > 0.05);
       } else {
-        textBlock.style.transform = 'translateY(0%) translateZ(0)';
-        textBlock.style.opacity   = '1';
+        // Estado final após a fase de revelação
+        if (isMobile()) {
+          textBlock.style.transform = `translateY(0px) translateZ(0)`;
+          textBlock.style.opacity   = '1';
+          if (title) {
+            title.style.transform = 'none';
+            title.style.opacity = '1';
+          }
+          if (revealItems.length) {
+            revealItems.forEach(item => {
+              item.style.transform = 'translateY(0px) translateZ(0)';
+              item.style.opacity = '1';
+            });
+          }
+        } else {
+          textBlock.style.transform = 'translateY(0px) translateZ(0)';
+          textBlock.style.opacity = '1';
+        }
         overlayDiv.style.opacity = '1';
         if (hint) hint.classList.add('fade-out');
       }

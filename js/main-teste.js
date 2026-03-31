@@ -163,7 +163,7 @@
 
       if (sy <= P0_END) {
         if (isMobile()) {
-          textBlock.style.transform = 'translateY(0) translateZ(0)';
+          textBlock.style.transform = 'translateY(180px) translateZ(0)';
           textBlock.style.opacity   = '1';
 
           if (title) {
@@ -172,17 +172,17 @@
           }
           if (revealItems.length) {
             revealItems.forEach(item => {
-              item.style.transform = 'translateY(40px) translateZ(0)';
+              item.style.transform = 'translateY(30px) translateZ(0)';
               item.style.opacity = '0';
             });
           }
           overlayDiv.style.opacity = '0.45'; // Escurecimento inicial no mobile
         } else {
-          textBlock.style.transform = 'translateY(0%) translateZ(0)';
+          textBlock.style.transform = 'translateY(0px) translateZ(0)';
           textBlock.style.opacity   = '1';
           if (revealItems.length) {
             revealItems.forEach(item => {
-              item.style.transform = 'translateY(0) translateZ(0)';
+              item.style.transform = 'translateY(0px) translateZ(0)';
               item.style.opacity = '1';
             });
           }
@@ -194,7 +194,8 @@
         
         if (isMobile()) {
           // Mobile: Parallax no bloco todo + Fade/Slide no conteúdo
-          textBlock.style.transform = `translateY(${sy * -0.15}px) translateZ(0)`;
+          const blockTy = lerp(180, 0, p);
+          textBlock.style.transform = `translateY(${blockTy}px) translateZ(0)`;
           textBlock.style.opacity   = '1';
 
           if (title) {
@@ -202,7 +203,7 @@
             title.style.opacity = String(Math.min(1, 0.9 + p));
           }
           if (revealItems.length) {
-            const ty = lerp(40, 0, p);
+            const ty = lerp(30, 0, p);
             revealItems.forEach(item => {
               item.style.transform = `translateY(${ty}px) translateZ(0)`;
               item.style.opacity = String(p);
@@ -212,11 +213,11 @@
           overlayDiv.style.opacity = String(lerp(0.45, 1, p));
         } else {
           // Desktop: Mantém texto fixo, anima apenas overlay
-          textBlock.style.transform = 'translateY(0%) translateZ(0)';
+          textBlock.style.transform = 'translateY(0px) translateZ(0)';
           textBlock.style.opacity = '1';
           if (revealItems.length) {
             revealItems.forEach(item => {
-              item.style.transform = 'translateY(0) translateZ(0)';
+              item.style.transform = 'translateY(0px) translateZ(0)';
               item.style.opacity = '1';
             });
           }
@@ -227,7 +228,7 @@
       } else {
         // Estado final após a fase de revelação
         if (isMobile()) {
-          textBlock.style.transform = `translateY(${P1_END * -0.15}px) translateZ(0)`;
+          textBlock.style.transform = `translateY(0px) translateZ(0)`;
           textBlock.style.opacity   = '1';
           if (title) {
             title.style.transform = 'none';
@@ -240,7 +241,7 @@
             });
           }
         } else {
-          textBlock.style.transform = 'translateY(0%) translateZ(0)';
+          textBlock.style.transform = 'translateY(0px) translateZ(0)';
           textBlock.style.opacity = '1';
         }
         overlayDiv.style.opacity = '1';
