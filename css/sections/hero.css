@@ -1,7 +1,4 @@
-/* ================================================================
-   hero.css — Seção Hero (scroll 3 fases)
-   Dr. Rogério Furtado — Oftalmologista
-================================================================ */
+/* hero.css - Seção Principal (Sticky Parallax) */
 
 /* 1. Wrapper suportando a rolagem 3-fases (180vh) */
 #hero-wrapper {
@@ -26,14 +23,29 @@
   -webkit-overflow-scrolling: touch;
 }
 
-#hero-stage::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+@media (min-width: 1024px) {
+  #hero-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+}
+
+/* 2.1 Noise Lighter para Mobile (O 'Tchan' sem o calor) */
+@media (max-width: 1023px) {
+  #hero-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.06; /* Ligeiramente maior para compensar a menor densidade */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='1' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
 }
 
 /* 3. Foto de fundo */
@@ -167,32 +179,26 @@
   animation: scrollPulse 2s ease-in-out infinite;
 }
 
-/* Orbs — desativados no mobile para não competir com o scroll */
-.hero-orb-1 {
+/* Orbs */
+.hero-orb-1, .hero-orb-2 {
   position: absolute;
-  top: 18%;
-  left: 52%;
-  width: 700px;
-  height: 700px;
-  background: radial-gradient(circle, rgba(0, 163, 122, 0.07) 0%, transparent 65%);
-  border-radius: 50%;
   pointer-events: none;
   z-index: 1;
+  border-radius: 50%;
+}
+
+.hero-orb-1 {
+  top: 18%; left: 52%;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(0, 163, 122, 0.07) 0%, transparent 65%);
 }
 
 .hero-orb-2 {
-  position: absolute;
-  bottom: 8%;
-  left: 20%;
-  width: 400px;
-  height: 400px;
+  bottom: 8%; left: 20%;
+  width: 400px; height: 400px;
   background: radial-gradient(circle, rgba(10, 37, 64, 0.35) 0%, transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
 }
 
-/* Ativa animações dos orbs só em dispositivos com hover (desktop) */
 @media (hover: hover) {
   .hero-orb-1 { animation: orbFloat 12s ease-in-out infinite; }
   .hero-orb-2 { animation: orbFloat 16s ease-in-out infinite reverse; }
@@ -370,16 +376,12 @@
     border-color 0.4s var(--ease-premium);
 }
 
-/* backdrop-filter apenas em dispositivos com hover (desktop) */
 @media (hover: hover) {
   .stat-pill {
     background: rgba(4, 8, 12, 0.6);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
-}
-
-@media (hover: hover) {
   .stat-pill:hover {
     transform: translateY(-2px) scale(1.04);
     box-shadow: 0 8px 24px rgba(0, 163, 122, 0.15);

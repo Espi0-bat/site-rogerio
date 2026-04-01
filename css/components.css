@@ -1,33 +1,29 @@
-/* ================================================================
-   components.css
-   Componentes reutilizáveis de interface
-   Dr. Rogério Furtado — Oftalmologista
-================================================================ */
+/* components.css - Dr. Rogério Furtado */
 
-/* ── Custom Cursor ─────────────────────────────────────────────── */
+/* Custom Cursor */
 .cursor {
   position: fixed;
+  top: 0; left: 0;
   width: 6px;
   height: 6px;
   background: var(--cyan);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
   box-shadow: 0 0 8px var(--cyan);
   will-change: transform;
 }
 
 .cursor-ring {
   position: fixed;
+  top: 0; left: 0;
   width: 32px;
   height: 32px;
   border: 1px solid rgba(0, 163, 122, 0.5);
   border-radius: 50%;
   pointer-events: none;
   z-index: 10000;
-  transform: translate(-50%, -50%);
-  transition: width 0.4s var(--ease-out-expo), height 0.4s var(--ease-out-expo);
+  transition: width 0.4s var(--ease-out-expo), height 0.4s var(--ease-out-expo), border-color 0.4s var(--ease-out-expo);
   will-change: transform;
 }
 
@@ -45,7 +41,7 @@
   }
 }
 
-/* ── Navbar ─────────────────────────────────────────────────────── */
+/* Navbar */
 #navbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -96,6 +92,39 @@
   gap: 2.25rem;
   list-style: none;
   align-items: center;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    flex-direction: column;
+    background: rgba(240, 244, 248, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 2.5rem 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid rgba(0, 163, 122, 0.15);
+    z-index: 999;
+    
+    /* Estado fechado (mobile) */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: 
+      opacity 0.4s var(--ease-out-expo),
+      transform 0.4s var(--ease-out-expo),
+      visibility 0.4s;
+    pointer-events: none;
+  }
+
+  /* Quando o menu está aberto */
+  #navbar.navbar--open .nav-links {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
 }
 
 .nav-links a {
@@ -150,11 +179,12 @@
 .nav-hamburger {
   display: none;
   flex-direction: column;
-  gap: 5px;
+  gap: 6px;
   cursor: pointer;
   background: none;
   border: none;
-  padding: 4px;
+  padding: 8px;
+  z-index: 1001;
 }
 
 .nav-hamburger span {
@@ -162,29 +192,55 @@
   width: 22px;
   height: 1px;
   background: var(--silver);
-  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.4s var(--ease-out-expo), opacity 0.3s, background 0.3s;
+  transform-origin: center;
 }
 
-/* ── Buttons ────────────────────────────────────────────────────── */
-.btn-primary {
+/* Animação para X */
+#navbar.navbar--open .nav-hamburger span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background: var(--cyan);
+}
+
+#navbar.navbar--open .nav-hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+#navbar.navbar--open .nav-hamburger span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background: var(--cyan);
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger {
+    display: flex;
+  }
+}
+
+/* Buttons Base */
+.btn-primary, .btn-ghost, .btn-whatsapp {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  font-family: var(--ff-body);
+  text-transform: uppercase;
+  cursor: pointer;
+  text-decoration: none;
+  min-height: 48px;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-primary {
   background: var(--cyan);
   color: var(--bg-deep);
-  font-family: var(--ff-body);
   font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   padding: 0.9rem 1.75rem;
-  cursor: pointer;
   border: 1px solid var(--cyan);
-  transition: box-shadow 0.3s, transform 0.3s var(--ease-out-expo), background 0.3s;
   position: relative;
   overflow: hidden;
-  min-height: 48px;
-  text-decoration: none;
 }
 
 .btn-primary::before {
@@ -205,19 +261,12 @@
 }
 
 .btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
   color: var(--silver-dim);
   font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 500;
   letter-spacing: 0.14em;
-  text-transform: uppercase;
   border: 1px solid rgba(13, 17, 23, 0.14);
   padding: 0.9rem 1.5rem;
-  transition: color 0.3s, border-color 0.3s;
-  min-height: 48px;
-  text-decoration: none;
 }
 
 .btn-ghost:hover {
@@ -234,22 +283,12 @@
 }
 
 .btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: transparent;
   color: var(--cyan);
   border: 1px solid var(--cyan-border);
-  font-family: var(--ff-body);
   font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.18em;
-  text-transform: uppercase;
   padding: 0.9rem 1.75rem;
-  cursor: pointer;
-  transition: background 0.3s, box-shadow 0.3s, transform 0.3s var(--ease-out-expo);
-  min-height: 48px;
-  text-decoration: none;
 }
 
 .btn-whatsapp:hover {
@@ -258,7 +297,7 @@
   transform: translateY(-2px);
 }
 
-/* ── Modal de Vídeo ────────────────────────────────────────────── */
+/* Video Modal */
 .video-modal-overlay {
   position: fixed;
   inset: 0;

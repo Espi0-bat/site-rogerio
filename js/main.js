@@ -14,6 +14,7 @@
     window.mainJSInitialized = true;
 
 /* ── Cursor personalizado ────────────────────────────────────────── */
+/* ── Optimized Cursor (Hardware Accelerated) ─────────────────────── */
 (function initCursor() {
   const cursor     = document.getElementById('cursor');
   const cursorRing = document.getElementById('cursorRing');
@@ -27,19 +28,19 @@
   document.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    cursor.style.left = mouseX + 'px';
-    cursor.style.top  = mouseY + 'px';
-  });
+    // O ponto central (X, Y) do cursor agora usa transform (GPU)
+    cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  }, { passive: true });
 
   (function animateRing() {
+    // Suavização (lerp) para o anel
     ringX += (mouseX - ringX) * 0.12;
     ringY += (mouseY - ringY) * 0.12;
-    cursorRing.style.left = ringX + 'px';
-    cursorRing.style.top  = ringY + 'px';
+    cursorRing.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
     requestAnimationFrame(animateRing);
   })();
 
-  const hoverTargets = 'a, button, .curadoria-card, .bento-card, .convenio-card, .protocolo-step';
+  const hoverTargets = 'a, button, .curadoria-card, .bento-card, .convenio-card, .protocolo-step, .plano-card__cta';
   document.querySelectorAll(hoverTargets).forEach((el) => {
     el.addEventListener('mouseenter', () => cursorRing.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovering'));
@@ -57,59 +58,47 @@
 })();
 
 
-/* ── Mobile Menu ─────────────────────────────────────────────────── */
+/* ── Mobile Menu (Optimized Class Toggles) ────────────────────────── */
 (function initMobileMenu() {
+  const navbar    = document.getElementById('navbar');
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.querySelector('.nav-links');
-  if (!hamburger || !navLinks) return;
+  if (!navbar || !hamburger || !navLinks) return;
 
-  let menuOpen = false;
+  function toggleMenu() {
+    const isOpen = navbar.classList.toggle('navbar--open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  }
 
   function closeMenu() {
-    navLinks.style.display = window.innerWidth <= 768 ? 'none' : 'flex';
-    menuOpen = false;
+    navbar.classList.remove('navbar--open');
     hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
 
-  function openMenu() {
-    Object.assign(navLinks.style, {
-      display        : 'flex',
-      flexDirection  : 'column',
-      position       : 'fixed',
-      top            : '64px',
-      left           : '0',
-      right          : '0',
-      padding        : '2rem',
-      background     : 'rgba(240,244,248,0.97)',
-      backdropFilter : 'blur(20px)',
-      borderBottom   : '1px solid rgba(0,163,122,0.2)',
-      zIndex         : '999',
-      gap            : '1.5rem',
-    });
-    menuOpen = true;
-    hamburger.setAttribute('aria-expanded', 'true');
-  }
-
-  hamburger.addEventListener('click', () => { menuOpen ? closeMenu() : openMenu(); });
-
-  navLinks.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => { if (window.innerWidth <= 768) closeMenu(); });
+  hamburger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
   });
 
+  // Fecha ao clicar em links
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (window.innerWidth <= 768) closeMenu();
+    });
+  });
+
+  // Fecha ao redimensionar para desktop
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
-      navLinks.removeAttribute('style');
-      menuOpen = false;
-      hamburger.setAttribute('aria-expanded', 'false');
-    } else if (!menuOpen) {
-      navLinks.style.display = 'none';
+      closeMenu();
     }
   }, { passive: true });
 })();
 
 
-/* ── HERO — Scroll-driven acelerado ───────────────────────────────── */
-/* ── HERO — Scroll-driven suave ───────────────────────────────────── */
+/* ── HERO — Scroll-driven (Versão Otimizada) ─────────────────────── */
 (function initHeroScroll() {
   const wrapper   = document.getElementById('hero-wrapper');
   const textBlock = document.getElementById('hero-text-block');
@@ -118,134 +107,114 @@
 
   if (!wrapper || !textBlock || !stage) return;
 
-  const isMobile = () => window.innerWidth <= 900;
+  // Cache de Variáveis (Calculadas apenas no resize/load)
+  let _isMobile = false;
+  let _VH       = 0;
+  let _phases   = { P0_END: 0, P1_END: 0 };
+  let _shiftY   = 0;
 
-  function getPhases() {
-    const VH = window.innerHeight;
-    if (isMobile()) {
-      return { P0_END: VH * 0.1, P1_END: VH * 0.8 };
+  function updateDimensions() {
+    _VH       = window.innerHeight;
+    _isMobile = window.innerWidth <= 900;
+    
+    if (_isMobile) {
+      _phases = { P0_END: _VH * 0.1, P1_END: _VH * 0.8 };
+      _shiftY = _VH * 0.18;
+    } else {
+      _phases = { P0_END: 0, P1_END: _VH * 0.7 };
+      _shiftY = 0;
     }
-    return { P0_END: 0, P1_END: VH * 0.7 };
   }
 
-  let phases = getPhases();
+  updateDimensions();
 
   function lerp(a, b, t) { return a + (b - a) * Math.max(0, Math.min(1, t)); }
   function prog(val, s, e) { return (val - s) / (e - s); }
 
+  // Overlay Centralizado (Pre-criado)
   const overlayDiv = document.createElement('div');
   overlayDiv.id = 'hero-overlay-div';
-  overlayDiv.style.cssText = [
-    'position:absolute;inset:0;z-index:1;pointer-events:none;',
-    'background:',
-    '  linear-gradient(to top, rgba(4,8,12,0.96) 0%, rgba(4,8,12,0.65) 28%, rgba(4,8,12,0.1) 55%, transparent 80%),',
-    '  linear-gradient(to bottom, rgba(4,8,12,0.45) 0%, transparent 20%),',
-    '  linear-gradient(135deg, rgba(0,163,122,0.08) 0%, transparent 55%);',
-    'opacity:0;will-change:opacity;-webkit-backface-visibility:hidden;',
-  ].join('');
+  overlayDiv.style.cssText = `
+    position:absolute;inset:0;z-index:1;pointer-events:none;
+    background: linear-gradient(to top, rgba(4,8,12,0.96) 0%, rgba(4,8,12,0.65) 28%, rgba(4,8,12,0.1) 55%, transparent 80%),
+                linear-gradient(to bottom, rgba(4,8,12,0.45) 0%, transparent 20%),
+                linear-gradient(135deg, rgba(0,163,122,0.08) 0%, transparent 55%);
+    opacity:0;will-change:opacity;-webkit-backface-visibility:hidden;
+  `;
   stage.appendChild(overlayDiv);
 
+  // Remove o pseudo-elemento legado se houver
   const s = document.createElement('style');
   s.textContent = '#hero-stage::before { opacity: 0 !important; }';
   document.head.appendChild(s);
 
-  let ticking = false;
-
-  const title = textBlock.querySelector('.hero-title');
+  const title       = textBlock.querySelector('.hero-title');
   const revealItems = textBlock.querySelectorAll('.hero-reveal-item');
+  let ticking       = false;
 
   function onScroll() {
     if (ticking) return;
     ticking = true;
+    
     requestAnimationFrame(() => {
       const sy = window.scrollY;
-      const { P0_END, P1_END } = phases;
+      const { P0_END, P1_END } = _phases;
 
+      // Fase 0: Início estático (topo da página)
       if (sy <= P0_END) {
-        if (isMobile()) {
-          const shiftY = window.innerHeight * 0.18;
-          textBlock.style.transform = `translateY(${shiftY}px) translateZ(0)`;
+        if (_isMobile) {
+          textBlock.style.transform = `translateY(${_shiftY}px) translateZ(0)`;
           textBlock.style.opacity   = '1';
-
           if (title) {
             title.style.transform = 'translateY(0) translateZ(0)';
             title.style.opacity = '0.9';
           }
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(30px) translateZ(0)';
-              item.style.opacity = '0';
-            });
-          }
-          overlayDiv.style.opacity = '0.45'; // Escurecimento inicial no mobile
+          revealItems.forEach(item => {
+            item.style.transform = 'translateY(30px) translateZ(0)';
+            item.style.opacity = '0';
+          });
+          overlayDiv.style.opacity = '0.45';
         } else {
           textBlock.style.transform = 'translateY(0px) translateZ(0)';
           textBlock.style.opacity   = '1';
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px) translateZ(0)';
-              item.style.opacity = '1';
-            });
-          }
+          revealItems.forEach(item => {
+            item.style.transform = 'translateY(0px) translateZ(0)';
+            item.style.opacity = '1';
+          });
           overlayDiv.style.opacity = '0';
         }
         if (hint) hint.classList.remove('fade-out');
-      } else if (sy < P1_END) {
-        const p  = prog(sy, P0_END, P1_END);
+      } 
+      // Fase 1: Revelação em progresso
+      else if (sy < P1_END) {
+        const p = prog(sy, P0_END, P1_END);
         
-        if (isMobile()) {
-          // Mobile: Parallax no bloco todo + Fade/Slide no conteúdo
-          const shiftY = window.innerHeight * 0.18;
-          const blockTy = lerp(shiftY, 0, p);
+        if (_isMobile) {
+          const blockTy = lerp(_shiftY, 0, p);
           textBlock.style.transform = `translateY(${blockTy}px) translateZ(0)`;
-          textBlock.style.opacity   = '1';
-
-          if (title) {
-            title.style.transform = 'none';
-            title.style.opacity = String(Math.min(1, 0.9 + p));
-          }
-          if (revealItems.length) {
-            const ty = lerp(30, 0, p);
-            revealItems.forEach(item => {
-              item.style.transform = `translateY(${ty}px) translateZ(0)`;
-              item.style.opacity = String(Math.min(1, p * 1.5));
-            });
-          }
-          // Escurecimento progressivo
+          if (title) title.style.opacity = String(Math.min(1, 0.9 + p));
+          
+          const ty = lerp(30, 0, p);
+          revealItems.forEach(item => {
+            item.style.transform = `translateY(${ty}px) translateZ(0)`;
+            item.style.opacity = String(Math.min(1, p * 1.5));
+          });
           overlayDiv.style.opacity = String(lerp(0.45, 1, p));
         } else {
-          // Desktop: Mantém texto fixo, anima apenas overlay
           textBlock.style.transform = 'translateY(0px) translateZ(0)';
-          textBlock.style.opacity = '1';
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px) translateZ(0)';
-              item.style.opacity = '1';
-            });
-          }
           overlayDiv.style.opacity = String(Math.min(1, lerp(0, 1.2, p)));
         }
-
         if (hint) hint.classList.toggle('fade-out', p > 0.05);
-      } else {
-        // Estado final após a fase de revelação
-        if (isMobile()) {
-          textBlock.style.transform = `translateY(0px) translateZ(0)`;
-          textBlock.style.opacity   = '1';
-          if (title) {
-            title.style.transform = 'none';
-            title.style.opacity = '1';
-          }
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px) translateZ(0)';
-              item.style.opacity = '1';
-            });
-          }
-        } else {
-          textBlock.style.transform = 'translateY(0px) translateZ(0)';
-          textBlock.style.opacity = '1';
-        }
+      } 
+      // Fase 2: Estado final revelado
+      else {
+        textBlock.style.transform = 'translateY(0px) translateZ(0)';
+        textBlock.style.opacity   = '1';
+        if (title) title.style.opacity = '1';
+        revealItems.forEach(item => {
+          item.style.transform = 'translateY(0px) translateZ(0)';
+          item.style.opacity = '1';
+        });
         overlayDiv.style.opacity = '1';
         if (hint) hint.classList.add('fade-out');
       }
@@ -254,10 +223,9 @@
     });
   }
 
-  let resizeTimer;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => { phases = getPhases(); onScroll(); }, 150);
+    updateDimensions();
+    onScroll();
   }, { passive: true });
 
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -675,15 +643,24 @@
   });
 })();
 
+/* ── Doctoralia Reviews Carousel (Circular Mode — No Clona-gem) ────── */
 (function initDoctoraliaCarousel() {
   const carousel = document.getElementById('doctoralia-carousel');
   if (!carousel) return;
 
   const btnPrev = document.querySelector('.carousel-control--prev');
   const btnNext = document.querySelector('.carousel-control--next');
-
-  // Guarda os slides originais para clonar
-  const originalChildren = Array.from(carousel.children);
+  
+  // 1. Clona o conjunto original apenas duas vezes (Início, Meio, Fim)
+  const originalSlides = Array.from(carousel.children);
+  originalSlides.forEach(slide => {
+    const cloneBefore = slide.cloneNode(true);
+    const cloneAfter  = slide.cloneNode(true);
+    cloneBefore.setAttribute('aria-hidden', 'true');
+    cloneAfter.setAttribute('aria-hidden', 'true');
+    carousel.insertBefore(cloneBefore, carousel.firstChild);
+    carousel.appendChild(cloneAfter);
+  });
 
   const getScrollAmount = () => {
     const card = carousel.querySelector('.review-premium-slide');
@@ -692,29 +669,38 @@
     return card.offsetWidth + gap;
   };
 
-  // Função que pendura novos itens no final criando o efeito "infinito" para a direita
-  const appendMoreSlides = () => {
-    // Garante um limite de sanidade (se chegar a 100 itens pra evitar leak em autoplay esquecido)
-    if (carousel.children.length > 100) return;
-    
-    originalChildren.forEach(child => {
-      const clone = child.cloneNode(true);
-      clone.setAttribute('aria-hidden', 'true'); // Ignora no leitor de tela para não ler infinito
-      carousel.appendChild(clone);
-    });
-  };
+  const setWidth = getScrollAmount() * originalSlides.length;
 
-  // Adiciona um set logo de cara pra ter uma folga
-  appendMoreSlides();
+  // 2. Centraliza no "Bloco do Meio"
+  const centerCarousel = () => {
+    carousel.scrollLeft = setWidth;
+  };
+  
+  // Pequeno delay para garantir renderização correta antes de centralizar
+  setTimeout(centerCarousel, 50);
+
+  // 3. Giro Invisível (Teletransporte)
+  let isJumping = false;
+  const loopInfinite = () => {
+    if (isJumping) return;
+
+    // Se ultrapassou o Bloco do Fim, volta pro Meio
+    if (carousel.scrollLeft >= setWidth * 2) {
+      isJumping = true;
+      carousel.scrollLeft = carousel.scrollLeft - setWidth;
+      setTimeout(() => isJumping = false, 50);
+    } 
+    // Se ultrapassou o Bloco do Início (voltando), pula pro Meio
+    else if (carousel.scrollLeft <= 0) {
+      isJumping = true;
+      carousel.scrollLeft = setWidth;
+      setTimeout(() => isJumping = false, 50);
+    }
+  };
 
   // Seta Próxima
   if (btnNext) {
     btnNext.addEventListener('click', () => {
-      // Checa preventivamente se precisamos de mais slides
-      const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-      if (carousel.scrollLeft >= maxScrollLeft - (getScrollAmount() * 2)) {
-        appendMoreSlides();
-      }
       carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     });
   }
@@ -722,31 +708,34 @@
   // Seta Anterior
   if (btnPrev) {
     btnPrev.addEventListener('click', () => {
-      if (carousel.scrollLeft > 0) {
-        carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
-      }
+      carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
     });
   }
 
-  // Detecta quando está rolando (Touch) e anexa mais itens
-  carousel.addEventListener('scroll', () => {
-    const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-    // Se o usuário rolou e chegou a uns 2 slides (aprox 600px) do final, clona mais
-    if (carousel.scrollLeft >= maxScrollLeft - 600) {
-      appendMoreSlides();
-    }
-  }, { passive: true });
+  carousel.addEventListener('scroll', loopInfinite, { passive: true });
 
-  // Autoplay Opcional (Opcional, mas melhora a percepção de infinito)
+  // Autoplay (Otimizado)
   let autoplayInterval = setInterval(() => {
     if (btnNext) btnNext.click();
   }, 6000);
 
   // Pausa autoplay na interação
-  carousel.addEventListener('mouseenter', () => clearInterval(autoplayInterval));
-  carousel.addEventListener('mouseleave', () => {
+  const pauseAutoplay = () => clearInterval(autoplayInterval);
+  const resumeAutoplay = () => {
+    clearInterval(autoplayInterval);
     autoplayInterval = setInterval(() => { if (btnNext) btnNext.click(); }, 6000);
-  });
-  carousel.addEventListener('touchstart', () => clearInterval(autoplayInterval), { passive: true });
+  };
+
+  carousel.addEventListener('mouseenter', pauseAutoplay);
+  carousel.addEventListener('mouseleave', resumeAutoplay);
+  carousel.addEventListener('touchstart', pauseAutoplay, { passive: true });
+  carousel.addEventListener('touchend', resumeAutoplay, { passive: true });
+
+  // Re-centraliza no resize para não quebrar a posição das cópias
+  window.addEventListener('resize', () => {
+    const newAmount = getScrollAmount();
+    const newWidth  = newAmount * originalSlides.length;
+    carousel.scrollLeft = newWidth;
+  }, { passive: true });
 })();
 })();
