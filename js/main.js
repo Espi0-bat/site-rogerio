@@ -675,70 +675,67 @@
   });
 })();
 
-/* ── Doctoralia Reviews Carousel ──────────────────────────────────── */
 (function initDoctoraliaCarousel() {
   const carousel = document.getElementById('doctoralia-carousel');
   if (!carousel) return;
 
   const btnPrev = document.querySelector('.carousel-control--prev');
   const btnNext = document.querySelector('.carousel-control--next');
-  const dots    = document.querySelectorAll('.carousel-dot');
+
+  // Guarda os slides originais para clonar
+  const originalChildren = Array.from(carousel.children);
 
   const getScrollAmount = () => {
     const card = carousel.querySelector('.review-premium-slide');
     if (!card) return 320;
-    const style = window.getComputedStyle(carousel);
-    const gap = parseFloat(style.gap) || 24;
+    const gap = parseFloat(window.getComputedStyle(carousel).gap) || 24;
     return card.offsetWidth + gap;
   };
 
-  const scrollToSlide = (index) => {
-    carousel.scrollTo({
-      left: index * getScrollAmount(),
-      behavior: 'smooth'
+  // Função que pendura novos itens no final criando o efeito "infinito" para a direita
+  const appendMoreSlides = () => {
+    // Garante um limite de sanidade (se chegar a 100 itens pra evitar leak em autoplay esquecido)
+    if (carousel.children.length > 100) return;
+    
+    originalChildren.forEach(child => {
+      const clone = child.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true'); // Ignora no leitor de tela para não ler infinito
+      carousel.appendChild(clone);
     });
   };
+
+  // Adiciona um set logo de cara pra ter uma folga
+  appendMoreSlides();
 
   // Seta Próxima
   if (btnNext) {
     btnNext.addEventListener('click', () => {
+      // Checa preventivamente se precisamos de mais slides
       const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-      if (carousel.scrollLeft >= maxScrollLeft - 20) {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+      if (carousel.scrollLeft >= maxScrollLeft - (getScrollAmount() * 2)) {
+        appendMoreSlides();
       }
+      carousel.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
     });
   }
 
   // Seta Anterior
   if (btnPrev) {
     btnPrev.addEventListener('click', () => {
-      if (carousel.scrollLeft <= 20) {
-        const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-        carousel.scrollTo({ left: maxScrollLeft, behavior: 'smooth' });
-      } else {
+      if (carousel.scrollLeft > 0) {
         carousel.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
       }
     });
   }
 
-  // Loop Infinito no Swipe (Mobile)
-  let isScrolling = false;
+  // Detecta quando está rolando (Touch) e anexa mais itens
   carousel.addEventListener('scroll', () => {
-    if (isScrolling) return;
-    
     const maxScrollLeft = carousel.scrollWidth - carousel.clientWidth;
-    // Se chegou muito perto do final, volta pro começo suavemente
-    if (carousel.scrollLeft >= maxScrollLeft - 10) {
-      isScrolling = true;
-      setTimeout(() => {
-        carousel.scrollTo({ left: 0, behavior: 'smooth' });
-        setTimeout(() => isScrolling = false, 500);
-      }, 150);
+    // Se o usuário rolou e chegou a uns 2 slides (aprox 600px) do final, clona mais
+    if (carousel.scrollLeft >= maxScrollLeft - 600) {
+      appendMoreSlides();
     }
   }, { passive: true });
-
 
   // Autoplay Opcional (Opcional, mas melhora a percepção de infinito)
   let autoplayInterval = setInterval(() => {
