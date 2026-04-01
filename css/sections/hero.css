@@ -236,20 +236,13 @@
     justify-content: center;
     transform: translateY(0) translateZ(0);
     opacity: 1;
-    /* padding ajustado para absorver a nova base de 18px sem cortes */
-    padding: clamp(5.5rem, 6vw, 7rem) clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
+    padding: clamp(3rem, 5vw, 5rem) clamp(2rem, 4vw, 4rem) clamp(2rem, 4vw, 3rem);
     background: linear-gradient(90deg,
         rgba(4, 8, 12, 0.98) 0%,
         rgba(4, 8, 12, 0.95) 58%,
         rgba(4, 8, 12, 0.72) 82%,
         rgba(4, 8, 12, 0.15) 100%);
-    overflow-y: auto;
-    overflow-x: hidden;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
   }
-
-  #hero-text-block::-webkit-scrollbar { display: none; }
 
   .hero-scroll-hint {
     display: none;
