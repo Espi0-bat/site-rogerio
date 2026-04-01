@@ -3,10 +3,17 @@
    Dr. Rogério Furtado — Oftalmologista
 ================================================================ */
 
-/* 1. Wrapper suportando a rolagem 3-fases (180vh) */
+/* 1. Wrapper */
 #hero-wrapper {
   position: relative;
-  height: 180vh;
+  height: 180vh; /* desktop: espaço para as 3 fases */
+}
+
+/* Mobile: sem scroll-driven, hero simples e nátivo */
+@media (max-width: 900px) {
+  #hero-wrapper {
+    height: 100dvh;
+  }
 }
 
 /* 2. Palco sticky */
@@ -24,14 +31,17 @@
   -webkit-overflow-scrolling: touch;
 }
 
-#hero-stage::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 2;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+/* Noise texture: apenas desktop (feTurbulence é pesado demais no mobile) */
+@media (hover: hover) {
+  #hero-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
 }
 
 /* 3. Foto de fundo */
@@ -210,6 +220,27 @@
       rgba(4, 8, 12, 0.88) 40%,
       rgba(4, 8, 12, 0.5) 70%,
       transparent 100%);
+}
+
+/* Mobile: bloco de texto visível imediatamente via CSS — sem JS, sem jank */
+@media (max-width: 900px) {
+  #hero-text-block {
+    transform: none;
+    opacity: 1;
+    will-change: auto;
+    /* Entrada suave controlada pelo compositor nativo do iOS */
+    animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both;
+  }
+
+  /* Itens do conteúdo: animação CSS escalonada, sem JS */
+  .hero-reveal-item {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .hero-reveal-item:nth-child(1) { animation-delay: 0.55s; }
+  .hero-reveal-item:nth-child(2) { animation-delay: 0.70s; }
+  .hero-reveal-item:nth-child(3) { animation-delay: 0.85s; }
 }
 
 /* Desktop */

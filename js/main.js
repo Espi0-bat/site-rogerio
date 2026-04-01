@@ -120,11 +120,18 @@
 
   const isMobile = () => window.innerWidth <= 900;
 
+  // ── Mobile: CSS cuida de tudo, sem JS envolvido ──────────────────
+  // A animação de entrada é 100% CSS (compositor nativo iOS).
+  // Nenhum scroll listener é registrado para não competir com
+  // o thread de scroll nativo do Safari.
+  if (isMobile()) {
+    if (hint) hint.classList.add('fade-out');
+    return;
+  }
+
+  // ── Desktop apenas a partir daqui ───────────────────────────────
   function getPhases() {
     const VH = window.innerHeight;
-    if (isMobile()) {
-      return { P0_END: VH * 0.1, P1_END: VH * 0.8 };
-    }
     return { P0_END: 0, P1_END: VH * 0.7 };
   }
 
@@ -141,7 +148,7 @@
     '  linear-gradient(to top, rgba(4,8,12,0.96) 0%, rgba(4,8,12,0.65) 28%, rgba(4,8,12,0.1) 55%, transparent 80%),',
     '  linear-gradient(to bottom, rgba(4,8,12,0.45) 0%, transparent 20%),',
     '  linear-gradient(135deg, rgba(0,163,122,0.08) 0%, transparent 55%);',
-    'opacity:0;will-change:opacity;-webkit-backface-visibility:hidden;',
+    'opacity:0;will-change:opacity;',
   ].join('');
   stage.appendChild(overlayDiv);
 
@@ -162,90 +169,34 @@
       const { P0_END, P1_END } = phases;
 
       if (sy <= P0_END) {
-        if (isMobile()) {
-          const shiftY = window.innerHeight * 0.18;
-          textBlock.style.transform = `translateY(${shiftY}px)`;
-          textBlock.style.opacity   = '1';
-
-          if (title) {
-            title.style.transform = 'translateY(0)';
-            title.style.opacity = '0.9';
-          }
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(30px)';
-              item.style.opacity = '0';
-            });
-          }
-          overlayDiv.style.opacity = '0.45'; // Escurecimento inicial no mobile
-        } else {
-          textBlock.style.transform = 'translateY(0px) translateZ(0)';
-          textBlock.style.opacity   = '1';
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px) translateZ(0)';
-              item.style.opacity = '1';
-            });
-          }
-          overlayDiv.style.opacity = '0';
+        textBlock.style.transform = 'translateY(0px)';
+        textBlock.style.opacity   = '1';
+        if (revealItems.length) {
+          revealItems.forEach(item => {
+            item.style.transform = 'translateY(0px)';
+            item.style.opacity = '1';
+          });
         }
+        overlayDiv.style.opacity = '0';
         if (hint) hint.classList.remove('fade-out');
       } else if (sy < P1_END) {
         const p  = prog(sy, P0_END, P1_END);
-        
-        if (isMobile()) {
-          // Mobile: Parallax no bloco todo + Fade/Slide no conteúdo
-          const shiftY = window.innerHeight * 0.18;
-          const blockTy = lerp(shiftY, 0, p);
-          textBlock.style.transform = `translateY(${blockTy}px)`;
-          textBlock.style.opacity   = '1';
 
-          if (title) {
-            title.style.transform = 'none';
-            title.style.opacity = String(Math.min(1, 0.9 + p));
-          }
-          if (revealItems.length) {
-            const ty = lerp(30, 0, p);
-            revealItems.forEach(item => {
-              item.style.transform = `translateY(${ty}px)`;
-              item.style.opacity = String(Math.min(1, p * 1.5));
-            });
-          }
-          // Escurecimento progressivo
-          overlayDiv.style.opacity = String(lerp(0.45, 1, p));
-        } else {
-          // Desktop: Mantém texto fixo, anima apenas overlay
-          textBlock.style.transform = 'translateY(0px) translateZ(0)';
-          textBlock.style.opacity = '1';
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px) translateZ(0)';
-              item.style.opacity = '1';
-            });
-          }
-          overlayDiv.style.opacity = String(Math.min(1, lerp(0, 1.2, p)));
+        // Desktop: Mantém texto fixo, anima apenas overlay
+        textBlock.style.transform = 'translateY(0px)';
+        textBlock.style.opacity = '1';
+        if (revealItems.length) {
+          revealItems.forEach(item => {
+            item.style.transform = 'translateY(0px)';
+            item.style.opacity = '1';
+          });
         }
+        overlayDiv.style.opacity = String(Math.min(1, lerp(0, 1.2, p)));
 
         if (hint) hint.classList.toggle('fade-out', p > 0.05);
       } else {
-        // Estado final após a fase de revelação
-        if (isMobile()) {
-          textBlock.style.transform = `translateY(0px)`;
-          textBlock.style.opacity   = '1';
-          if (title) {
-            title.style.transform = 'none';
-            title.style.opacity = '1';
-          }
-          if (revealItems.length) {
-            revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px)';
-              item.style.opacity = '1';
-            });
-          }
-        } else {
-          textBlock.style.transform = 'translateY(0px)';
-          textBlock.style.opacity = '1';
-        }
+        textBlock.style.transform = 'translateY(0px)';
+        textBlock.style.opacity = '1';
         overlayDiv.style.opacity = '1';
         if (hint) hint.classList.add('fade-out');
       }
@@ -263,6 +214,8 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();
+
+
 
 
 /* ── Typewriter ──────────────────────────────────────────────────── */
