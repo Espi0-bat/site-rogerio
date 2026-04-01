@@ -148,10 +148,10 @@
 /* ── ≤ 480px ────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
   /* Navbar */
-  #navbar { padding-inline: 1.1rem; padding-block: 1.1rem; }
+  #navbar { padding-inline: 1.1rem; padding-block: 1rem; }
   .nav-logo__name { font-size: clamp(0.8rem, 4vw, 0.9rem); }
   .nav-logo__crm  { font-size: 0.8rem; letter-spacing: 0.14em; }
-  .nav-hamburger  { padding: 8px; }
+  /* Não sobrescrever o padding do hamburger — área de toque de 44x44px mantida via components.css */
 
   /* Section header */
   .section-header__right {
