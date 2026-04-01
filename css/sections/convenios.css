@@ -119,7 +119,7 @@
 /* Contador */
 .convenios-count {
   text-align: center;
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -190,7 +190,7 @@
 }
 
 .convenio-card__name {
-  font-size: clamp(0.72rem, 2.8vw, 0.78rem);
+  font-size: clamp(0.8rem, 2.8vw, 0.9rem);
   font-weight: 500;
   letter-spacing: 0.06em;
   color: var(--silver-dim);
@@ -245,7 +245,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -269,7 +269,7 @@
   align-items: center;
   gap: 0.55rem;
   font-family: var(--ff-body);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -316,9 +316,10 @@
 /* Nota de rodapé */
 .convenios-nota {
   text-align: center;
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   color: var(--silver-faint);
   margin-top: 1.5rem;
   letter-spacing: 0.08em;
   font-weight: 500;
 }
+

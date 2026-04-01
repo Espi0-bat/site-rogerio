@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    tokens.css
    Design tokens, reset, base styles e utilitários globais
    Dr. Rogério Furtado — Oftalmologista
@@ -25,7 +25,7 @@
   /* Text */
   --silver:         #0d1117;
   --silver-dim:     #57606a;
-  --silver-faint:   rgba(13, 17, 23, 0.4);
+  --silver-faint:   rgba(13, 17, 23, 0.65);
 
   /* Gradients */
   --grad-lens:  linear-gradient(135deg, rgba(0,163,122,0.06) 0%, rgba(0,163,122,0.02) 50%, transparent 100%);
@@ -50,7 +50,7 @@
 
 /* ── Base ──────────────────────────────────────────────────────── */
 html {
-  font-size: clamp(14px, 1.05vw, 16px);
+  font-size: clamp(18px, 1.25vw, 20px);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,7 +114,7 @@ body::before {
 
 .label {
   font-family: var(--ff-body);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -219,3 +219,4 @@ body::before {
 section[id], div[id] {
   scroll-margin-top: 96px;
 }
+

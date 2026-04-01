@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    autoridade.css — Seção Formação & Credenciais
    Dr. Rogério Furtado — Oftalmologista
 ================================================================ */
@@ -47,7 +47,7 @@
 }
 
 .timeline-content__date {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -64,7 +64,7 @@
 }
 
 .timeline-content__place {
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   font-weight: 300;
 }
@@ -104,7 +104,7 @@
 }
 
 .achievement-cell__label {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   line-height: 1.5;
   font-weight: 300;
@@ -121,7 +121,7 @@
 }
 
 .memberships__title {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -135,7 +135,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.79rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   font-weight: 300;
 }
@@ -173,7 +173,7 @@
 /* Nota de plano — Planos de Liberdade Visual */
 .planos-note {
   text-align: center;
-  font-size: 0.64rem;
+  font-size: 0.8rem;
   color: var(--silver-faint);
   margin-top: 1.5rem;
   letter-spacing: 0.08em;
@@ -189,3 +189,4 @@
 .section-title--mt {
   margin-top: 0.75rem;
 }
+

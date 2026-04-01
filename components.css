@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    components.css
    Todos os componentes de interface da landing page
    Dr. Rogério Furtado — Oftalmologista
@@ -73,7 +73,7 @@
 }
 
 .nav-logo__crm {
-  font-size: 0.57rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -88,7 +88,7 @@
 }
 
 .nav-links a {
-  font-size: 0.67rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -110,7 +110,7 @@
 .nav-links a:hover::after         { right: 0; box-shadow: 0 0 6px var(--cyan); }
 
 .nav-cta {
-  font-size: 0.62rem !important;
+  font-size: 0.8rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.18em !important;
   color: var(--cyan) !important;
@@ -156,7 +156,7 @@
   background: var(--cyan);
   color: var(--bg-deep);
   font-family: var(--ff-body);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -186,7 +186,7 @@
   align-items: center;
   gap: 0.6rem;
   color: var(--silver-dim);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -207,7 +207,7 @@
   color: var(--cyan);
   border: 1px solid var(--cyan-border);
   font-family: var(--ff-body);
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -292,7 +292,7 @@
 }
 
 .hero-eyebrow__text {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -395,7 +395,7 @@
 }
 
 .stat-pill__label {
-  font-size: 0.55rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -417,7 +417,7 @@
 }
 
 .hero-scroll-indicator span {
-  font-size: 0.5rem;
+  font-size: 0.8rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--cyan-dim);
@@ -568,7 +568,7 @@
 }
 
 .crm-badge__text {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -601,7 +601,7 @@
 
 .quote-attr {
   margin-top: 1.25rem;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -677,7 +677,7 @@
 .curadoria-card__icon        { width: 44px; height: 44px; margin-bottom: 1.75rem; }
 
 .curadoria-card__specialty {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -706,7 +706,7 @@
   margin-top: 1.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid rgba(0,209,255,0.1);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   color: var(--cyan);
   letter-spacing: 0.08em;
   display: flex;
@@ -772,7 +772,7 @@
 }
 
 .timeline-content__date {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -789,7 +789,7 @@
 }
 
 .timeline-content__place {
-  font-size: 0.76rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   font-weight: 300;
 }
@@ -829,7 +829,7 @@
 }
 
 .achievement-cell__label {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   line-height: 1.5;
   font-weight: 300;
@@ -846,7 +846,7 @@
 }
 
 .memberships__title {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -860,7 +860,7 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 0.79rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   font-weight: 300;
 }
@@ -945,7 +945,7 @@
 }
 
 .salute-visual__badge-label {
-  font-size: 0.52rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -981,7 +981,7 @@
   margin-top: 2px;
 }
 
-.salute-feature__text { font-size: 0.77rem; color: var(--silver-dim); line-height: 1.5; }
+.salute-feature__text { font-size: 0.8rem; color: var(--silver-dim); line-height: 1.5; }
 
 .salute-feature__text strong {
   display: block;
@@ -1028,7 +1028,7 @@
 }
 
 .convenio-item__name {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1134,7 +1134,7 @@
 }
 
 .protocolo-step__title {
-  font-size: 0.67rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1143,7 +1143,7 @@
 }
 
 .protocolo-step__desc {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   line-height: 1.75;
   font-weight: 300;
@@ -1161,7 +1161,7 @@
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--silver-faint);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1198,7 +1198,7 @@ footer {
 .footer-logo small {
   display: block;
   font-family: var(--ff-body);
-  font-size: 0.56rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -1209,7 +1209,7 @@ footer {
 .footer-links { display: flex; gap: 2rem; list-style: none; }
 
 .footer-links a {
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--silver-dim);
@@ -1220,7 +1220,7 @@ footer {
 .footer-links a:hover { color: var(--cyan); }
 
 .footer-legal {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   color: rgba(226,232,240,0.25);
   text-align: right;
   line-height: 1.7;
@@ -1245,7 +1245,7 @@ footer {
   }
 
   .nav-logo__name { font-size: 0.82rem; }
-  .nav-logo__crm  { font-size: 0.52rem; }
+  .nav-logo__crm  { font-size: 0.8rem; }
 }
 
 /* ── Hero ────────────────────────────────────────────────────────── */
@@ -1326,7 +1326,7 @@ footer {
   .achievement-cell__number { font-size: 2rem; }
 
   .timeline-content__title  { font-size: 0.92rem; }
-  .timeline-content__place  { font-size: 0.72rem; }
+  .timeline-content__place  { font-size: 0.8rem; }
 }
 
 /* ── Hospital Salute ─────────────────────────────────────────────── */
@@ -1348,7 +1348,7 @@ footer {
   }
 
   .convenio-item { padding: 0.9rem 0.75rem; }
-  .convenio-item__name { font-size: 0.62rem; }
+  .convenio-item__name { font-size: 0.8rem; }
 }
 
 /* ── Protocolo ───────────────────────────────────────────────────── */
@@ -1397,5 +1397,6 @@ footer {
   .hub-header__title { font-size: clamp(1.4rem, 7vw, 2rem); }
   .hub-header__sub   { font-size: 0.82rem; }
   .card__name        { font-size: 1rem; }
-  .card__desc        { font-size: 0.74rem; }
+  .card__desc        { font-size: 0.8rem; }
 }
+

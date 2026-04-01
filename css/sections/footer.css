@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    footer.css — Rodapé
    Dr. Rogério Furtado — Oftalmologista
    Desenvolvido por Pixelry · 2026
@@ -25,7 +25,7 @@ footer {
 .footer-logo small {
   display: block;
   font-family: var(--ff-body);
-  font-size: 0.55rem;
+  font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -43,7 +43,7 @@ footer {
 }
 
 .footer-links a {
-  font-size: 0.62rem;
+  font-size: 0.8rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--silver-dim);
@@ -58,7 +58,7 @@ footer {
 
 /* ── Texto Legal ────────────────────────────────────────── */
 .footer-legal {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   color: rgba(13,17,23,0.35);
   text-align: right;
   line-height: 1.85;
@@ -80,7 +80,7 @@ footer {
   flex-direction: column;
   gap: 1.5rem;
   font-family: var(--ff-body);
-  font-size: 0.56rem;
+  font-size: 0.8rem;
   letter-spacing: 0.05em;
   color: var(--silver-dim);
 }
@@ -130,7 +130,7 @@ footer {
 .fbb-agency strong {
   color: var(--cyan);
   letter-spacing: 0.2em;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
 }
 
 .fbb-agency a {
@@ -152,7 +152,7 @@ footer {
   font-weight: 600;
   letter-spacing: 0.1em;
   color: rgba(13,17,23,0.25);
-  font-size: 0.52rem;
+  font-size: 0.8rem;
   padding-bottom: 0.5rem;
 }
 
@@ -192,3 +192,4 @@ footer {
     border-top: 1px solid rgba(0, 163, 122, 0.1);
   }
 }
+

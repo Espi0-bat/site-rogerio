@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    filosofia.css — Seção Filosofia (Bento Grid)
    Dr. Rogério Furtado — Oftalmologista
 ================================================================ */
@@ -235,7 +235,7 @@
 }
 
 .crm-badge__text {
-  font-size: 0.58rem;
+  font-size: 0.8rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -294,7 +294,7 @@
 
 .quote-attr {
   margin-top: 1.25rem;
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--cyan);
@@ -333,7 +333,7 @@
 }
 
 .review-label {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -358,7 +358,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   color: var(--cyan);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -476,7 +476,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -628,7 +628,7 @@
 }
 
 .carousel-hint__text {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   margin-left: 0.5rem;
   opacity: 0.8;
@@ -680,3 +680,4 @@
     display: none !important;
   }
 }
+

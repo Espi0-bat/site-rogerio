@@ -1,4 +1,4 @@
-/* ================================================================
+﻿/* ================================================================
    salute.css — Seção Hospital Salute
    Dr. Rogério Furtado — Oftalmologista
 ================================================================ */
@@ -68,7 +68,7 @@
 }
 
 .salute-visual__badge-label {
-  font-size: 0.52rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -104,7 +104,7 @@
   margin-top: 2px;
 }
 
-.salute-feature__text { font-size: 0.77rem; color: var(--silver-dim); line-height: 1.5; }
+.salute-feature__text { font-size: 0.8rem; color: var(--silver-dim); line-height: 1.5; }
 
 .salute-feature__text strong {
   display: block;
@@ -173,7 +173,7 @@
 .salute-thumbnail__label {
   position: absolute;
   bottom: 0.6rem; left: 0.85rem;
-  font-size: 0.55rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -185,3 +185,4 @@
   margin-top: 0.75rem;
   margin-bottom: 1.75rem;
 }
+

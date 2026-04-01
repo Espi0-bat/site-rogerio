@@ -49,7 +49,7 @@
     align-items: center;
     width: 100%;
     min-height: 52px;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
   }
 
   #hero-text-block {
@@ -125,7 +125,7 @@
   .hub-header__title { font-size: clamp(1.4rem, 7vw, 2rem); }
   .hub-header__sub   { font-size: 0.82rem; }
   .card__name        { font-size: 1rem; }
-  .card__desc        { font-size: 0.74rem; }
+  .card__desc        { font-size: 0.8rem; }
 }
 
 /* ── ≤ 600px ────────────────────────────────────────────────────── */
@@ -137,7 +137,7 @@
   .planos-grid { grid-template-columns: 1fr; }
 
   .plano-card__cta {
-    font-size: max(0.62rem, 11px);
+    font-size: max(0.8rem, 14px);
   }
   .plano-card {
     padding: 1.5rem 1.25rem;
@@ -148,8 +148,8 @@
 @media (max-width: 480px) {
   /* Navbar */
   #navbar { padding-inline: 1.1rem; padding-block: 1.1rem; }
-  .nav-logo__name { font-size: clamp(0.78rem, 4vw, 0.9rem); }
-  .nav-logo__crm  { font-size: 0.5rem; letter-spacing: 0.14em; }
+  .nav-logo__name { font-size: clamp(0.8rem, 4vw, 0.9rem); }
+  .nav-logo__crm  { font-size: 0.8rem; letter-spacing: 0.14em; }
   .nav-hamburger  { padding: 8px; }
 
   /* Section header */
@@ -158,7 +158,7 @@
     padding-top: 0.5rem;
     line-height: 1.65;
   }
-  .label { font-size: 0.58rem; }
+  .label { font-size: 0.8rem; }
 
   /* Bento */
   .bento { grid-template-columns: 1fr; gap: 0.6rem; }
@@ -182,8 +182,8 @@
   .achievements { grid-template-columns: 1fr 1fr; }
   .achievement-cell__number { font-size: 2rem; }
   .timeline-content__title  { font-size: 0.9rem; }
-  .timeline-content__place  { font-size: 0.72rem; }
-  .memberships__item        { font-size: 0.78rem; }
+  .timeline-content__place  { font-size: 0.8rem; }
+  .memberships__item        { font-size: 0.8rem; }
 
   /* Salute */
   .salute-feature { padding: 0.85rem 0; }
@@ -199,7 +199,7 @@
   .protocolo-cta .btn-primary, .protocolo-cta .btn-whatsapp {
     justify-content: center;
     width: 100%;
-    font-size: max(0.68rem, 12px);
+    font-size: max(0.8rem, 14px);
     padding: 0.9rem 1.25rem;
   }
   .protocolo-desc { font-size: 0.88rem; }
@@ -223,13 +223,13 @@
   .crm-badge__text,
   .memberships__title,
   .timeline-content__date {
-    font-size: max(0.62rem, 11px);
+    font-size: max(0.8rem, 14px);
   }
-  .footer-legal { font-size: max(0.58rem, 10px); }
+  .footer-legal { font-size: max(0.8rem, 14px); }
   .stat-pill__label,
-  .achievement-cell__label { font-size: max(0.6rem, 10px); }
-  .salute-visual__badge-label { font-size: max(0.6rem, 10px); }
-  .plano-card__tag { font-size: max(0.65rem, 11px); }
+  .achievement-cell__label { font-size: max(0.8rem, 14px); }
+  .salute-visual__badge-label { font-size: max(0.8rem, 14px); }
+  .plano-card__tag { font-size: max(0.8rem, 14px); }
 
   /* Video modal */
   .video-modal {
@@ -245,11 +245,12 @@
 /* ── ≤ 360px ────────────────────────────────────────────────────── */
 @media (max-width: 360px) {
   .convenio-card__name {
-    font-size: 0.68rem;
+    font-size: 0.8rem;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .crm-badge { flex-wrap: wrap; }
-  .hero-eyebrow__text { font-size: 0.55rem; letter-spacing: 0.16em; }
+  .hero-eyebrow__text { font-size: 0.8rem; letter-spacing: 0.16em; }
 }
+

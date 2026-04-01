@@ -84,7 +84,7 @@
 }
 
 .nav-logo__crm {
-  font-size: 0.57rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -99,7 +99,7 @@
 }
 
 .nav-links a {
-  font-size: 0.67rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -129,7 +129,7 @@
 }
 
 .nav-cta {
-  font-size: 0.62rem !important;
+  font-size: 0.8rem !important;
   font-weight: 600 !important;
   letter-spacing: 0.18em !important;
   color: var(--cyan) !important;
@@ -173,7 +173,7 @@
   background: var(--cyan);
   color: var(--bg-deep);
   font-family: var(--ff-body);
-  font-size: clamp(0.68rem, 2.5vw, 0.72rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -209,7 +209,7 @@
   align-items: center;
   gap: 0.6rem;
   color: var(--silver-dim);
-  font-size: clamp(0.68rem, 2.5vw, 0.72rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -241,7 +241,7 @@
   color: var(--cyan);
   border: 1px solid var(--cyan-border);
   font-family: var(--ff-body);
-  font-size: clamp(0.68rem, 2.5vw, 0.72rem);
+  font-size: clamp(0.8rem, 1.5vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -310,7 +310,7 @@
 }
 
 .video-modal__label {
-  font-size: 0.56rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -391,7 +391,7 @@
 }
 
 .video-modal__placeholder p {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   color: var(--silver-dim);
   letter-spacing: 0.08em;
   text-align: center;
@@ -470,130 +470,8 @@
 }
 
 /* ── Ocultar botões quando modal de vídeo aberto ───────────────── */
-body.modal-video-open .whatsapp-float,
-body.modal-video-open .btn-facilitar {
+body.modal-video-open .whatsapp-float {
   opacity: 0 !important;
   pointer-events: none !important;
   visibility: hidden !important;
-}
-
-/* ── Botão Facilitar Leitura (base) ────────────────────────────── */
-.btn-facilitar {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.6rem 1.4rem;
-  min-height: 46px;
-  font-family: inherit;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  background: var(--bg-glass-light);
-  border: 1.5px solid var(--cyan-border);
-  border-radius: 9999px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.4s var(--ease-out-expo);
-  position: relative;
-  overflow: hidden;
-  box-shadow: 
-    0 4px 12px rgba(0, 163, 122, 0.08),
-    inset 0 0 12px rgba(255, 255, 255, 0.5);
-}
-
-/* Shimmer effect for attention */
-.btn-facilitar::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -100%;
-  width: 50%;
-  height: 200%;
-  background: linear-gradient(
-    to right,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transform: rotate(25deg);
-  animation: shimmerBtn 6s infinite;
-  pointer-events: none;
-}
-
-@keyframes shimmerBtn {
-  0% { left: -100%; }
-  15% { left: 150%; }
-  100% { left: 150%; }
-}
-
-/* Variante para o navbar — integrada mas agora com mais destaque */
-.btn-facilitar--nav {
-  padding: 0.5rem 1.25rem;
-  min-height: 42px;
-  margin: 0 0.75rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-}
-
-.btn-facilitar:hover {
-  color: #fff;
-  background: var(--cyan);
-  border-color: var(--cyan);
-  box-shadow: 
-    0 8px 25px rgba(0, 163, 122, 0.3),
-    0 0 0 4px rgba(0, 163, 122, 0.1);
-  transform: translateY(-2px) scale(1.02);
-}
-
-.btn-facilitar:active {
-  transform: translateY(1px);
-}
-
-/* Estado Ativado (Quando o Modo Leitura está ON) */
-.btn-facilitar.ativo {
-  background: var(--cyan);
-  color: #ffffff;
-  border-color: var(--cyan);
-  box-shadow: 
-    0 10px 30px rgba(0, 163, 122, 0.4),
-    inset 0 0 15px rgba(0, 0, 0, 0.1);
-}
-
-.btn-facilitar__icon-svg {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.4s var(--ease-spring);
-}
-
-.btn-facilitar:hover .btn-facilitar__icon-svg {
-  transform: scale(1.1);
-}
-
-/* Ajuste do botão de leitura no mobile — visível mas reduzido em telas pequenas */
-@media (max-width: 768px) {
-  .btn-facilitar--nav {
-    padding: 0.4rem 0.8rem;
-    margin: 0 0.5rem;
-    min-height: 38px;
-    font-size: 0.7rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .btn-facilitar--nav span {
-    display: none;
-  }
-  .btn-facilitar--nav {
-    padding: 0.4rem;
-    min-width: 38px;
-    justify-content: center;
-    gap: 0;
-  }
-}
-
-/* Modo leitura facilitada — aumenta a escala tipográfica em ~20% */
-html.leitura-facilitada {
-  font-size: 118%;
 }
