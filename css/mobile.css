@@ -67,8 +67,7 @@
 
 /* ── ≤ 768px ────────────────────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Navbar */
-  .nav-links      { display: none; }
+  /* Navbar mobile: visibilidade controlada pelo components.css via opacity/transform */
   .nav-hamburger  { display: flex; }
 
   /* Section header */
