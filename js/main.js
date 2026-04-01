@@ -164,16 +164,16 @@
       if (sy <= P0_END) {
         if (isMobile()) {
           const shiftY = window.innerHeight * 0.18;
-          textBlock.style.transform = `translateY(${shiftY}px) translateZ(0)`;
+          textBlock.style.transform = `translateY(${shiftY}px)`;
           textBlock.style.opacity   = '1';
 
           if (title) {
-            title.style.transform = 'translateY(0) translateZ(0)';
+            title.style.transform = 'translateY(0)';
             title.style.opacity = '0.9';
           }
           if (revealItems.length) {
             revealItems.forEach(item => {
-              item.style.transform = 'translateY(30px) translateZ(0)';
+              item.style.transform = 'translateY(30px)';
               item.style.opacity = '0';
             });
           }
@@ -197,7 +197,7 @@
           // Mobile: Parallax no bloco todo + Fade/Slide no conteúdo
           const shiftY = window.innerHeight * 0.18;
           const blockTy = lerp(shiftY, 0, p);
-          textBlock.style.transform = `translateY(${blockTy}px) translateZ(0)`;
+          textBlock.style.transform = `translateY(${blockTy}px)`;
           textBlock.style.opacity   = '1';
 
           if (title) {
@@ -207,7 +207,7 @@
           if (revealItems.length) {
             const ty = lerp(30, 0, p);
             revealItems.forEach(item => {
-              item.style.transform = `translateY(${ty}px) translateZ(0)`;
+              item.style.transform = `translateY(${ty}px)`;
               item.style.opacity = String(Math.min(1, p * 1.5));
             });
           }
@@ -230,7 +230,7 @@
       } else {
         // Estado final após a fase de revelação
         if (isMobile()) {
-          textBlock.style.transform = `translateY(0px) translateZ(0)`;
+          textBlock.style.transform = `translateY(0px)`;
           textBlock.style.opacity   = '1';
           if (title) {
             title.style.transform = 'none';
@@ -238,12 +238,12 @@
           }
           if (revealItems.length) {
             revealItems.forEach(item => {
-              item.style.transform = 'translateY(0px) translateZ(0)';
+              item.style.transform = 'translateY(0px)';
               item.style.opacity = '1';
             });
           }
         } else {
-          textBlock.style.transform = 'translateY(0px) translateZ(0)';
+          textBlock.style.transform = 'translateY(0px)';
           textBlock.style.opacity = '1';
         }
         overlayDiv.style.opacity = '1';
