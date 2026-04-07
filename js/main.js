@@ -464,14 +464,23 @@
       const vid = iframeWrapper.querySelector('video');
       if (vid) {
         vid.focus();
-        if (window.innerWidth < 900) {
+        
+        // Verifica se é mobile (largura < 900px ou toque disponível)
+        const isMobileDevice = window.innerWidth < 900 || ('ontouchstart' in window);
+        
+        if (isMobileDevice) {
           try {
-            if (vid.requestFullscreen) {
-              vid.requestFullscreen();
-            } else if (vid.webkitEnterFullscreen) {
+            // No iOS, webkitEnterFullscreen() é o método nativo para o player de vídeo
+            if (vid.webkitEnterFullscreen) {
               vid.webkitEnterFullscreen();
+            } else if (vid.requestFullscreen) {
+              vid.requestFullscreen();
+            } else if (vid.msRequestFullscreen) {
+              vid.msRequestFullscreen();
             }
-          } catch(err) { console.log(err); }
+          } catch(err) { 
+            console.warn('Erro ao solicitar tela cheia:', err); 
+          }
         }
       }
     } else {

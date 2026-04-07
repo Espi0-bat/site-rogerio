@@ -217,6 +217,6 @@ body::before {
 
 /* Evita que o título fique escondido sob a navbar fixa ao navegar por âncoras */
 section[id], div[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 110px;
 }
 

@@ -252,7 +252,7 @@
     justify-content: center;
     transform: translateY(0) translateZ(0);
     opacity: 1;
-    padding: clamp(6rem, 10vh, 7.5rem) clamp(2rem, 4vw, 4rem) clamp(4rem, 8vh, 6rem);
+    padding: clamp(9rem, 14vh, 11rem) clamp(2rem, 4vw, 4rem) clamp(4rem, 8vh, 6rem);
     background: linear-gradient(90deg,
         rgba(4, 8, 12, 0.98) 0%,
         rgba(4, 8, 12, 0.95) 58%,
