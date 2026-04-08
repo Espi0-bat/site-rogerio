@@ -21,10 +21,10 @@
 
 @keyframes pulseCyan {
   0%, 100% {
-    box-shadow: 0 0 6px var(--cyan), 0 0 0 0 rgba(0,209,255,0.4);
+    box-shadow: 0 0 6px var(--cyan), 0 0 0 0 rgba(0,163,122,0.4);
   }
   50% {
-    box-shadow: 0 0 12px var(--cyan), 0 0 0 6px rgba(0,209,255,0);
+    box-shadow: 0 0 12px var(--cyan), 0 0 0 6px rgba(0,163,122,0);
   }
 }
 
@@ -43,25 +43,52 @@
 @keyframes spinSlow    { to { transform: rotate(360deg); } }
 @keyframes spinReverse { to { transform: rotate(-360deg); } }
 
-/* ── Scroll reveal ─────────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(22px);
-  transition:
-    opacity   0.8s var(--ease-out-expo),
-    transform 0.8s var(--ease-out-expo);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes rippleOut {
+  0%   { transform: scale(0); opacity: 0.35; }
+  100% { transform: scale(3.5); opacity: 0; }
 }
 
-/* Stagger delays */
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+@keyframes counterPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.12); }
+  70%  { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+
+@keyframes cardScan {
+  0%   { top: -2px; opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+@keyframes fluidGreen {
+  0%   { background-position: 0% 50%; }
+  25%  { background-position: 60% 30%; }
+  50%  { background-position: 100% 60%; }
+  75%  { background-position: 40% 80%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes shimmerFloat {
+  0%, 100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+    opacity: 0.07;
+  }
+  33% {
+    transform: translateY(-18px) translateX(12px) rotate(8deg);
+    opacity: 0.13;
+  }
+  66% {
+    transform: translateY(10px) translateX(-8px) rotate(-5deg);
+    opacity: 0.08;
+  }
+}
 
 /* ── SVG decorative rotation ───────────────────────────────────── */
 .eye-ring-1 {
@@ -72,4 +99,164 @@
 .eye-ring-2 {
   animation: spinReverse 20s linear infinite;
   transform-origin: 200px 200px;
+}
+
+/* ── 1. SCROLL REVEAL ──────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity   0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays */
+.reveal-delay-1 { transition-delay: 0.12s; }
+.reveal-delay-2 { transition-delay: 0.24s; }
+.reveal-delay-3 { transition-delay: 0.36s; }
+.reveal-delay-4 { transition-delay: 0.48s; }
+.reveal-delay-5 { transition-delay: 0.60s; }
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition:
+    opacity   0.85s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+.reveal-scale {
+  opacity: 0;
+  transform: translateY(20px) scale(0.97);
+  transition:
+    opacity   0.9s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.reveal-scale.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* Stagger automático para filhos de grid */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity   0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: calc(var(--stagger-i, 0) * 80ms);
+}
+.stagger-children.visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 2. TYPEWRITER ──────────────────────────────────────────────── */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: var(--cyan);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  border-radius: 1px;
+}
+
+.hero-title .line-static {
+  display: block;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 0.4s forwards;
+}
+
+.hero-title .line-typed {
+  display: block;
+}
+
+/* ── 3. TAP RIPPLE ─────────────────────────────────────────────── */
+.btn-primary,
+.btn-whatsapp,
+.convenio-toggle-btn,
+.curadoria-card__play,
+.convenios-not-found__cta {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  width: 80px; height: 80px;
+  background: rgba(255,255,255,0.28);
+  transform: scale(0);
+  pointer-events: none;
+  animation: rippleOut 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  margin-left: -40px;
+  margin-top: -40px;
+}
+
+@media (hover: none) {
+  .btn-primary:active      { transform: scale(0.97); }
+  .btn-whatsapp:active     { transform: scale(0.97); }
+  .btn-ghost:active        { transform: scale(0.97); opacity: 0.8; }
+  .convenio-toggle-btn:active { transform: scale(0.97); }
+}
+
+@media (hover: hover) {
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: transparent;
+    border: 1px solid rgba(0,163,122,0);
+    transition: border-color 0.4s, box-shadow 0.4s;
+    pointer-events: none;
+  }
+  .btn-primary:hover::after {
+    border-color: rgba(0,163,122,0.4);
+    box-shadow: 0 0 20px rgba(0,163,122,0.15);
+  }
+}
+
+/* ── 4. KEYWORD HIGHLIGHT ──────────────────────────────────────── */
+.kw {
+  color: var(--silver-dim);
+  transition: color 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline;
+}
+
+.kw-visible {
+  color: var(--cyan);
+  text-shadow: 0 0 20px rgba(0,163,122,0.2);
+}
+
+.kw:nth-child(2) { transition-delay: 0.15s; }
+.kw:nth-child(3) { transition-delay: 0.30s; }
+.kw:nth-child(4) { transition-delay: 0.45s; }
+
+.counter.done { animation: counterPop 0.5s var(--ease-spring) forwards; }
+
+/* ── Reduced Motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-scale,
+  .stagger-children > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-title .line-static { opacity: 1 !important; animation: none !important; }
+  .kw { color: var(--cyan) !important; transition: none !important; }
+  .btn-ripple { display: none !important; }
+  .curadoria-card--destaque,
+  .curadoria-card--destaque::before,
+  .curadoria-card--destaque::after {
+    animation: none !important;
+    background-size: 100% 100% !important;
+  }
 }

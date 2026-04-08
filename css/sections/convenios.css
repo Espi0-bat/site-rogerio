@@ -1,0 +1,325 @@
+/* ================================================================
+   convenios.css — Seção Convênios com busca inteligente
+   Dr. Rogério Furtado — Oftalmologista
+================================================================ */
+
+#convenios {
+  padding: clamp(4rem, 10vw, 9rem) clamp(1rem, 5vw, 5rem);
+  background: var(--bg-mid);
+  position: relative;
+  overflow: hidden;
+}
+
+#convenios::before {
+  content: '';
+  position: absolute;
+  bottom: -200px; left: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(0,163,122,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.convenios-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 5vw, 3.5rem);
+}
+
+.convenios-header .section-title { margin-top: 0.75rem; }
+
+.convenios-header__desc {
+  font-size: 0.88rem;
+  color: var(--silver-dim);
+  margin-top: 1rem;
+  max-width: 480px;
+  margin-inline: auto;
+  line-height: 1.85;
+  font-weight: 300;
+}
+
+.convenios-toggle-wrap {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Campo de busca */
+.convenios-search-wrap {
+  position: relative;
+  max-width: 520px;
+  margin-inline: auto;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.convenios-search-icon {
+  position: absolute;
+  left: 1.1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cyan);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.convenios-search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  font-family: var(--ff-body);
+  font-size: clamp(0.88rem, 3.5vw, 0.95rem);
+  font-weight: 400;
+  color: var(--silver);
+  background: var(--bg-glass);
+  border: 1px solid var(--cyan-border);
+  border-radius: 8px;
+  outline: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  min-height: 52px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.convenios-search-input::-webkit-search-decoration,
+.convenios-search-input::-webkit-search-cancel-button,
+.convenios-search-input::-webkit-search-results-button,
+.convenios-search-input::-webkit-search-results-decoration {
+  -webkit-appearance: none;
+  display: none;
+}
+
+.convenios-search-input::placeholder {
+  color: var(--silver-faint);
+  font-weight: 300;
+}
+
+.convenios-search-input:focus {
+  border-color: rgba(0,163,122,0.55);
+  box-shadow: 0 0 0 3px rgba(0,163,122,0.08), 0 4px 16px rgba(0,163,122,0.06);
+}
+
+.convenios-search-clear {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--silver-faint);
+  padding: 0.25rem;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  min-width: 44px; min-height: 44px;
+  border-radius: 50%;
+}
+.convenios-search-clear:hover { color: var(--silver-dim); }
+.convenios-search-clear.visible { display: flex; }
+
+/* Contador */
+.convenios-count {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver-faint);
+  margin-bottom: 1rem;
+  min-height: 1.2em;
+  transition: color 0.3s;
+}
+
+/* Grid de resultados */
+.convenios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px;
+  background: rgba(0,163,122,0.06);
+  border: 1px solid var(--cyan-border);
+  border-radius: 10px;
+  overflow: hidden;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.convenio-card {
+  background: var(--bg-glass);
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 52px;
+  transition: background 0.25s, color 0.25s;
+  cursor: default;
+  position: relative;
+}
+
+.convenio-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--grad-lens);
+  pointer-events: none;
+}
+
+.convenio-card:hover {
+  background: rgba(0,163,122,0.04);
+}
+
+.convenio-card--particular {
+  background: rgba(0,163,122,0.06);
+  border-bottom: 1px solid rgba(0,163,122,0.12);
+  grid-column: 1 / -1;
+}
+
+.convenio-card--particular .convenio-card__dot {
+  background: var(--cyan);
+  box-shadow: 0 0 6px var(--cyan);
+}
+
+.convenio-card--particular .convenio-card__name {
+  color: var(--cyan);
+  font-weight: 600;
+}
+
+.convenio-card__dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(0,163,122,0.4);
+  flex-shrink: 0;
+}
+
+.convenio-card__name {
+  font-size: clamp(0.8rem, 2.8vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--silver-dim);
+  line-height: 1.3;
+}
+
+.convenio-card__name mark {
+  background: rgba(0,163,122,0.18);
+  color: var(--cyan);
+  border-radius: 2px;
+  font-weight: 700;
+  padding: 0 1px;
+}
+
+/* Estado vazio */
+.convenios-not-found {
+  display: none;
+  text-align: center;
+  padding: clamp(2rem, 6vw, 3rem) 1.5rem;
+  max-width: 480px;
+  margin-inline: auto;
+}
+
+.convenios-not-found.visible { display: block; }
+
+.convenios-not-found__icon {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--cyan-ghost);
+  border: 1px solid var(--cyan-border);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.convenios-not-found__title {
+  font-family: var(--ff-display);
+  font-size: clamp(1rem, 3.5vw, 1.2rem);
+  font-weight: 600;
+  color: var(--silver);
+  margin-bottom: 0.65rem;
+}
+
+.convenios-not-found__text {
+  font-size: 0.85rem;
+  font-weight: 300;
+  color: var(--silver-dim);
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.convenios-not-found__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--cyan);
+  border-radius: 100px;
+  padding: 0.85rem 1.75rem;
+  text-decoration: none;
+  transition: box-shadow 0.3s, transform 0.3s var(--ease-out-expo);
+  min-height: 48px;
+}
+
+.convenios-not-found__cta:hover {
+  box-shadow: 0 0 20px rgba(0,163,122,0.4);
+  transform: translateY(-2px);
+}
+
+/* Botão toggle */
+.convenio-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--ff-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  background: var(--cyan-ghost);
+  border: 1px solid var(--cyan-border);
+  border-radius: 100px;
+  padding: 0.7rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.3s, box-shadow 0.3s, color 0.3s;
+  min-height: 44px;
+}
+
+.convenio-toggle-btn:hover {
+  background: rgba(0,163,122,0.12);
+  box-shadow: 0 0 16px rgba(0,163,122,0.12);
+}
+
+.convenio-toggle-btn__icon {
+  transition: transform 0.4s var(--ease-out-expo);
+  flex-shrink: 0;
+}
+
+.convenio-toggle-btn[aria-expanded="true"] .convenio-toggle-btn__icon {
+  transform: rotate(180deg);
+}
+
+/* Collapsible */
+#convenioCollapsible {
+  overflow: hidden;
+  transition:
+    max-height 0.55s var(--ease-out-expo),
+    opacity    0.45s var(--ease-out-expo);
+  max-height: 8000px;
+  opacity: 1;
+}
+
+#convenioCollapsible.collapsed {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Nota de rodapé */
+.convenios-nota {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--silver-faint);
+  margin-top: 1.5rem;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+

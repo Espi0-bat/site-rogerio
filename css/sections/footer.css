@@ -1,0 +1,195 @@
+﻿/* ================================================================
+   footer.css — Rodapé
+   Dr. Rogério Furtado — Oftalmologista
+   Desenvolvido por Pixelry · 2026
+================================================================ */
+
+footer {
+  padding: clamp(3rem, 6vw, 5rem) clamp(1.25rem, 5vw, 5rem) clamp(1.5rem, 3vw, 2rem);
+  border-top: 1px solid var(--cyan-border);
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+/* ── Logo / Identidade ─────────────────────────────────── */
+.footer-logo {
+  font-family: var(--ff-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--silver);
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.footer-logo small {
+  display: block;
+  font-family: var(--ff-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-top: 0.3rem;
+}
+
+/* ── Links de Navegação ────────────────────────────────── */
+.footer-links {
+  display: flex;
+  gap: 0.5rem 1.75rem;
+  list-style: none;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--silver-dim);
+  transition: color 0.3s;
+  font-weight: 500;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-links a:hover { color: var(--cyan); }
+
+/* ── Texto Legal ────────────────────────────────────────── */
+.footer-legal {
+  font-size: 0.8rem;
+  color: rgba(13,17,23,0.35);
+  text-align: right;
+  line-height: 1.85;
+}
+
+.footer-legal a {
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.footer-legal a:hover {
+  color: var(--cyan);
+}
+
+/* ── Sub-Rodapé Pixelry ────────────────────────────────── */
+.footer-bottom-bar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--ff-body);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--silver-dim);
+}
+
+.fbb-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.fbb-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.fbb-links a {
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: rgba(13,17,23,0.4);
+  text-decoration: none;
+  transition: color 0.3s;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.fbb-links a:hover {
+  color: var(--cyan);
+}
+
+.fbb-agency {
+  text-align: right;
+  text-transform: uppercase;
+  line-height: 1.9;
+  font-weight: 500;
+  color: rgba(13,17,23,0.38);
+  letter-spacing: 0.08em;
+}
+
+.fbb-agency strong {
+  color: var(--cyan);
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+}
+
+.fbb-agency a {
+  display: inline-block;
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.3s;
+  opacity: 0.7;
+}
+
+.fbb-agency a:hover {
+  color: var(--cyan);
+  opacity: 1;
+}
+
+.fbb-bottom {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(13,17,23,0.25);
+  font-size: 0.8rem;
+  padding-bottom: 0.5rem;
+}
+
+/* ── Responsivo ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  footer {
+    padding: clamp(2.5rem, 5vw, 3rem) 1.5rem clamp(1.5rem, 4vw, 2rem);
+    text-align: center;
+  }
+
+  .footer-logo {
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .fbb-top {
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .fbb-links {
+    justify-content: center;
+    gap: 1rem 1.5rem;
+  }
+
+  .fbb-agency {
+    text-align: center;
+  }
+
+  .fbb-bottom {
+    text-align: center;
+    line-height: 2;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(0, 163, 122, 0.1);
+  }
+}
+
